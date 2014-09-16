@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <!-- This is the header template for the website. It displays the options of the website to the user throughout their navigation -->
+    
+    <h:head>
+        <h:outputStylesheet  name="style.css" library="css" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+    </h:head>
+    <h:body>
+    <table border="3" bordercolor="000000" style="width:100%;" cellpadding="0" cellspacing="0">
+        <thead class="templatePageTableHeader">
+            <tr>
+                <th class="templatePageTableHeaderText" colspan="3">
+                    <h1 class="h1"> Detention Tracker 1.0</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="templatePageTableRow">
+                    <a href="create.xhtml"> <h2 class="h2">Create Detention</h2></a>
+                </td>
+                <td class="templatePageTableRow">
+                    <a href="view.xhtml"> <h2 class="h2">View Detentions</h2></a>
+                </td>
+            </tr>            
+        </tbody>
+    </table>       
+        <ui:insert name="content"> Default Content </ui:insert>
+    </h:body>      
+</html>
+
