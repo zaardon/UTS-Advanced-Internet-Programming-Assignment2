@@ -1,7 +1,7 @@
 CREATE TABLE PERMISSIONS
 (
 SCHOOLNAME varchar(255)not null primary key,
-Userpriveliege integer DEFAULT 1
+Userpriveliege integer 
 );
 
 CREATE TABLE logins
