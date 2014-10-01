@@ -30,8 +30,17 @@ xmlns:f="http://java.sun.com/jsf/core">
                             <td><h:outputText value="Password: " styleClass="createHeader"/></td>
                             <td><h:inputSecret id="password" styleClass="createInput" value="#{loginController.login.password}" validatorMessage="You must enter a valid password (letters and numbers only!)"/></td>
                         </tr>
+                         <tr>
+                            <td><h:outputText value="Select account type: " styleClass="createHeader"/></td>
+                            <td><h:selectOneMenu value="" styleClass="createInput">
+                                    <f:selectItem itemValue="Free" itemLabel="Free"/>
+                                    <f:selectItem itemValue="Standard" itemLabel="Standard"/>
+                                    <f:selectItem itemValue="Premium" itemLabel="Premium"/>
+                                </h:selectOneMenu></td>
+                        </tr>
                             <td></td>
                             <td><h:commandButton value="Create Account" styleClass="stdButton" action="#{loginController.createUser}"/></td>
+                            
                     </table>
                 </div>
             </h:form>
