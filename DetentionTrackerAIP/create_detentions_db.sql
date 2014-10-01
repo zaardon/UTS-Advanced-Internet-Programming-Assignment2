@@ -7,6 +7,5 @@ YearGroup int,
 DetentionType varchar(255),
 Department varchar(255),
 Reason varchar(255),
-USERNAME VARCHAR(255) REFERENCES logins(USERNAME)
-
+SCHOOLNAME VARCHAR(255) REFERENCES PERMISSIONS(SCHOOLNAME)
 );
