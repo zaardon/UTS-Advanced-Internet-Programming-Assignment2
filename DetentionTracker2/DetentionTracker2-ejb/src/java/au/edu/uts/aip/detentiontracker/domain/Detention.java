@@ -16,9 +16,9 @@ import javax.validation.constraints.*;
 public class Detention implements Serializable {
     
 //    private Login login;
-    private int DetentionID;
+    private int detentionID;
     private String firstName;
-    private String LastName;
+    private String lastName;
     private YearType yearType;
     private DetentionType detentionType;
     private DepartmentType departmentType;
@@ -27,11 +27,11 @@ public class Detention implements Serializable {
     @Id
     @GeneratedValue
     public int getDetentionID() {
-        return DetentionID;
+        return detentionID;
     }
 
-    public void setDetentionID(int DetentionID) {
-        this.DetentionID = DetentionID;
+    public void setDetentionID(int detentionID) {
+        this.detentionID = detentionID;
     }
 
     public String getFirstName() {
@@ -43,11 +43,11 @@ public class Detention implements Serializable {
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
     @Enumerated(EnumType.STRING)
     public YearType getYearType() {
