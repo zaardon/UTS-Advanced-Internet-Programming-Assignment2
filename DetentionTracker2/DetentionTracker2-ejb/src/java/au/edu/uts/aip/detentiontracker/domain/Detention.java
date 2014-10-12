@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 @Entity
 public class Detention implements Serializable {
     
-//    private Login login;
+    private Login login;
     private int detentionID;
     private String firstName;
     private String lastName;
@@ -83,14 +83,14 @@ public class Detention implements Serializable {
         this.reason = reason;
     }
     
-//    @ManyToOne
-//    public Login getLogin() {
-//        return login;
-//    }
-//
-//    public void setLogin(Login login) {
-//        this.login = login;
-//    }
+   @ManyToOne
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
     
     
 }

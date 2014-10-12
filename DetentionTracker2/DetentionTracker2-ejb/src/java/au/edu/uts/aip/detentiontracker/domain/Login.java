@@ -21,7 +21,7 @@ public class Login implements Serializable{
     private String password;
     private AccountType accountType;
     
-   // private List<Detention> detentions = new ArrayList<>();
+    private List<Detention> detentions = new ArrayList<>();
     
     
     // a list of detentions
@@ -51,14 +51,14 @@ public class Login implements Serializable{
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
-//    @OneToMany(mappedBy = "detention", cascade = CascadeType.ALL)
-//    public List<Detention> getDetentions() {
-//        return detentions;
-//    }
-//
-//    public void setDetentions(List<Detention> detentions) {
-//        this.detentions = detentions;
-//    }
+    @OneToMany(mappedBy = "detention", cascade = CascadeType.ALL)
+    public List<Detention> getDetentions() {
+        return detentions;
+    }
+
+   public void setDetentions(List<Detention> detentions) {
+       this.detentions = detentions;
+   }
     
     
 }
