@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package au.edu.uts.aip.detentiontracker;
+package au.edu.uts.aip.detentiontracker.domain;
 
 /**
  *
  * @author james
  */
-public class fornow {
-    
+import javax.ejb.*;
+import javax.persistence.*;
+
+@Stateless
+public class whatever {
+     
+    @PersistenceContext
+    private EntityManager em;
 }
