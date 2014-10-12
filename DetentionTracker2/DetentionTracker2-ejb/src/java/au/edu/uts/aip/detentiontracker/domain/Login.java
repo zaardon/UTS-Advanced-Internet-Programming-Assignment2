@@ -14,6 +14,7 @@ import javax.validation.constraints.*;
  *
  * @author james
  */
+@Entity
 public class Login implements Serializable{
     
     private String username;

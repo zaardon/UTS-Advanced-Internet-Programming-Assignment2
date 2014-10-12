@@ -13,6 +13,7 @@ import javax.validation.constraints.*;
  *
  * @author james
  */
+@Entity
 public class Detention implements Serializable {
     
 //    private Login login;
