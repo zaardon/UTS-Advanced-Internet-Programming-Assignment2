@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestScoped
 public class LoginController implements Serializable {
 
-//    private String username;
+    private String username;
 //    private String password;
 //    private LoginDTO login = new LoginDTO();
 //    private Logger log = Logger.getLogger(this.getClass().getName());
