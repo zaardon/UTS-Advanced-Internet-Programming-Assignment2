@@ -10,8 +10,11 @@ package au.edu.uts.aip.detentiontracker.domain;
  * @author james
  */
 public enum YearType {
-        HOME,
-    WORK,
-    MOBILE,
-    OTHER
+    
+    YEAR07,
+    YEAR08,
+    YEAR09,
+    YEAR10,
+    YEAR11,
+    YEAR12
 }

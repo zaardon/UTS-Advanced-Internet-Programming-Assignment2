@@ -20,14 +20,13 @@ public class DetentionController implements Serializable {
     private DetentionTrackerBean detentionTrackerBean;
     
     private Detention currentDetention = new Detention();
-    
-    private String ALEX;
-    
- 
-    public Detention getDetention() {
+
+    public Detention getCurrentDetention() {
         return currentDetention;
     }
-    
+
+
+        
      /**
      * Loads a detention by its unique ID
      * @param detentionID the unique detention id
@@ -45,6 +44,7 @@ public class DetentionController implements Serializable {
         detentionTrackerBean.createDetention(currentDetention);
         return "view?faces-redirect=true";
     }
+
     
     /**
      * Updates a chosen detention with new values

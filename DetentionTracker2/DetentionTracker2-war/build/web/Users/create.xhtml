@@ -3,8 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 template="/WEB-INF/templates/header.xhtml"
-xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
     <!-- This allows a user to create a detention in the website. Fields are not able to use accent characters. First and Last name 
     input fields, in particular, can only use letters, apostrophes, dashes and single spaces. -->
@@ -23,28 +23,28 @@ xmlns:f="http://java.sun.com/jsf/core">
                     <table>
                         <tr>
                             <td><h:outputText value="First Name: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="fname" value="#{detentionController.detention.firstName}" styleClass="createInput" validatorMessage="You must enter a valid first name"/> </td>
-                            <td><h:message for="fname" styleClass="createInputError"/></td>
+                            <td><h:inputText id="firstName" value="#{detentionController.currentDetention.firstName}" styleClass="createInput" validatorMessage="You must enter a valid first name"/> </td>
+                            <td><h:message for="firstName" styleClass="createInputError"/></td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Last Name: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="lname" value="#{detentionController.detention.LName}" styleClass="createInput" validatorMessage="You must enter a valid last name"/></td>
+                            <td><h:inputText id="lname" value="#{detentionController.currentDetention.lastName}" styleClass="createInput" validatorMessage="You must enter a valid last name"/></td>
                             <td><h:message for="lname" styleClass="createInputError"/></td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Year: " styleClass="createHeader"/></td>
-                            <td><h:selectOneMenu  value="#{detentionController.detention.year}"  styleClass="createInput" >
-                                    <f:selectItem itemValue="07" itemLabel="07"/>
-                                    <f:selectItem itemValue="08" itemLabel="08"/>
-                                    <f:selectItem itemValue="09" itemLabel="09"/>
-                                    <f:selectItem itemValue="10" itemLabel="10"/>
-                                    <f:selectItem itemValue="11" itemLabel="11"/>
-                                    <f:selectItem itemValue="12" itemLabel="12"/>
+                            <td><h:selectOneMenu  value="#{detentionController.currentDetention.yearType}"  styleClass="createInput" >
+                                    <f:selectItem itemValue="YEAR07" itemLabel="07"/>
+                                    <f:selectItem itemValue="YEAR08" itemLabel="08"/>
+                                    <f:selectItem itemValue="YEAR09" itemLabel="09"/>
+                                    <f:selectItem itemValue="YEAR10" itemLabel="10"/>
+                                    <f:selectItem itemValue="YEAR11" itemLabel="11"/>
+                                    <f:selectItem itemValue="YEAR12" itemLabel="12"/>
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Type of Detention: " styleClass="createHeader"/></td>
-                            <td><h:selectOneMenu value="#{detentionController.detention.type}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{detentionController.currentDetention.detentionType}" styleClass="createInput">
                                     <f:selectItem itemValue="Afternoon" itemLabel="Afternoon"/>
                                     <f:selectItem itemValue="Morning" itemLabel="Morning"/>
                                     <f:selectItem itemValue="Saturday" itemLabel="Saturday"/>
@@ -53,7 +53,7 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>
                         <tr>
                             <td><h:outputText value="Department: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu value="#{detentionController.detention.dept}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{detentionController.currentDetention.departmentType}" styleClass="createInput">
                                     <f:selectItem itemValue="Computing" itemLabel="Computing"/>
                                     <f:selectItem itemValue="Math" itemLabel="Math"/>
                                     <f:selectItem itemValue="English" itemLabel="English"/>
@@ -63,14 +63,14 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>
                         <tr>
                             <td><h:outputText value="Reason: " styleClass="createHeader"/></td>
-                            <td><h:inputText id="reason" styleClass="createInput" value="#{detentionController.detention.reason}" validatorMessage="You must enter a valid reason (check your input!)"/></td>
+                            <td><h:inputText id="reason" styleClass="createInput" value="#{detentionController.currentDetention.reason}" validatorMessage="You must enter a valid reason (check your input!)"/></td>
                             <td><h:message for="reason" styleClass="createInputError"/></td>
                         </tr>
                         <tr>
                             <td> </td>
                             <td>
                                 <h:button value="Cancel"  styleClass="stdButton" outcome="cancel"/>
-                                <h:commandButton value="Create" styleClass="stdButton" action="#{detentionController.createDetention()}"/>
+                                <h:commandButton value="Create" styleClass="stdButton" action="#{detentionController.createDetention}"/>
                             </td>
                         </tr>
                     </table>

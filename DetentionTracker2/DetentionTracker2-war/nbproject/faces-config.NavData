@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="welcomeOld.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="edit.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="loginOld.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="login.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="Users/editOld.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="Users/viewOld.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="Administration/receiptReceipt.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="Users/accounts.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="Users/edit.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="Users/create.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="register.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="registerOld.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="index.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="Administration/receipt.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="Users/accountsOld.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="Administration/admin.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="Administration/adminOld.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="welcome.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="Users/createOld.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="Users/view.xhtml" x="466" y="296" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

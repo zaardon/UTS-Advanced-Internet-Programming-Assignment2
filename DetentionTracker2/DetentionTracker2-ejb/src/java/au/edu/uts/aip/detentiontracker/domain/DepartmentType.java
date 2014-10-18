@@ -10,8 +10,9 @@ package au.edu.uts.aip.detentiontracker.domain;
  * @author james
  */
 public enum DepartmentType {
-        HOME,
-    WORK,
-    MOBILE,
-    OTHER
+    Computing,
+    Math,
+    English,
+    Science,
+    HSIE
 }

@@ -10,8 +10,8 @@ package au.edu.uts.aip.detentiontracker.domain;
  * @author james
  */
 public enum DetentionType {
-        HOME,
-    WORK,
-    MOBILE,
-    OTHER
+    Afternoon,
+    Morning,
+    Saturday,
+    Lunchtime
 }
