@@ -21,7 +21,7 @@ public class DetentionController implements Serializable {
     
     private Detention currentDetention = new Detention();
     
-    
+    private String ALEX;
     
  
     public Detention getDetention() {
