@@ -21,7 +21,7 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
             <h1 class="h1">Current Detentions</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                <h:form >
+                 <h:form rendered="#{detentionController.sizeOfDetentionList() != 0}">
                     <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findAllDetentions()}">
                         <h:column>
                             <f:facet name="header">
@@ -70,9 +70,9 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                
+                 <h:outputText rendered="#{detentionController.sizeOfDetentionList()== 0}" styleClass="stdRowHeader" value="No detentions to view!" />
             </div>
-            <h:form>
+            <h:form >
                 <ui:insert name="footer">
                     <ui:include src="/WEB-INF/templates/footer.xhtml" />
                 </ui:insert>
