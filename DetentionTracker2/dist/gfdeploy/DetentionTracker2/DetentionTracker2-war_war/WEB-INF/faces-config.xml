@@ -45,4 +45,15 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>create</from-outcome>
+            <to-view-id>/Users/create.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>view</from-outcome>
+            <to-view-id>/Users/view.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -63,6 +63,8 @@ public class DetentionTrackerBean {
         em.remove(detention);
     }
     
+    
+    // this will probs be deleted.
     public void createDetention(Detention detention)
     {
         em.persist(detention);
@@ -70,28 +72,41 @@ public class DetentionTrackerBean {
     
     public void addLogin(Detention detention, Login login)
     {
-        Detention managed = em.find(Detention.class, detention.getDetentionID());
+        try{
+            
+            //detention has it's login set and created.
+        detention.setLogin(login);
+        createDetention(detention);
         
-        managed.setLogin(login); //singular setting
-        
+        // next we gonna add it to our login.
+               
         // set the list of detentions 
         //also this is where we could restrict.
-        login.getDetentions().add(managed);
+        login.getDetentions().add(detention);
         
 
  
         
-        em.persist(login);
+      
         // NO FORGETTING THE CLOSE ALSO TRANSACTIONS
         //em.close();
+        em.merge(login);
+        
+        }
+        catch(EJBException e)
+        {
+            System.out.println(e);
+            
+        }
     }
-    public void deleteLogin(Login login, Detention detention)
+    public void deleteDetentionFromLogin(int detentionID, String username)
     {
-        Login managed = em.find(Login.class, login.getUsername());
+        Detention detManaged = em.find(Detention.class, detentionID );
+        Login managed = em.find(Login.class, username);
         
-        managed.getDetentions().remove(detention);
+        managed.getDetentions().remove(detManaged);
         
-        em.remove(detention);
+        em.remove(detManaged);
     }
     
     
@@ -102,6 +117,7 @@ public class DetentionTrackerBean {
     {
         TypedQuery<Login> query = em.createQuery("SELECT l FROM Login l WHERE l.username =:name", Login.class );
         query.setParameter("name", username);
+        
         if(query.getResultList().size()==1)
         {
             return true;
@@ -122,5 +138,12 @@ public class DetentionTrackerBean {
             
             System.out.println(e);
         }
+    }
+    
+    public Login getLogin(String username)
+    {
+        Login loginToReturn = em.find(Login.class,username);
+        
+        return loginToReturn;
     }
 }

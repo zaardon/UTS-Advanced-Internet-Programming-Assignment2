@@ -9,8 +9,10 @@ import java.io.*;
 import java.util.*;
 import javax.ejb.*;
 import javax.enterprise.context.*;
+import javax.faces.context.FacesContext;
 import javax.faces.view.*;
 import javax.inject.*;
+import javax.servlet.http.HttpServletRequest;
 
 @Named
 @RequestScoped
@@ -41,7 +43,15 @@ public class DetentionController implements Serializable {
      * @return a redirect that takes the user back to the view detentions page
      */
     public String createDetention() {
-        detentionTrackerBean.createDetention(currentDetention);
+        FacesContext context = FacesContext.getCurrentInstance();
+        // find our contextual login
+        String username = context.getExternalContext().getUserPrincipal().getName();
+        // find the login in the db
+        // add that to our current detention
+        // then add that detention to our login ? yes
+       Login managedLogin= detentionTrackerBean.getLogin(username);
+       
+        detentionTrackerBean.addLogin(currentDetention, managedLogin);
         return "view?faces-redirect=true";
     }
     
@@ -61,7 +71,14 @@ public class DetentionController implements Serializable {
      * @return a redirect that takes the user back to the view detentions page
      */
     public String removeDetention(int detentionID) {
-        detentionTrackerBean.deleteDetention(detentionID);
+         FacesContext context = FacesContext.getCurrentInstance();
+        // find our contextual login
+        String username = context.getExternalContext().getUserPrincipal().getName();
+        // find the login in the db
+        // add that to our current detention
+        // then add that detention to our login ? yes
+        
+        detentionTrackerBean.deleteDetentionFromLogin(detentionID, username);
         return "view?faces-redirect=true";
     }
     
@@ -70,8 +87,13 @@ public class DetentionController implements Serializable {
      * @param username
      * @return an array list of detentions that is displayed on the web page
      */
-    public List<Detention> findAllDetentions(String username) {
-        
+    public List<Detention> findAllDetentions() {
+         FacesContext context = FacesContext.getCurrentInstance();
+        // find our contextual login
+        String username = context.getExternalContext().getUserPrincipal().getName();
+        // find the login in the db
+        // add that to our current detention
+        // then add that detention to our login ? yes
             return  detentionTrackerBean.findAllDetetions(username);
     }
     
@@ -80,7 +102,13 @@ public class DetentionController implements Serializable {
      * @param username
      * @return returns the amount of current detentions
      */
-    public int sizeOfDetentionList(String username){
+    public int sizeOfDetentionList(){
+         FacesContext context = FacesContext.getCurrentInstance();
+        // find our contextual login
+        String username = context.getExternalContext().getUserPrincipal().getName();
+        // find the login in the db
+        // add that to our current detention
+        // then add that detention to our login ? yes
         return detentionTrackerBean.findAllDetetions(username).size();
     } 
 }
