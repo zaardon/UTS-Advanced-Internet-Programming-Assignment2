@@ -20,12 +20,12 @@
         <from-view-id>/Users/view.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>edit</from-outcome>
-            <to-view-id>/edit.xhtml</to-view-id>
+            <to-view-id>/Users/edit.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/edit.xhtml</from-view-id>
+        <from-view-id>/Users/edit.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>save</from-outcome>
             <to-view-id>/Users/view.xhtml</to-view-id>
