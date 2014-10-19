@@ -23,14 +23,14 @@ xmlns:f="http://java.sun.com/jsf/core">
                     <table>        
                         <tr>
                             <td><h:outputText value="Username: " styleClass="createHeader"/></td>
-                            <td><h:inputText id="username" value="#{loginController.username}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="username" value="#{loginController.currentLogin.username}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Password: " styleClass="createHeader" /></td>
-                            <td><h:inputSecret value="#{loginController.password}" styleClass="createInput"/></td>
+                            <td><h:inputSecret value="#{loginController.currentLogin.password}" styleClass="createInput"/></td>
                         </tr>
                             <td> </td>
-                            <td><h:commandButton value="Login" action="#{loginController.login}" styleClass="stdButton"/>
+                            <td><h:commandButton value="Login" action="#{loginController.login()}" styleClass="stdButton"/>
                         </td>
                     </table>       
                     <hr></hr>

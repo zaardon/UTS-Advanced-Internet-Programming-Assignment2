@@ -1,3 +1,3 @@
 create view jdbcrealm_user (username, password) as
 select username, password
-from logins;
+from login;

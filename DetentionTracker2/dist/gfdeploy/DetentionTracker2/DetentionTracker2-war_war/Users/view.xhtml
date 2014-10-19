@@ -21,37 +21,37 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
             <h1 class="h1">Current Detentions</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                <h:form rendered="#{detentionController.sizeOfDetentionList()!= 0}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.allDetentions}">
+                <h:form rendered="#{detentionController.findAllDetentions(username)= 0}">
+                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findAllDetentions}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="First Name" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{detention.FName}"/>
+                            <h:outputText value="#{detention.firstName}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Last Name" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{detention.LName}"/>
+                            <h:outputText value="#{detention.lastName}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Year" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{detention.year}"/>
+                            <h:outputText value="#{detention.yearType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Type" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{detention.type}"/>
+                            <h:outputText value="#{detention.detentionType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Department" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{detention.dept}"/>
+                            <h:outputText value="#{detention.departmentType}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header" >
@@ -61,16 +61,16 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                         </h:column>               
                         <h:column>
                             <h:button value="Edit" styleClass="stdButton" outcome="edit">
-                                <f:param name="index" value="#{detention.id}"/>
+                                <f:param name="index" value="#{detention.detentionID}"/>
                             </h:button>
                         </h:column>               
                         <h:column >
-                            <h:commandButton value="Remove" styleClass="stdButton" action="#{detentionController.removeDetention(detention.id)}" />
+                            <h:commandButton value="Remove" styleClass="stdButton" action="#{detentionController.removeDetention(detention.detentionID)}" />
                         </h:column>        
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="#{detentionController.sizeOfDetentionList() == 0}" styleClass="stdRowHeader" value="No detentions to view!" />
+                <h:outputText rendered="#{detentionController.sizeOfDetentionList(username)== 0}" styleClass="stdRowHeader" value="No detentions to view!" />
             </div>
             <h:form>
                 <ui:insert name="footer">

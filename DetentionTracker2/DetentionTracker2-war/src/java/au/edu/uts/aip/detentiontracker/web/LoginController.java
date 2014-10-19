@@ -43,6 +43,7 @@ public class LoginController implements Serializable {
     public String createUser()  throws NoSuchAlgorithmException  {
         if(!detentionTrackerBean.userExists(currentLogin.getUsername())){
            // If new username does not already exists...
+            
             detentionTrackerBean.createInitialLogin(currentLogin);
             return "login?faces-redirect=true";
         }

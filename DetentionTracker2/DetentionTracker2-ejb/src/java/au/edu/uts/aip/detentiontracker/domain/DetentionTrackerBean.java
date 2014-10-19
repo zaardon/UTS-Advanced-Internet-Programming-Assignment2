@@ -14,6 +14,9 @@ import javax.ejb.*;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import au.edu.uts.aip.detentiontracker.domain.EncryptionUtility;
+import javax.naming.NamingException;
+import java.security.NoSuchAlgorithmException;
 
 @Stateless
 public class DetentionTrackerBean {
@@ -106,8 +109,18 @@ public class DetentionTrackerBean {
         return false;
     }
     
-    public void createInitialLogin(Login login)
+    public void createInitialLogin(Login login)  throws NoSuchAlgorithmException
     {
+        try{
+            // BIGGEST PLAYS AU
+        login.setPassword( EncryptionUtility.hash256(login.getPassword()));
+        
         em.persist(login);
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            
+            System.out.println(e);
+        }
     }
 }
