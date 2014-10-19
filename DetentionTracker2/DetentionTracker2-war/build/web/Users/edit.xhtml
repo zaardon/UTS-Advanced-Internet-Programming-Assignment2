@@ -27,19 +27,19 @@ xmlns:f="http://java.sun.com/jsf/core">
                     <table>
                         <tr>
                             <td><h:outputText value="First Name: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="fname" value="#{detentionController.detention.FName}" 
+                            <td><h:inputText id="fname" value="#{detentionController.currentDetention.firstName}" 
                                              validatorMessage="You must enter a valid first name!" styleClass="createInput"/> </td>
                             <td><h:message for="fname" styleClass="createInputError"/></td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Last Name: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="lname" value="#{detentionController.detention.LName}" 
+                            <td><h:inputText id="lname" value="#{detentionController.currentDetention.lastName}" 
                                              validatorMessage="You must enter a valid last name" styleClass="createInput"/></td>
                             <td><h:message for="lname" styleClass="createInputError" /></td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Year: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu value="#{detentionController.detention.year}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{detentionController.currentDetention.yearType}" styleClass="createInput">
                                 <f:selectItem itemValue="07" itemLabel="07"/>
                                 <f:selectItem itemValue="08" itemLabel="08"/>
                                 <f:selectItem itemValue="09" itemLabel="09"/>
@@ -50,7 +50,7 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>                              
                         <tr>
                             <td><h:outputText value="Type of Detention: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu value="#{detentionController.detention.type}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{detentionController.currentDetention.detentionType}" styleClass="createInput">
                                     <f:selectItem itemValue="Afternoon" itemLabel="Afternoon"/>
                                     <f:selectItem itemValue="Morning" itemLabel="Morning"/>
                                     <f:selectItem itemValue="Saturday" itemLabel="Saturday"/>
@@ -59,7 +59,7 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>                              
                         <tr>
                             <td><h:outputText value="Department: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu value="#{detentionController.detention.dept}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{detentionController.currentDetention.departmentType}" styleClass="createInput">
                                     <f:selectItem itemValue="Computing" itemLabel="Computing"/>
                                     <f:selectItem itemValue="Math" itemLabel="Math"/>
                                     <f:selectItem itemValue="English" itemLabel="English"/>
@@ -69,11 +69,11 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>                               
                         <tr>
                             <td><h:outputText value="Reason: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="reason" value="#{detentionController.detention.reason}" styleClass="createInput" validatorMessage="You must enter a valid reason (check your input!)"/></td>
+                            <td><h:inputText id="reason" value="#{detentionController.currentDetention.reason}" styleClass="createInput" validatorMessage="You must enter a valid reason (check your input!)"/></td>
                             <td><h:message for="reason" styleClass="createInputError" /></td>
                         </tr>
                         <tr>
-                            <h:inputHidden value="#{detentionController.detention.id}"/>
+                            <h:inputHidden value="#{detentionController.currentDetention.detentionID}"/>
                             <td>
                                 <h:button value="Cancel"  styleClass="stdButton" outcome="cancel"/>
                                 <h:commandButton value="Save" styleClass="stdButton" action="#{detentionController.editDetention()}"/>
