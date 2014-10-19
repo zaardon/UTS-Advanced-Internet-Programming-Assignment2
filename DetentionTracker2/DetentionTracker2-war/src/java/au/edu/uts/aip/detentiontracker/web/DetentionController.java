@@ -44,7 +44,7 @@ public class DetentionController implements Serializable {
         detentionTrackerBean.createDetention(currentDetention);
         return "view?faces-redirect=true";
     }
-
+    
     
     /**
      * Updates a chosen detention with new values

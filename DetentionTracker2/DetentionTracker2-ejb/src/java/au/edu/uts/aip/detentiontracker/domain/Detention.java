@@ -6,9 +6,9 @@
 package au.edu.uts.aip.detentiontracker.domain;
 
 import java.io.*;
+import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
 /**
  *
  * @author james
