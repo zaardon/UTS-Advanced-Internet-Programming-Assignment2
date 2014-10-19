@@ -90,4 +90,24 @@ public class DetentionTrackerBean {
         
         em.remove(detention);
     }
+    
+    
+    
+    
+    // LOGIN ONLY COMMANDS
+    public boolean userExists(String username)
+    {
+        TypedQuery<Login> query = em.createQuery("SELECT l FROM Login l WHERE l.username =:name", Login.class );
+        query.setParameter("name", username);
+        if(query.getResultList().size()==1)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public void createInitialLogin(Login login)
+    {
+        em.persist(login);
+    }
 }

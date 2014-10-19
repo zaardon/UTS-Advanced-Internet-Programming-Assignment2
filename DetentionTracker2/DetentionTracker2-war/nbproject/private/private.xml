@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/create.xhtml</file>
             <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/DetentionController.java</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/EncryptionUtility.java</file>
             <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/LoginController.java</file>
         </group>
     </open-files>
