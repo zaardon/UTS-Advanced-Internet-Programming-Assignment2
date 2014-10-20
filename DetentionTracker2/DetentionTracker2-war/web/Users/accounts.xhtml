@@ -12,6 +12,9 @@ xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="title">
     Account Management
     </ui:define>
+        <f:metadata>
+            <f:viewAction action="#{loginController.loadLogin()}"/>
+    </f:metadata>  
     <ui:define name="content">
         <h:head>
             <h:outputStylesheet  name="style.css" library="css" />
@@ -23,21 +26,23 @@ xmlns:f="http://java.sun.com/jsf/core">
                     <table>
                         <tr>
                             <td><h:outputText value="User Name: " styleClass="createHeader" /></td>
-                            <td><h:outputText id="fname" value="#{accountController.user.name}" styleClass="createInput"/> </td>
+                            <td><h:outputText id="fname" value="#{loginController.currentLogin.username}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Year: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu value="#{accountController.user.subscription}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{loginController.currentLogin.accountType}" styleClass="createInput">
                                 <f:selectItem itemValue="Free" itemLabel="Free"/>
                                 <f:selectItem itemValue="Standard" itemLabel="Standard"/>
                                 <f:selectItem itemValue="Premium" itemLabel="Premium"/>
                             </h:selectOneMenu></td>
                         </tr> 
                         <tr>
-                            <td> </td>
+                            <td> <h:inputHidden value="#{loginController.currentLogin.password}"/>
+                                <h:inputHidden value="#{loginController.currentLogin.username}"/>
+                               </td>
                             <td>
                                 <h:button value="Cancel"  styleClass="stdButton" outcome="cancel"/>
-                                <h:commandButton value="Save" styleClass="stdButton" action="#{accountController.saveChanges()}"/>
+                                <h:commandButton value="Save" styleClass="stdButton" action="#{loginController.updateAccount()}"/>
                             </td>
                         </tr>
                     </table>

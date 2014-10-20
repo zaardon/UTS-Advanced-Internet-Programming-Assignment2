@@ -27,9 +27,19 @@ public class LoginController implements Serializable {
         return currentLogin;
     }
 
+    public void loadLogin()
+    {
+          FacesContext context = FacesContext.getCurrentInstance();
+        // find our contextual login
+        String username = context.getExternalContext().getUserPrincipal().getName();
+        currentLogin = detentionTrackerBean.getLogin(username);
+    }
     
-    
-    
+    public String updateAccount()
+    {
+        detentionTrackerBean.updateLogin(currentLogin);
+        return "view?faces-redirect=true";
+    }
     
     
     /**

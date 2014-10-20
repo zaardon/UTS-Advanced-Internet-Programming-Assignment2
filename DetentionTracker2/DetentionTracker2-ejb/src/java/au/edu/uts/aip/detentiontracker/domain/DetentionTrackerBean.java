@@ -146,4 +146,11 @@ public class DetentionTrackerBean {
         
         return loginToReturn;
     }
+    public void updateLogin(Login login)
+    {
+        // DON'T FORGET THE RECEIPT
+        List<Detention> managed = findAllDetetions(login.getUsername());
+        login.setDetentions(managed);
+        em.merge(login);
+    }
 }
