@@ -4,58 +4,44 @@
 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 template="/WEB-INF/templates/header.xhtml"
 xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:f="http://xmlns.jcp.org/jsf/core"
-xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+xmlns:f="http://java.sun.com/jsf/core">
 
-    <!-- This page displays the current detentions to the user. If there are no detentions, then a message
-    informing the user that there are none is displayed -->
+    <!-- This allows a user to create a detention in the website. Fields are not able to use accent characters. First and Last name 
+    input fields, in particular, can only use letters, apostrophes, dashes and single spaces. -->
     
     <ui:define name="title">
-    Account Information
+    Account Management
     </ui:define>
-        <ui:define name="content">
-            <h:head>
-                <h:outputStylesheet  name="style.css" library="css" />
-            </h:head>
+    <ui:define name="content">
+        <h:head>
+            <h:outputStylesheet  name="style.css" library="css" />
+        </h:head>
         <h:body>
-            <h1 class="h1">Accounts Information</h1>        
-            <div align="center">          
-                <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                <h:form rendered="#{loginController.sizeOfAccountList()!= 0}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.allDetentions}">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="First Name" styleClass="stdRowHeader"/>
-                            </f:facet>
-                            <h:outputText value="#{login.Username}"/>
-                        </h:column>               
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Last Name" styleClass="stdRowHeader"/>
-                            </f:facet>
-                            <h:outputText value="#{login.UserPrivilege}"/>
-                        </h:column>                
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Year" styleClass="stdRowHeader"/>
-                            </f:facet>
-                            <h:outputText value="#{login.ExpiryDate}"/>
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Add 1 Month" styleClass="stdButton" action="#{loginController.addSubscriptionTime(detention.id, 1)}" />
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Add 6 Months" styleClass="stdButton" action="#{loginController.addSubscriptionTime(detention.id, 6)}" />
-                        </h:column>        
-                    </h:dataTable>
-                </h:form>
-                <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="#{loginController.sizeOfAccountList() == 0}" styleClass="stdRowHeader" value="No accounts in the system!" />
-            </div>
+            <h1 class="h1">Account Management</h1>               
             <h:form>
-                <ui:insert name="footer">
-                    <ui:include src="/WEB-INF/templates/footer.xhtml" />
-                </ui:insert>
+                <div align="center">
+                    <table>
+                        <tr>
+                            <td><h:outputText value="User Name: " styleClass="createHeader" /></td>
+                            <td><h:outputText id="fname" value="#{accountController.user.name}" styleClass="createInput"/> </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="Year: " styleClass="createHeader" /></td>
+                            <td><h:selectOneMenu value="#{accountController.user.subscription}" styleClass="createInput">
+                                <f:selectItem itemValue="Free" itemLabel="Free"/>
+                                <f:selectItem itemValue="Standard" itemLabel="Standard"/>
+                                <f:selectItem itemValue="Premium" itemLabel="Premium"/>
+                            </h:selectOneMenu></td>
+                        </tr> 
+                        <tr>
+                            <td> </td>
+                            <td>
+                                <h:button value="Cancel"  styleClass="stdButton" outcome="cancel"/>
+                                <h:commandButton value="Save" styleClass="stdButton" action="#{accountController.saveChanges()}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </h:form>
         </h:body>
     </ui:define>

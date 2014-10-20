@@ -56,4 +56,15 @@
             <to-view-id>/Users/view.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Users/accounts.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/Users/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/Users/view.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

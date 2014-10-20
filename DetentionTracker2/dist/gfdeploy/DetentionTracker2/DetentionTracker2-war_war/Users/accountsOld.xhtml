@@ -10,17 +10,14 @@ xmlns:f="http://java.sun.com/jsf/core">
     input fields, in particular, can only use letters, apostrophes, dashes and single spaces. -->
     
     <ui:define name="title">
-    Upgrade Subscription
+    Account Management
     </ui:define>
-    <f:metadata>
-        <f:viewAction action="#{accountController.loadAccount("This username")}"/>
-    </f:metadata>
     <ui:define name="content">
         <h:head>
             <h:outputStylesheet  name="style.css" library="css" />
         </h:head>
         <h:body>
-            <h1 class="h1">Upgrade Subscription</h1>               
+            <h1 class="h1">Account Management</h1>               
             <h:form>
                 <div align="center">
                     <table>
@@ -31,9 +28,9 @@ xmlns:f="http://java.sun.com/jsf/core">
                         <tr>
                             <td><h:outputText value="Year: " styleClass="createHeader" /></td>
                             <td><h:selectOneMenu value="#{accountController.user.subscription}" styleClass="createInput">
-                                <f:selectItem itemValue="1" itemLabel="Free"/>
-                                <f:selectItem itemValue="2" itemLabel="Standard"/>
-                                <f:selectItem itemValue="3" itemLabel="Premium"/>
+                                <f:selectItem itemValue="Free" itemLabel="Free"/>
+                                <f:selectItem itemValue="Standard" itemLabel="Standard"/>
+                                <f:selectItem itemValue="Premium" itemLabel="Premium"/>
                             </h:selectOneMenu></td>
                         </tr> 
                         <tr>
