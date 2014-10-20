@@ -10,8 +10,8 @@ package au.edu.uts.aip.detentiontracker.domain;
  * @author james
  */
 public enum AccountType {
-        HOME,
-    WORK,
-    MOBILE,
-    OTHER
+    Free,
+    Standard,
+    Premium,
+    Administrator
 }

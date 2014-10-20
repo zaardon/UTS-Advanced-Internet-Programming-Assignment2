@@ -46,6 +46,7 @@ public class Login implements Serializable{
         this.password = password;
     }
 
+    @Enumerated(EnumType.STRING)
     public AccountType getAccountType() {
         return accountType;
     }
