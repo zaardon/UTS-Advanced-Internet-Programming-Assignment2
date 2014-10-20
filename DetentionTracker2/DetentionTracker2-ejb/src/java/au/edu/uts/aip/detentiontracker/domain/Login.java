@@ -45,12 +45,12 @@ public class Login implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
     @Enumerated(EnumType.STRING)
+    @Column(name="ACCOUNTTYPE")
     public AccountType getAccountType() {
         return accountType;
     }
-
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
