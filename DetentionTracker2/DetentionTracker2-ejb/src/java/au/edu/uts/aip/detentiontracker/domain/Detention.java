@@ -35,14 +35,18 @@ public class Detention implements Serializable {
         this.detentionID = detentionID;
     }
 
+    @Pattern(regexp="[A-Za-z]+[A-Za-z ']*")
+    @Size(min = 1)
     public String getFirstName() {
         return firstName;
     }
-
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    
+    @Pattern(regexp="[A-Za-z]+[A-Za-z ']*")
+    @Size(min = 1)
     public String getLastName() {
         return lastName;
     }
@@ -75,6 +79,8 @@ public class Detention implements Serializable {
         this.departmentType = departmentType;
     }
 
+    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-':()]*")
+    @Size(min = 1, max = 40)
     public String getReason() {
         return reason;
     }

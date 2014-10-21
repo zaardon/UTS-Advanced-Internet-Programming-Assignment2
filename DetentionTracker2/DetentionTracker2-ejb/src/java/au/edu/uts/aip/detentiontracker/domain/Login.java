@@ -8,6 +8,8 @@ package au.edu.uts.aip.detentiontracker.domain;
 import java.io.*;
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.validation.constraints.*;
 
 /**
@@ -17,7 +19,9 @@ import javax.validation.constraints.*;
 @Entity
 public class Login implements Serializable{
     
+
     private String username;
+
     private String password;
     private AccountType accountType;
     
@@ -30,6 +34,9 @@ public class Login implements Serializable{
     // a list of receipts 
     
     @Id
+    @NotNull
+    @Pattern(regexp="[a-zA-Z_0-9]*")
+    @Size(min = 1)
     public String getUsername() {
         return username;
     }
@@ -37,7 +44,10 @@ public class Login implements Serializable{
     public void setUsername(String username) {
         this.username = username;
     }
-
+    
+    @NotNull
+    @Pattern(regexp="[a-zA-Z_0-9]*")
+    @Size(min = 1)
     public String getPassword() {
         return password;
     }
