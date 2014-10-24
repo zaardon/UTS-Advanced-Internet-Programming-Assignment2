@@ -60,7 +60,7 @@
         <description>The URL of the "pin pay whatever" RESTful web service</description>
         <env-entry-name>pinPayments</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>https://test-api.pin.net.au/1/</env-entry-value>
+        <env-entry-value>http://localhost:8081/1/</env-entry-value>
     </env-entry>
     
 </web-app>

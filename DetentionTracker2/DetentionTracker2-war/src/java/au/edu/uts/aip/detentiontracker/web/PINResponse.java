@@ -26,7 +26,7 @@ public class PINResponse implements Serializable {
     private String create_at;
     private String status_message;
     private String error_message;
-    //private PINCard card;
+    private PINCard card;
 
     public String getToken() {
         return token;
@@ -107,6 +107,21 @@ public class PINResponse implements Serializable {
     public void setError_message(String error_message) {
         this.error_message = error_message;
     }
+
+    public PINCard getCard() {
+        return card;
+    }
+
+    public void setCard(PINCard card) {
+        this.card = card;
+    }
+
+    @Override
+    public String toString() {
+        return "PINResponse{" + "token=" + token + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ip_address=" + ip_address + ", create_at=" + create_at + ", status_message=" + status_message + ", error_message=" + error_message + ", card=" + card + '}';
+    }
+
+    
     
     
     
