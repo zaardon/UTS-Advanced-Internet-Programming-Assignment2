@@ -59,16 +59,16 @@ public class ReceiptController {
         //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
         lolcard.setScheme("master");
         lolcard.setNumber("5520000000000000");
-        lolcard.setexpiry_month("05");
-        lolcard.setexpiry_year("2015");
-        lolcard.setCVC("123");
+        lolcard.setExpiry_Month(5);
+        lolcard.setExpiry_Year(2015);
+        lolcard.setCVC(123);
         lolcard.setName("Roland Robot");
-        lolcard.setaddress_line1("42 Sevenoaks St");
-        lolcard.setaddress_line2("");
-        lolcard.setaddress_city("Lathlain");
-        lolcard.setAddressPostcode("6454");
-        lolcard.setaddress_state("WA");
-        lolcard.setaddress_country("Australia");
+        lolcard.setAddress_Line1("42 Sevenoaks St");
+        lolcard.setAddress_Line2("");
+        lolcard.setAddress_City("Lathlain");
+        lolcard.setAddressPostcode(6454);
+        lolcard.setAddress_State("WA");
+        lolcard.setAddress_Country("Australia");
         request.setCard(lolcard);
         
                 

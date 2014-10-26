@@ -18,22 +18,22 @@ public class PINCard  implements Serializable{
 private String token;
 private String scheme;
 private String number;
-private String CVC;
-private String expiry_month;
-private String expiry_year;
+private int CVC;
+private int expiry_month;
+private int expiry_year;
 private String name;
 private String address_line1;
 private String address_line2;
 private String address_city;
-private String addressPostcode;
+private int addressPostcode;
 private String address_state;
 private String address_country;
 
-    public String getCVC() {
+    public int getCVC() {
         return CVC;
     }
 
-    public void setCVC(String CVC) {
+    public void setCVC(int CVC) {
         this.CVC = CVC;
     }
 
@@ -62,19 +62,19 @@ private String address_country;
         this.number = number;
     }
 
-    public String getexpiry_month() {
+    public int getExpiry_Month() {
         return expiry_month;
     }
 
-    public void setexpiry_month(String expiry_month) {
+    public void setExpiry_Month(int expiry_month) {
         this.expiry_month = expiry_month;
     }
 
-    public String getexpiry_year() {
+    public int getExpiry_Year() {
         return expiry_year;
     }
 
-    public void setexpiry_year(String expiry_year) {
+    public void setExpiry_Year(int expiry_year) {
         this.expiry_year = expiry_year;
     }
 
@@ -86,51 +86,51 @@ private String address_country;
         this.name = name;
     }
 
-    public String getaddress_line1() {
+    public String getAddress_Line1() {
         return address_line1;
     }
 
-    public void setaddress_line1(String address_line1) {
+    public void setAddress_Line1(String address_line1) {
         this.address_line1 = address_line1;
     }
 
-    public String getaddress_line2() {
+    public String getAddress_Line2() {
         return address_line2;
     }
 
-    public void setaddress_line2(String address_line2) {
+    public void setAddress_Line2(String address_line2) {
         this.address_line2 = address_line2;
     }
 
-    public String getaddress_city() {
+    public String getAddress_City() {
         return address_city;
     }
 
-    public void setaddress_city(String address_city) {
+    public void setAddress_City(String address_city) {
         this.address_city = address_city;
     }
 
-    public String getAddressPostcode() {
+    public int getAddressPostcode() {
         return addressPostcode;
     }
 
-    public void setAddressPostcode(String addressPostcode) {
+    public void setAddressPostcode(int addressPostcode) {
         this.addressPostcode = addressPostcode;
     }
 
-    public String getaddress_state() {
+    public String getAddress_State() {
         return address_state;
     }
 
-    public void setaddress_state(String address_state) {
+    public void setAddress_State(String address_state) {
         this.address_state = address_state;
     }
 
-    public String getaddress_country() {
+    public String getAddress_Country() {
         return address_country;
     }
 
-    public void setaddress_country(String address_country) {
+    public void setAddress_Country(String address_country) {
         this.address_country = address_country;
     }
 
