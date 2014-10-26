@@ -16,17 +16,25 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name ="response")
 public class PINResponse implements Serializable {
     
-    private String token;
-    private Boolean success;
-    private int amount;
-    private String currency;
-    private String description;
-    private String email;
-    private String ip_address;
-    private String create_at;
-    private String status_message;
-    private String error_message;
-    private PINCard card;
+private String token;
+private boolean success;
+private int amount;
+private String currency;
+private String description;
+private String email;
+private String ipAddress;
+private String createdAt;
+private String statusMessage;
+private String errorMessage;
+private PINCard card;
+private List<String> transfer = new ArrayList<String>();
+private int amountRefunded;
+private int totalFees;
+private int merchantEntitlement;
+private boolean refundPending;
+private boolean authorisationExpired;
+private boolean captured;
+private String settlementCurrency;
 
     public String getToken() {
         return token;
@@ -36,11 +44,11 @@ public class PINResponse implements Serializable {
         this.token = token;
     }
 
-    public Boolean getSuccess() {
+    public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setSuccess(boolean success) {
         this.success = success;
     }
 
@@ -76,36 +84,36 @@ public class PINResponse implements Serializable {
         this.email = email;
     }
 
-    public String getIp_address() {
-        return ip_address;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public void setIp_address(String ip_address) {
-        this.ip_address = ip_address;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
-    public String getCreate_at() {
-        return create_at;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreate_at(String create_at) {
-        this.create_at = create_at;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getStatus_message() {
-        return status_message;
+    public String getStatusMessage() {
+        return statusMessage;
     }
 
-    public void setStatus_message(String status_message) {
-        this.status_message = status_message;
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
     }
 
-    public String getError_message() {
-        return error_message;
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
-    public void setError_message(String error_message) {
-        this.error_message = error_message;
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public PINCard getCard() {
@@ -116,10 +124,78 @@ public class PINResponse implements Serializable {
         this.card = card;
     }
 
+    public List<String> getTransfer() {
+        return transfer;
+    }
+
+    public void setTransfer(List<String> transfer) {
+        this.transfer = transfer;
+    }
+
+    public int getAmountRefunded() {
+        return amountRefunded;
+    }
+
+    public void setAmountRefunded(int amountRefunded) {
+        this.amountRefunded = amountRefunded;
+    }
+
+    public int getTotalFees() {
+        return totalFees;
+    }
+
+    public void setTotalFees(int totalFees) {
+        this.totalFees = totalFees;
+    }
+
+    public int getMerchantEntitlement() {
+        return merchantEntitlement;
+    }
+
+    public void setMerchantEntitlement(int merchantEntitlement) {
+        this.merchantEntitlement = merchantEntitlement;
+    }
+
+    public boolean isRefundPending() {
+        return refundPending;
+    }
+
+    public void setRefundPending(boolean refundPending) {
+        this.refundPending = refundPending;
+    }
+
+    public boolean isAuthorisationExpired() {
+        return authorisationExpired;
+    }
+
+    public void setAuthorisationExpired(boolean authorisationExpired) {
+        this.authorisationExpired = authorisationExpired;
+    }
+
+    public boolean isCaptured() {
+        return captured;
+    }
+
+    public void setCaptured(boolean captured) {
+        this.captured = captured;
+    }
+
+    public String getSettlementCurrency() {
+        return settlementCurrency;
+    }
+
+    public void setSettlementCurrency(String settlementCurrency) {
+        this.settlementCurrency = settlementCurrency;
+    }
+ 
+
+
     @Override
     public String toString() {
-        return "PINResponse{" + "token=" + token + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ip_address=" + ip_address + ", create_at=" + create_at + ", status_message=" + status_message + ", error_message=" + error_message + ", card=" + card + '}';
+        return "PINResponse{" + "token=" + token + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ipAddress=" + ipAddress + ", createdAt=" + createdAt + ", statusMessage=" + statusMessage + ", errorMessage=" + errorMessage + ", card=" + card + ", transfer=" + transfer + ", amountRefunded=" + amountRefunded + ", totalFees=" + totalFees + ", merchantEntitlement=" + merchantEntitlement + ", refundPending=" + refundPending + ", authorisationExpired=" + authorisationExpired + ", captured=" + captured + ", settlementCurrency=" + settlementCurrency + '}';
     }
+
+
 
     
     

@@ -5,6 +5,9 @@
  */
 package au.edu.uts.aip.detentiontracker.web;
 
+import com.sun.org.apache.xerces.internal.impl.dv.dtd.ENTITYDatatypeValidator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -15,6 +18,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -31,10 +35,12 @@ public class ReceiptController {
     
     
     private PINResponse request = new PINResponse();
-    private Response response ;
+    private Response response = new Response();
+    
     
     public PINResponse getRequest()
     {
+        
         return request;
     }
     public Response getResponse()
@@ -42,9 +48,31 @@ public class ReceiptController {
         return response;
     }
     
-    public String pay()
+    public String PAYSOMEBITCHES()
     {
-        pinPayments += "charges";
+        request.setAmount(400);
+        request.setCurrency("USD");
+        request.setDescription("what eves brah");
+        request.setEmail("WHAT YOU SAY@faggot.com");
+        request.setIpAddress("203.192.1.172");
+        PINCard lolcard = new PINCard();
+        //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
+        lolcard.setScheme("master");
+        lolcard.setDisplayNumber("5520000000000000");
+        lolcard.setExpiryMonth(05);
+        lolcard.setExpiryYear(2015);
+        lolcard.setCVC("123");
+        lolcard.setName("Roland Robot");
+        lolcard.setAddressLine1("42 Sevenoaks St");
+        lolcard.setAddressLine2("");
+        lolcard.setAddressCity("Lathlain");
+        lolcard.setAddressPostcode("6454");
+        lolcard.setAddressState("WA");
+        lolcard.setAddressCountry("Australia");
+        request.setCard(lolcard);
+        
+                
+                pinPayments += "charges";
         Client client = null;
         
         try{
@@ -53,17 +81,22 @@ public class ReceiptController {
             response = client.target(pinPayments)
                     .request()
                     .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-                    .get(Response.class);
-            
+                    .post(Entity.xml(request), Response.class );
+                    
+                    
             
             
              FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(response.toString()));
             
-        } catch (ProcessingException | WebApplicationException e)
+            
+        } catch (ProcessingException | WebApplicationException | NullPointerException e)
         {
+               Logger log = Logger.getLogger(this.getClass().getName());
+            log.log(Level.SEVERE, "Could not communicate with swap web service", e);
+            
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(response.toString()));
+            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()   ));
             
             return null;
     } finally {
@@ -73,5 +106,39 @@ public class ReceiptController {
         
     return "PINTEST";
 
-    }
+    } 
+        
 }
+//    public String pay()
+//    {
+//        pinPayments += "charges";
+//        Client client = null;
+//        
+//        try{
+//            System.out.println("my url is" + pinPayments);
+//            client = ClientBuilder.newClient();
+//            response = client.target(pinPayments)
+//                    .request()
+//                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
+//                    .get(Response.class);
+//            
+//            
+//             FacesContext context = FacesContext.getCurrentInstance();
+//            context.addMessage(null, new FacesMessage(response.toString()));
+//            
+//            
+//        } catch (ProcessingException | WebApplicationException | NullPointerException e)
+//        {
+//            FacesContext context = FacesContext.getCurrentInstance();
+//            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.toString()));
+//            
+//            return null;
+//    } finally {
+//            if(client != null)
+//                client.close();
+//        }
+//        
+//    return "PINTEST";
+//
+//    }
+//}

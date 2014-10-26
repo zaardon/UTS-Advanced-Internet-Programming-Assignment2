@@ -5,23 +5,38 @@
  */
 package au.edu.uts.aip.detentiontracker.web;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author james
  */
-public class PINCard {
+@XmlRootElement(name = "card")
+public class PINCard  implements Serializable{
     
-    private String token;
-    String scheme;
-    String display_number;
-    String expiry_month;
-    String name;
-    String address_line1;
-    String address_line2;
-    String address_city;
-    String address_postcode;
-    String address_state;
-    String address_country;
+private String token;
+private String scheme;
+private String displayNumber;
+private String CVC;
+private int expiryMonth;
+private int expiryYear;
+private String name;
+private String addressLine1;
+private String addressLine2;
+private String addressCity;
+private String addressPostcode;
+private String addressState;
+private String addressCountry;
+
+    public String getCVC() {
+        return CVC;
+    }
+
+    public void setCVC(String CVC) {
+        this.CVC = CVC;
+    }
+
 
     public String getToken() {
         return token;
@@ -39,20 +54,28 @@ public class PINCard {
         this.scheme = scheme;
     }
 
-    public String getDisplay_number() {
-        return display_number;
+    public String getDisplayNumber() {
+        return displayNumber;
     }
 
-    public void setDisplay_number(String display_number) {
-        this.display_number = display_number;
+    public void setDisplayNumber(String displayNumber) {
+        this.displayNumber = displayNumber;
     }
 
-    public String getExpiry_month() {
-        return expiry_month;
+    public int getExpiryMonth() {
+        return expiryMonth;
     }
 
-    public void setExpiry_month(String expiry_month) {
-        this.expiry_month = expiry_month;
+    public void setExpiryMonth(int expiryMonth) {
+        this.expiryMonth = expiryMonth;
+    }
+
+    public int getExpiryYear() {
+        return expiryYear;
+    }
+
+    public void setExpiryYear(int expiryYear) {
+        this.expiryYear = expiryYear;
     }
 
     public String getName() {
@@ -63,58 +86,60 @@ public class PINCard {
         this.name = name;
     }
 
-    public String getAddress_line1() {
-        return address_line1;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddress_line1(String address_line1) {
-        this.address_line1 = address_line1;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
 
-    public String getAddress_line2() {
-        return address_line2;
+    public String getAddressLine2() {
+        return addressLine2;
     }
 
-    public void setAddress_line2(String address_line2) {
-        this.address_line2 = address_line2;
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
 
-    public String getAddress_city() {
-        return address_city;
+    public String getAddressCity() {
+        return addressCity;
     }
 
-    public void setAddress_city(String address_city) {
-        this.address_city = address_city;
+    public void setAddressCity(String addressCity) {
+        this.addressCity = addressCity;
     }
 
-    public String getAddress_postcode() {
-        return address_postcode;
+    public String getAddressPostcode() {
+        return addressPostcode;
     }
 
-    public void setAddress_postcode(String address_postcode) {
-        this.address_postcode = address_postcode;
+    public void setAddressPostcode(String addressPostcode) {
+        this.addressPostcode = addressPostcode;
     }
 
-    public String getAddress_state() {
-        return address_state;
+    public String getAddressState() {
+        return addressState;
     }
 
-    public void setAddress_state(String address_state) {
-        this.address_state = address_state;
+    public void setAddressState(String addressState) {
+        this.addressState = addressState;
     }
 
-    public String getAddress_country() {
-        return address_country;
+    public String getAddressCountry() {
+        return addressCountry;
     }
 
-    public void setAddress_country(String address_country) {
-        this.address_country = address_country;
+    public void setAddressCountry(String addressCountry) {
+        this.addressCountry = addressCountry;
     }
 
     @Override
     public String toString() {
-        return "PINCard{" + "token=" + token + ", scheme=" + scheme + ", display_number=" + display_number + ", expiry_month=" + expiry_month + ", name=" + name + ", address_line1=" + address_line1 + ", address_line2=" + address_line2 + ", address_city=" + address_city + ", address_postcode=" + address_postcode + ", address_state=" + address_state + ", address_country=" + address_country + '}';
+        return "PINCard{" + "token=" + token + ", scheme=" + scheme + ", displayNumber=" + displayNumber + ", expiryMonth=" + expiryMonth + ", expiryYear=" + expiryYear + ", name=" + name + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", addressCity=" + addressCity + ", addressPostcode=" + addressPostcode + ", addressState=" + addressState + ", addressCountry=" + addressCountry + '}';
     }
+
+    
     
     
 }
