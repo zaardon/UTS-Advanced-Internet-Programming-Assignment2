@@ -17,17 +17,17 @@ public class PINCard  implements Serializable{
     
 private String token;
 private String scheme;
-private String displayNumber;
+private String number;
 private String CVC;
-private int expiryMonth;
-private int expiryYear;
+private String expiry_month;
+private String expiry_year;
 private String name;
-private String addressLine1;
-private String addressLine2;
-private String addressCity;
+private String address_line1;
+private String address_line2;
+private String address_city;
 private String addressPostcode;
-private String addressState;
-private String addressCountry;
+private String address_state;
+private String address_country;
 
     public String getCVC() {
         return CVC;
@@ -54,28 +54,28 @@ private String addressCountry;
         this.scheme = scheme;
     }
 
-    public String getDisplayNumber() {
-        return displayNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setDisplayNumber(String displayNumber) {
-        this.displayNumber = displayNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public int getExpiryMonth() {
-        return expiryMonth;
+    public String getexpiry_month() {
+        return expiry_month;
     }
 
-    public void setExpiryMonth(int expiryMonth) {
-        this.expiryMonth = expiryMonth;
+    public void setexpiry_month(String expiry_month) {
+        this.expiry_month = expiry_month;
     }
 
-    public int getExpiryYear() {
-        return expiryYear;
+    public String getexpiry_year() {
+        return expiry_year;
     }
 
-    public void setExpiryYear(int expiryYear) {
-        this.expiryYear = expiryYear;
+    public void setexpiry_year(String expiry_year) {
+        this.expiry_year = expiry_year;
     }
 
     public String getName() {
@@ -86,28 +86,28 @@ private String addressCountry;
         this.name = name;
     }
 
-    public String getAddressLine1() {
-        return addressLine1;
+    public String getaddress_line1() {
+        return address_line1;
     }
 
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
+    public void setaddress_line1(String address_line1) {
+        this.address_line1 = address_line1;
     }
 
-    public String getAddressLine2() {
-        return addressLine2;
+    public String getaddress_line2() {
+        return address_line2;
     }
 
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
+    public void setaddress_line2(String address_line2) {
+        this.address_line2 = address_line2;
     }
 
-    public String getAddressCity() {
-        return addressCity;
+    public String getaddress_city() {
+        return address_city;
     }
 
-    public void setAddressCity(String addressCity) {
-        this.addressCity = addressCity;
+    public void setaddress_city(String address_city) {
+        this.address_city = address_city;
     }
 
     public String getAddressPostcode() {
@@ -118,25 +118,25 @@ private String addressCountry;
         this.addressPostcode = addressPostcode;
     }
 
-    public String getAddressState() {
-        return addressState;
+    public String getaddress_state() {
+        return address_state;
     }
 
-    public void setAddressState(String addressState) {
-        this.addressState = addressState;
+    public void setaddress_state(String address_state) {
+        this.address_state = address_state;
     }
 
-    public String getAddressCountry() {
-        return addressCountry;
+    public String getaddress_country() {
+        return address_country;
     }
 
-    public void setAddressCountry(String addressCountry) {
-        this.addressCountry = addressCountry;
+    public void setaddress_country(String address_country) {
+        this.address_country = address_country;
     }
 
     @Override
     public String toString() {
-        return "PINCard{" + "token=" + token + ", scheme=" + scheme + ", displayNumber=" + displayNumber + ", expiryMonth=" + expiryMonth + ", expiryYear=" + expiryYear + ", name=" + name + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", addressCity=" + addressCity + ", addressPostcode=" + addressPostcode + ", addressState=" + addressState + ", addressCountry=" + addressCountry + '}';
+        return "PINCard{" + "token=" + token + ", scheme=" + scheme + ", displayNumber=" + number + ", expiryMonth=" + expiry_month + ", expiryYear=" + expiry_year + ", name=" + name + ", addressLine1=" + address_line1 + ", addressLine2=" + address_line2 + ", addressCity=" + address_city + ", addressPostcode=" + addressPostcode + ", addressState=" + address_state + ", addressCountry=" + address_country + '}';
     }
 
     

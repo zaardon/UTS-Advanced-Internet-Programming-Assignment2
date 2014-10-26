@@ -58,17 +58,17 @@ public class ReceiptController {
         PINCard lolcard = new PINCard();
         //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
         lolcard.setScheme("master");
-        lolcard.setDisplayNumber("5520000000000000");
-        lolcard.setExpiryMonth(05);
-        lolcard.setExpiryYear(2015);
+        lolcard.setNumber("5520000000000000");
+        lolcard.setexpiry_month("05");
+        lolcard.setexpiry_year("2015");
         lolcard.setCVC("123");
         lolcard.setName("Roland Robot");
-        lolcard.setAddressLine1("42 Sevenoaks St");
-        lolcard.setAddressLine2("");
-        lolcard.setAddressCity("Lathlain");
+        lolcard.setaddress_line1("42 Sevenoaks St");
+        lolcard.setaddress_line2("");
+        lolcard.setaddress_city("Lathlain");
         lolcard.setAddressPostcode("6454");
-        lolcard.setAddressState("WA");
-        lolcard.setAddressCountry("Australia");
+        lolcard.setaddress_state("WA");
+        lolcard.setaddress_country("Australia");
         request.setCard(lolcard);
         
                 
@@ -81,7 +81,7 @@ public class ReceiptController {
             response = client.target(pinPayments)
                     .request()
                     .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-                    .post(Entity.xml(request), Response.class );
+                    .post(Entity.json(request), Response.class );
                     
                     
             
