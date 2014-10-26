@@ -24,14 +24,14 @@ public class Login implements Serializable{
 
     private String password;
     private AccountType accountType;
-    
+    private String email;
+    private String token;
     private List<Detention> detentions = new ArrayList<>();
 
 
     private List<Receipt> receipts = new ArrayList<>();
     
-    // a list of detentions
-    // a list of receipts 
+  
     
     @Id
     @NotNull
@@ -65,6 +65,17 @@ public class Login implements Serializable{
         this.accountType = accountType;
     }
     
+    @NotNull
+    @Size(min = 1)
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     @OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
     public List<Detention> getDetentions() {
         return detentions;
@@ -81,6 +92,15 @@ public class Login implements Serializable{
 
     public void setReceipts(List<Receipt> receipts) {
         this.receipts = receipts;
+    }
+        public String getToken() {
+        return token;
+    }
+
+    // this is where the variables for the receipt go when we finally know all of them.
+    // getters and setters
+    public void setToken(String token) {
+        this.token = token;
     }
     
 }

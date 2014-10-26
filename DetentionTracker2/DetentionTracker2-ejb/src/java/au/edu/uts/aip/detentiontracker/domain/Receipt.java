@@ -22,7 +22,7 @@ public class Receipt implements Serializable{
     private String description;
     private Date dateOfPurchase;
     private int amount;
-    private String token;
+    
     
     @ManyToOne
     public Login getLogin() {
@@ -68,15 +68,7 @@ public class Receipt implements Serializable{
         this.amount = amount;
     }
 
-    public String getToken() {
-        return token;
-    }
 
-    // this is where the variables for the receipt go when we finally know all of them.
-    // getters and setters
-    public void setToken(String token) {
-        this.token = token;
-    }
     
 
     

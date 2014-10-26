@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package au.edu.uts.aip.detentiontracker.web;
 
-import com.sun.org.apache.xerces.internal.impl.dv.dtd.ENTITYDatatypeValidator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -21,26 +16,21 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author james
- */
-@Named
+
 @RequestScoped
-public class ReceiptController {
+public class ProcessingWAO {
     
-    @Resource(name = "pinPayments")
-    String pinPayments;
-    
+    //@Resource(name = "pinPayments")
+    String pinPayments ="http://test-api.pin.net.au/1/";
     
     
     private PINResponse request = new PINResponse();
     private Response response = new Response();
-        private PINCard reqCard = new PINCard();
+    private PINCard reqCard = new PINCard();
     private PINCard respCard = new PINCard();
     
     
-    public PINResponse getRequest()
+     public PINResponse getRequest()
     {
         
         return request;
@@ -49,8 +39,8 @@ public class ReceiptController {
     {
         return response;
     }
-    
-        public PINCard getReqCard() {
+
+    public PINCard getReqCard() {
         return reqCard;
     }
 
@@ -58,9 +48,9 @@ public class ReceiptController {
         return respCard;
     }
     
-    public String PAYSOMEBITCHES()
+        public String PAYSOMEBITCHES()
     {
-        request.setAmount(4000);
+        request.setAmount(200000);
         request.setCurrency("USD");
         request.setDescription("what eves brah");
         request.setEmail("WHAT YOU SAY@faggot.com");
@@ -117,57 +107,6 @@ public class ReceiptController {
     return "PINTEST";
 
     } 
-        
-    public void makeCard()
-    {
-        PINCard lolcard = new PINCard();
-        //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
-        lolcard.setScheme("master");
-        lolcard.setNumber("5520000000000000");
-        lolcard.setExpiry_Month(5);
-        lolcard.setExpiry_Year(2015);
-        lolcard.setCVC(123);
-        lolcard.setName("Roland Robot");
-        lolcard.setAddress_Line1("42 Sevenoaks St");
-        lolcard.setAddress_Line2("");
-        lolcard.setAddress_City("Lathlain");
-        lolcard.setAddressPostcode(6454);
-        lolcard.setAddress_State("WA");
-        lolcard.setAddress_Country("Australia");
-        
-        
-        pinPayments += "cards";
-        Client client = null;
-        
-        try{
-            System.out.println("my url is" + pinPayments);
-            client = ClientBuilder.newClient();
-            response = client.target(pinPayments)
-                    .request()
-                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-                    .post(Entity.json(lolcard), Response.class );
-                    
-                    
-            
-            
-             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(response.toString()));
-            
-            
-        } catch (ProcessingException | WebApplicationException | NullPointerException e)
-        {
-               Logger log = Logger.getLogger(this.getClass().getName());
-            log.log(Level.SEVERE, "Could not communicate with swap web service", e);
-            
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()   ));
-            
-          
-    } finally {
-            if(client != null)
-                client.close();
-        }
-    }
     public String makeCard(String cardNumber, int month, int year, int cvc, String name, String add1, String add2, String city, int post, String state)
     {
         
@@ -230,38 +169,4 @@ public class ReceiptController {
                 client.close();
         }
     }
-    
 }
-//    public String pay()
-//    {
-//        pinPayments += "charges";
-//        Client client = null;
-//        
-//        try{
-//            System.out.println("my url is" + pinPayments);
-//            client = ClientBuilder.newClient();
-//            response = client.target(pinPayments)
-//                    .request()
-//                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-//                    .get(Response.class);
-//            
-//            
-//             FacesContext context = FacesContext.getCurrentInstance();
-//            context.addMessage(null, new FacesMessage(response.toString()));
-//            
-//            
-//        } catch (ProcessingException | WebApplicationException | NullPointerException e)
-//        {
-//            FacesContext context = FacesContext.getCurrentInstance();
-//            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.toString()));
-//            
-//            return null;
-//    } finally {
-//            if(client != null)
-//                client.close();
-//        }
-//        
-//    return "PINTEST";
-//
-//    }
-//}

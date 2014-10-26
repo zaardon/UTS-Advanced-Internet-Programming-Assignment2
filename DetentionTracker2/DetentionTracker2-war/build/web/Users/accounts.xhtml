@@ -29,16 +29,56 @@ xmlns:f="http://java.sun.com/jsf/core">
                             <td><h:outputText id="fname" value="#{loginController.currentLogin.username}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
-                            <td><h:outputText value="Year: " styleClass="createHeader" /></td>
+                            <td><h:outputText value="Account Type:  " styleClass="createHeader" /></td>
                             <td><h:selectOneMenu value="#{loginController.currentLogin.accountType}" styleClass="createInput">
                                 <f:selectItem itemValue="Free" itemLabel="Free"/>
                                 <f:selectItem itemValue="Standard" itemLabel="Standard"/>
                                 <f:selectItem itemValue="Premium" itemLabel="Premium"/>
                             </h:selectOneMenu></td>
                         </tr> 
+                          <tr>
+                            <td><h:outputText value="Address Line 1: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="addressLine1" value="#{loginController.address_line1}" styleClass="createInput"/> </td>
+                        </tr>
+                          <tr>
+                            <td><h:outputText value="Address Line 2: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="addressLine2" value="#{loginController.address_line2}" styleClass="createInput"/> </td>
+                        </tr>
+                         <tr>
+                            <td><h:outputText value="City: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="city" value="#{loginController.address_city}" styleClass="createInput"/> </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="State: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="state" value="#{loginController.state}" styleClass="createInput"/> </td>
+                        </tr>
+                         <tr>
+                            <td><h:outputText value="Post Code: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="postCode" value="#{loginController.postCode}" styleClass="createInput"/> </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="Name on Card: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="cardName" value="#{loginController.name}" styleClass="createInput"/> </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="Card Number: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="cardNumber" value="#{loginController.number}" styleClass="createInput"/> </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="EXPIRY DATE    Month: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="month" value="#{loginController.expiry_month}" styleClass="createInput"/> </td>
+                            <td><h:outputText value=" Year: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="year" value="#{loginController.expiry_year}" styleClass="createInput"/> </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="CVC: " styleClass="createHeader" /></td>
+                            <td><h:inputText id="cvc" value="#{loginController.cvc}" styleClass="createInput"/> </td>
+                        </tr>
                         <tr>
                             <td> <h:inputHidden value="#{loginController.currentLogin.password}"/>
                                 <h:inputHidden value="#{loginController.currentLogin.username}"/>
+                                <h:inputHidden value="#{loginController.currentLogin.email}"/>
+                                
                                </td>
                             <td>
                                 <h:button value="Cancel"  styleClass="stdButton" outcome="cancel"/>

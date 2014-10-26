@@ -3,19 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/create.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/PINTEST.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/view.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/accounts.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/LoginController.java</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ReceiptController.java</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/Response.java</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/register.xhtml</file>
             <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/Helper.java</file>
             <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/PINResponse.java</file>
             <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/PINCard.java</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/login.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/edit.xhtml</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/PINTEST.xhtml</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ProcessingWAO.java</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/accounts.xhtml</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ReceiptController.java</file>
+            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

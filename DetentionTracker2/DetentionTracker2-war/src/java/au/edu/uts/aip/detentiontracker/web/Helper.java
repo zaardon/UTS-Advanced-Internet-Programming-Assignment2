@@ -1,6 +1,5 @@
 package au.edu.uts.aip.detentiontracker.web;
 
-
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.*;
