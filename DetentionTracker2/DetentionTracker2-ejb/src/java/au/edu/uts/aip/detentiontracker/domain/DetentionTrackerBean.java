@@ -109,7 +109,19 @@ public class DetentionTrackerBean {
         em.remove(detManaged);
     }
     
+    // for the administrator page
     
+    
+    // change that name
+    public List<Login> allthelogins()
+    {
+         TypedQuery<Login> query;
+         
+         // fuck enums why can't you just string for me
+         
+        query = em.createQuery("SELECT l FROM Login l   ", Login.class );
+         return query.getResultList();
+    }
     
     
     // LOGIN ONLY COMMANDS

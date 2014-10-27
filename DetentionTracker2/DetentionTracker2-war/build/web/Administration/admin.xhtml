@@ -21,36 +21,34 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
             <h1 class="h1">Accounts Information</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                <h:form rendered="#{loginController.sizeOfAccountList()!= 0}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.allDetentions}">
+                <h:form >
+                    <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLogins()}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="First Name" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{login.Username}"/>
+                            <h:outputText value="#{login.username}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Last Name" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{login.UserPrivilege}"/>
+                            <h:outputText value="#{login.accountType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Year" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value="#{login.ExpiryDate}"/>
+                            <h:outputText value="#{login.email}"/>
                         </h:column>
                         <h:column >
-                            <h:commandButton value="Add 1 Month" styleClass="stdButton" action="#{loginController.addSubscriptionTime(detention.id, 1)}" />
+                            <h:commandButton value="Add 1 Month" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username)}" />
                         </h:column>
-                        <h:column >
-                            <h:commandButton value="Add 6 Months" styleClass="stdButton" action="#{loginController.addSubscriptionTime(detention.id, 6)}" />
-                        </h:column>        
+    
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="#{loginController.sizeOfAccountList() == 0}" styleClass="stdRowHeader" value="No accounts in the system!" />
+                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts in the system!" />
             </div>
             <h:form>
                 <ui:insert name="footer">
