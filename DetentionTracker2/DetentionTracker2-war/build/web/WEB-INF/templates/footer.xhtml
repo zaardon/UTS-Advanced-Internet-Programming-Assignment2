@@ -14,11 +14,10 @@
         <hr></hr>
         
         
-         <h:outputLink rendered="#{loginController.currentLogin.accountType ne 'Administrator' }" id="link1" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">
-   
+         <h:outputLink rendered="#{loginController.currentLogin.accountType ne 'Administrator' }" id="link1" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
             <h:outputText value="Account Management" styleClass="stdRowHeader"/>
-</h:outputLink>
-        
+         </h:outputLink>
+       
         <p align="Center"> <h:commandButton value="Log Out" styleClass="stdButton" action="#{loginController.logout}" /></p>
     </h:body>      
 </html>

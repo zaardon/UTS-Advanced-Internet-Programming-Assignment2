@@ -52,9 +52,10 @@ public class LoginController implements Serializable {
         return null;
     }
     
-    public String getAccount()
+    public String returnCurrentAccount()
     {
         loadLogin();
+
         return currentLogin.getAccountType().toString();
     }
     /**

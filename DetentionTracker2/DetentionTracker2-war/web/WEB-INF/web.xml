@@ -41,11 +41,9 @@
         <display-name>Logged in pages</display-name>
         <web-resource-collection>
             <web-resource-name>secure</web-resource-name>
-            <url-pattern>/faces/welcome.xhtml</url-pattern>
-            <url-pattern>/faces/create.xhtml</url-pattern>
-            <url-pattern>/faces/edit.xhtml</url-pattern>
-            <url-pattern>/faces/view.xhtml</url-pattern>
-            <url-pattern>/faces/secret/*</url-pattern>        </web-resource-collection>
+            <url-pattern>/faces/Users/*</url-pattern>
+            <url-pattern>/faces/Administration/*</url-pattern>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>Users</role-name>
         </auth-constraint>

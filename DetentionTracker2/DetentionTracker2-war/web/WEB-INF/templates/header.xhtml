@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     
     <!-- This is the header template for the website. It displays the options of the website to the user throughout their navigation -->
-    
+ 
     <h:head>
         <h:outputStylesheet  name="style.css" library="css" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
@@ -15,18 +16,40 @@
         <thead class="templatePageTableHeader">
             <tr>
                 <th class="templatePageTableHeaderText" colspan="3">
-                    <h1 class="h1"> Detention Tracker 1.0</h1>
+                    <h1 class="h1"> Detention Tracker 2.0</h1>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="templatePageTableRow">
-                    <a href="/DetentionTracker2-war/faces/Users/create.xhtml"> <h2 class="h2">Create Detention</h2></a>
+                    
+                    
+                    <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator'}" id="link1" value="/DetentionTracker2-war/faces/Users/create.xhtml">  
+            <h:outputText value="Create Detention" styleClass="h2"/>
+         </h:outputLink>
+                    
+                    <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="link2" value="/DetentionTracker2-war/faces/Administration/admin.xhtml">  
+            <h:outputText value="Billing Management" styleClass="h2"/>
+         </h:outputLink>            
                 </td>
+                
+
                 <td class="templatePageTableRow">
-                    <a href="/DetentionTracker2-war/faces/Users/view.xhtml"> <h2 class="h2">View Detentions</h2></a>
+                    
+                    
+         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="link3" value="/DetentionTracker2-war/faces/Users/view.xhtml">  
+            <h:outputText value="View Detentions" styleClass="h2"/>
+         </h:outputLink>
+         <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="link4" value="/DetentionTracker2-war/faces/Administration/receipt.xhtml">  
+            <h:outputText value="View Receipts" styleClass="h2"/>
+         </h:outputLink>          
+                    
+                    
                 </td>
+                
+                
+                
             </tr>            
         </tbody>
     </table>       
