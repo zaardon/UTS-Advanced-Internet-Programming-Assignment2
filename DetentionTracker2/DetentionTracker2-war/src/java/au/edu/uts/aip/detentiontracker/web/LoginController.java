@@ -25,16 +25,7 @@ public class LoginController implements Serializable {
     private Receipt currentReceipt = new Receipt();
     
     // make a card object  
-    private String address_line1;
-    private String address_line2;
-    private String  address_city;
-    private String  state;
-    private int  postCode;
-    private String  name;
-    private String  number;
-    private int  expiry_month;
-    private int  expiry_year;
-    private int  cvc;
+    
     public Login getCurrentLogin() {
         return currentLogin;
     }
@@ -50,7 +41,7 @@ public class LoginController implements Serializable {
     public String updateAccount()
     {
         try{
-        makeToken();
+//        makeToken();
         detentionTrackerBean.updateLogin(currentLogin);
         return "view?faces-redirect=true";
         }
@@ -61,7 +52,11 @@ public class LoginController implements Serializable {
         return null;
     }
     
-    
+    public String getAccount()
+    {
+        loadLogin();
+        return currentLogin.getAccountType().toString();
+    }
     /**
      * Creates a new a new user in the login table
      * @return Will either return the user to the log in page (if creation was successful)
@@ -127,17 +122,17 @@ public class LoginController implements Serializable {
         return "/login?faces-redirect=true"; 
     }
 
-    public void makeToken()
-    {
-        ReceiptController rc = new ReceiptController();
-//       String token = rc.makeCard();
-String token = rc.makeCard(getNumber(), getExpiry_month(), getExpiry_year(), getCvc(), getName(), getAddress_line1(), getAddress_line2(), getAddress_city(), getPostCode(), getState());
-       if(token == null)
-       {
-           System.out.print("mate it's fucked");
-       }
-       currentLogin.setToken(token);
-    }
+//    public void makeToken()
+//    {
+//        ReceiptController rc = new ReceiptController();
+////       String token = rc.makeCard();
+//String token = rc.makeCard(getNumber(), getExpiry_month(), getExpiry_year(), getCvc(), getName(), getAddress_line1(), getAddress_line2(), getAddress_city(), getPostCode(), getState());
+//       if(token == null)
+//       {
+//           System.out.print("mate it's fucked");
+//       }
+//       currentLogin.setToken(token);
+//    }
 
     public DetentionTrackerBean getDetentionTrackerBean() {
         return detentionTrackerBean;
@@ -155,87 +150,7 @@ String token = rc.makeCard(getNumber(), getExpiry_month(), getExpiry_year(), get
         this.currentReceipt = currentReceipt;
     }
 
-    public String getAddress_line1() {
-        return address_line1;
-    }
-
-    public void setAddress_line1(String address_line1) {
-        this.address_line1 = address_line1;
-    }
-
-    public String getAddress_line2() {
-        return address_line2;
-    }
-
-    public void setAddress_line2(String address_line2) {
-        this.address_line2 = address_line2;
-    }
-
-    public String getAddress_city() {
-        return address_city;
-    }
-
-    public void setAddress_city(String address_city) {
-        this.address_city = address_city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(int postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public int getExpiry_month() {
-        return expiry_month;
-    }
-
-    public void setExpiry_month(int expiry_month) {
-        this.expiry_month = expiry_month;
-    }
-
-    public int getExpiry_year() {
-        return expiry_year;
-    }
-
-    public void setExpiry_year(int expiry_year) {
-        this.expiry_year = expiry_year;
-    }
-
-  
-
-    public int getCvc() {
-        return cvc;
-    }
-
-    public void setCvc(int cvc) {
-        this.cvc = cvc;
-    }
+    
 
    
     
