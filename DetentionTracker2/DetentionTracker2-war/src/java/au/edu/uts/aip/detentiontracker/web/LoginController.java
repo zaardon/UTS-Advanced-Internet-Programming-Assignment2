@@ -52,6 +52,23 @@ public class LoginController implements Serializable {
         return null;
     }
     
+    
+    public boolean doesHaveTokenAndValidAccount()
+    {
+        loadLogin();
+        
+        return !(currentLogin.getToken() == null && !"Free".equals(currentLogin.getAccountType().toString()));
+    }
+    
+    
+    public String returnCurrentToken()
+    {
+        loadLogin();
+        return currentLogin.getToken();
+    }
+    
+    
+    
     public String returnCurrentAccount()
     {
         loadLogin();

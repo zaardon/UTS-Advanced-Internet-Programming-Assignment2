@@ -18,7 +18,7 @@ template="/WEB-INF/templates/header.xhtml"
         </h:head>
         <h:body>
             <h1 class="h1">Create a Detention</h1>               
-            <h:form>
+            <h:form rendered="#{loginController.doesHaveTokenAndValidAccount()}" >
                 <div align="center">
                     <table>
                         <tr>
@@ -76,6 +76,13 @@ template="/WEB-INF/templates/header.xhtml"
                     </table>
                 </div>
             </h:form>
+            
+            <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
+            <br/>
+               <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
+            <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
+         </h:outputLink>
+            
         </h:body>
     </ui:define>
 </ui:composition>
