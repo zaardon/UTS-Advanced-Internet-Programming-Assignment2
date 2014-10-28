@@ -45,13 +45,13 @@ public class ChargeController implements Serializable {
     private DetentionTrackerBean detentionTrackerBean;
      
      private Response response = new Response();
-     private PINResponse request = new PINResponse();
+     private PINTokenResponse request = new PINTokenResponse();
       private Login customerLogin = new Login();
       private Receipt customerReceipt = new Receipt();
       
       
      
-     public PINResponse getRequest()
+     public PINTokenResponse getRequest()
     {
         
         return request;
@@ -80,6 +80,8 @@ public class ChargeController implements Serializable {
     
     private void chargeUser()
     {
+        
+        //HAS TO USE A SPECIAL TOKEN CARD RESPONSE
         if ("Standard".equals(customerLogin.getAccountType().toString()))
         {
             request.setAmount(2000);
@@ -92,7 +94,7 @@ public class ChargeController implements Serializable {
         request.setCurrency("AUD");
         request.setDescription("Detention tracker monthly payment");
         request.setEmail(customerLogin.getEmail());
-request.setToken(customerLogin.getToken());
+request.setCard_token(customerLogin.getToken());
         request.setIpAddress("10.11.12.13");
 //        PINCard custCard = new PINCard();
 //        custCard.setToken(customerLogin.getToken());
