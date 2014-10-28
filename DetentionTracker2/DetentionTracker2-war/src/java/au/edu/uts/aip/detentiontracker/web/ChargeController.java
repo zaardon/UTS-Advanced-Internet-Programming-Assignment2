@@ -71,10 +71,13 @@ public class ChargeController implements Serializable {
     
     public List<Login> allLogins()
     {
-       return  detentionTrackerBean.allthelogins();
+       return  detentionTrackerBean.allLogins();
     }
     
-    
+    public List<Login> allLoginsByPayingAccountType()
+    {
+       return  detentionTrackerBean.allLoginsByPayingAccountType();
+    }
     
     
     

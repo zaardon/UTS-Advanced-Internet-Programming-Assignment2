@@ -21,15 +21,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="templatePageTableRow">
+            <tr >
+                <td class="templatePageTableRow" >
                     
                     
-                    <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator'}" id="link1" value="/DetentionTracker2-war/faces/Users/create.xhtml">  
+                    <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator'}" id="create" value="/DetentionTracker2-war/faces/Users/create.xhtml">  
             <h:outputText value="Create Detention" styleClass="h2"/>
          </h:outputLink>
                     
-                    <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="link2" value="/DetentionTracker2-war/faces/Administration/admin.xhtml">  
+                    <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="admin" value="/DetentionTracker2-war/faces/Administration/admin.xhtml">  
             <h:outputText value="Billing Management" styleClass="h2"/>
          </h:outputLink>            
                 </td>
@@ -38,13 +38,20 @@
                 <td class="templatePageTableRow">
                     
                     
-         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="link3" value="/DetentionTracker2-war/faces/Users/view.xhtml">  
+         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="view" value="/DetentionTracker2-war/faces/Users/view.xhtml">  
             <h:outputText value="View Detentions" styleClass="h2"/>
          </h:outputLink>
-         <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="link4" value="/DetentionTracker2-war/faces/Administration/receipt.xhtml">  
+         <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="receipt" value="/DetentionTracker2-war/faces/Administration/receipt.xhtml">  
             <h:outputText value="View Receipts" styleClass="h2"/>
          </h:outputLink>          
                     
+                    
+                </td>
+                
+                <td class="templatePageTableRow" >
+            <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="information" value="/DetentionTracker2-war/faces/Administration/information.xhtml">  
+            <h:outputText value="Accounts Information" styleClass="h2"/>
+         </h:outputLink>   
                     
                 </td>
                 

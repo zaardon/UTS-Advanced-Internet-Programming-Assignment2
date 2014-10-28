@@ -113,7 +113,7 @@ public class DetentionTrackerBean {
     
     
     // change that name
-    public List<Login> allthelogins()
+    public List<Login> allLoginsByPayingAccountType()
     {
          TypedQuery<Login> query;       
         query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :free AND l.accountType <> :administrator AND l.token <> NULL ", Login.class );
@@ -124,6 +124,16 @@ public class DetentionTrackerBean {
         return query.getResultList();
     }
     
+    
+    public List<Login> allLogins()
+    {
+         TypedQuery<Login> query;       
+        query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :administrator", Login.class );
+         query.setParameter("administrator", AccountType.Administrator);
+         
+        
+        return query.getResultList();
+    }
     
     // LOGIN ONLY COMMANDS
     public boolean userExists(String username)

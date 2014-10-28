@@ -18,11 +18,10 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                 <h:outputStylesheet  name="style.css" library="css" />
             </h:head>
         <h:body>
-            <h1 class="h1">Billing Management</h1>        
-            <div align="center">          
-                <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                <h:form >
-                    <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLoginsByPayingAccountType()}">
+            <h1 class="h1">Accounts Information</h1>        
+            <div align="center">
+            <h:form >
+                <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLogins()}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Username" styleClass="stdRowHeader"/>
@@ -41,16 +40,10 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                             </f:facet>
                             <h:outputText value="#{login.email}"/>
                         </h:column>
-                        <h:column >
-                            <h:commandButton value="Add 1 Month" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,1)}" />
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Add 6 Months" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,6)}" />
-                        </h:column>
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts to charge!" />
+                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts in the system!" />
             </div>
             
             

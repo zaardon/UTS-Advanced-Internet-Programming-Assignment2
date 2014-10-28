@@ -18,11 +18,11 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                 <h:outputStylesheet  name="style.css" library="css" />
             </h:head>
         <h:body>
-            <h1 class="h1">Accounts Information</h1>        
+            <h1 class="h1">Billing Management</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
                 <h:form >
-                    <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLogins()}">
+                    <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLoginsByPayingAccountType()}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Username" styleClass="stdRowHeader"/>
@@ -50,8 +50,10 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts in the system!" />
+                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts to charge!" />
             </div>
+            
+            
             <h:form>
                 <ui:insert name="footer">
                     <ui:include src="/WEB-INF/templates/footer.xhtml" />
