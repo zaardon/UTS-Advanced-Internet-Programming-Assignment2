@@ -61,11 +61,11 @@ public class ChargeController implements Serializable {
         return response;
     }
     // from the button 
-    public String chargeLogin(String username)
+    public String chargeLogin(String username, int monthsToCharge)
     {
         // in the list you click on the button it passes the user as a value.        
         customerLogin = detentionTrackerBean.getLogin(username);
-        chargeUser();
+        chargeUser(monthsToCharge);
         return "admin?faces-redirect=true"; 
     }
     
@@ -78,17 +78,17 @@ public class ChargeController implements Serializable {
     
     
     
-    private void chargeUser()
+    private void chargeUser(int monthsToCharge)
     {
         
         //HAS TO USE A SPECIAL TOKEN CARD RESPONSE
         if ("Standard".equals(customerLogin.getAccountType().toString()))
         {
-            request.setAmount(2000);
+            request.setAmount(2000*monthsToCharge);
         }
         if ("Premium".equals(customerLogin.getAccountType().toString()))
         {
-            request.setAmount(4000);
+            request.setAmount(4000*monthsToCharge);
         }
         
         request.setCurrency("AUD");

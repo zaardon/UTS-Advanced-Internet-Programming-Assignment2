@@ -42,9 +42,11 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                             <h:outputText value="#{login.email}"/>
                         </h:column>
                         <h:column >
-                            <h:commandButton value="Add 1 Month" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username)}" />
+                            <h:commandButton value="Add 1 Month" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,1)}" />
                         </h:column>
-    
+                        <h:column >
+                            <h:commandButton value="Add 6 Months" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,6)}" />
+                        </h:column>
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
