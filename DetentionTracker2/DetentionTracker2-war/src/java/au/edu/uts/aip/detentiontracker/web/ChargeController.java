@@ -92,9 +92,9 @@ public class ChargeController implements Serializable {
         }
         
         request.setCurrency("AUD");
-        request.setDescription("Detention tracker monthly payment");
+        request.setDescription("Detention tracker monthly payment for: "+monthsToCharge+" month(s)");
         request.setEmail(customerLogin.getEmail());
-request.setCard_token(customerLogin.getToken());
+request.setCustomer_token(customerLogin.getToken());
         request.setIpAddress("10.11.12.13");
 //        PINCard custCard = new PINCard();
 //        custCard.setToken(customerLogin.getToken());

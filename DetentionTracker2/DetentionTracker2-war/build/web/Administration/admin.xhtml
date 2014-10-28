@@ -25,19 +25,19 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                     <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLogins()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="First Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="Username" styleClass="stdRowHeader"/>
                             </f:facet>
                             <h:outputText value="#{login.username}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Last Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="Account Type" styleClass="stdRowHeader"/>
                             </f:facet>
                             <h:outputText value="#{login.accountType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Year" styleClass="stdRowHeader"/>
+                                <h:outputText value="Email" styleClass="stdRowHeader"/>
                             </f:facet>
                             <h:outputText value="#{login.email}"/>
                         </h:column>

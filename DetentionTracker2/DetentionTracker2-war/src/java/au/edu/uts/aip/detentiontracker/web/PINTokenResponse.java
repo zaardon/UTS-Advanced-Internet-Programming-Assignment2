@@ -26,7 +26,8 @@ private String ipAddress;
 private String createdAt;
 private String statusMessage;
 private String errorMessage;
-private String card_token;
+private String customer_token;
+//private String card_token;
 private List<String> transfer = new ArrayList<String>();
 private int amountRefunded;
 private int totalFees;
@@ -36,14 +37,21 @@ private boolean authorisationExpired;
 private boolean captured;
 private String settlementCurrency;
 
+    public String getCustomer_token() {
+        return customer_token;
+    }
+
 //    public String getToken() {
 //        return token;
 //    }
 //
 //    public void setToken(String token) {
 //        this.token = token;
-//    }
+    public void setCustomer_token(String customer_token) {
+        this.customer_token = customer_token;
+    }
 
+//    }
     public boolean isSuccess() {
         return success;
     }
@@ -115,15 +123,15 @@ private String settlementCurrency;
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
-
-    public String getCard_token() {
-        return card_token;
-    }
-
-    public void setCard_token(String card_token) {
-        this.card_token = card_token;
-    }
-
+//
+//    public String getCard_token() {
+//        return card_token;
+//    }
+//
+//    public void setCard_token(String card_token) {
+//        this.card_token = card_token;
+//    }
+//
 
 
     public List<String> getTransfer() {
@@ -194,7 +202,7 @@ private String settlementCurrency;
 
     @Override
     public String toString() {
-        return "PINResponse{" + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ipAddress=" + ipAddress + ", createdAt=" + createdAt + ", statusMessage=" + statusMessage + ", errorMessage=" + errorMessage + ", cardToken=" + card_token + ", transfer=" + transfer + ", amountRefunded=" + amountRefunded + ", totalFees=" + totalFees + ", merchantEntitlement=" + merchantEntitlement + ", refundPending=" + refundPending + ", authorisationExpired=" + authorisationExpired + ", captured=" + captured + ", settlementCurrency=" + settlementCurrency + '}';
+        return "PINResponse{" + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ipAddress=" + ipAddress + ", createdAt=" + createdAt + ", statusMessage=" + statusMessage + ", errorMessage=" + errorMessage + ", cardToken=" + customer_token + ", transfer=" + transfer + ", amountRefunded=" + amountRefunded + ", totalFees=" + totalFees + ", merchantEntitlement=" + merchantEntitlement + ", refundPending=" + refundPending + ", authorisationExpired=" + authorisationExpired + ", captured=" + captured + ", settlementCurrency=" + settlementCurrency + '}';
     }
 
 

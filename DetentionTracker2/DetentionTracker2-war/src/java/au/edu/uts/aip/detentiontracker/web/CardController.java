@@ -42,6 +42,7 @@ public class CardController implements Serializable {
     private Login currentLogin = new Login();
     private Response response = new Response();
     private PINCard reqCard = new PINCard();
+    private CustomerToken customerToken = new CustomerToken();
     
     // for  the card 
     private String address_line1;
@@ -74,6 +75,20 @@ public class CardController implements Serializable {
     {
         try{
         makeToken();
+        detentionTrackerBean.updateLogin(currentLogin);
+        return "view?faces-redirect=true";
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public String updateAccountWithCustomerToken()
+    {
+        try{
+        makeCustomerToken();
         detentionTrackerBean.updateLogin(currentLogin);
         return "view?faces-redirect=true";
         }
@@ -137,7 +152,58 @@ public class CardController implements Serializable {
     
     
     
-    
+        public void makeCustomerToken()
+    {
+       
+        //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
+        PINCard card = new PINCard();
+        
+        card.setNumber(getNumber());
+        card.setExpiry_Month(getExpiry_month());
+        card.setExpiry_Year(getExpiry_year());
+        card.setCVC(getCvc());
+        card.setName(getName());
+        card.setAddress_Line1(getAddress_line1());
+        card.setAddress_Line2(getAddress_line2());
+        card.setAddress_City(getAddress_city());
+        card.setAddressPostcode(getPostCode());
+        card.setAddress_State(getState());
+        card.setAddress_Country("Australia");
+        
+        customerToken.setEmail(currentLogin.getEmail());
+        customerToken.setCard(card);
+        
+        pinPayments += "customers";
+        Client client = null;
+        
+        try{
+            System.out.println("my url is" + pinPayments);
+            client = ClientBuilder.newClient();
+            response = client.target(pinPayments)
+                    .request()
+                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
+                    .post(Entity.json(customerToken), Response.class );
+                    
+                    
+            
+            
+             FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
+            
+            currentLogin.setToken(response.getResponse().get(0).getToken());
+            
+        } catch (ProcessingException | WebApplicationException | NullPointerException e)
+        {
+             
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()   ));
+            
+          
+    } finally {
+            if(client != null)
+                client.close();
+        }
+    }
     
     
     
