@@ -18,17 +18,35 @@ xmlns:f="http://java.sun.com/jsf/core">
         </h:head>
         <h:body>
             <h1 class="h1">Create a Detention</h1>               
-            <h:form>
-                <div align="center">
-                    <table>
-                        <tr>
-                            <td><h:outputText value="login name " styleClass="createHeader" /></td>
-                            <td><h:outputText value="Charge ammount" styleClass="createHeader"/></td>
-                        </tr>
-                        
-                    </table>
-                </div>
-            </h:form>
+            <h:form rendered="#{(receiptController.sizeOfReceiptList() != 0)}">
+                <h:dataTable styleClass="stdRowText" border="1" var="receipt"  value="#{receiptController.findAllReceipts()}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="User name" styleClass="stdRowHeader"/>
+                            </f:facet>
+                            <h:outputText value="#{receipt.login.username}"/>
+                        </h:column>               
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Amount in AUD" styleClass="stdRowHeader"/>
+                            </f:facet>
+                            <h:outputText value="#{receipt.amount}"/>
+                        </h:column>                
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date " styleClass="stdRowHeader"/>
+                            </f:facet>
+                            <h:outputText value="#{receipt.dateOfPurchase}"/>
+                        </h:column>                
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Description" styleClass="stdRowHeader"/>
+                            </f:facet>
+                            <h:outputText value="#{receipt.description}"/>
+                        </h:column>                
+      
+                    </h:dataTable>
+                </h:form>
         </h:body>
     </ui:define>
 </ui:composition>

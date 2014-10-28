@@ -48,7 +48,7 @@ public class ChargeController implements Serializable {
      private PINTokenResponse request = new PINTokenResponse();
       private Login customerLogin = new Login();
       private Receipt customerReceipt = new Receipt();
-      
+     
       
      
      public PINTokenResponse getRequest()
@@ -117,8 +117,11 @@ request.setCustomer_token(customerLogin.getToken());
                     
             
             // does the calls to receipt and login objects 
+             customerReceipt.setAmount(request.getAmount());
+             customerReceipt.setDateOfPurchase(new Date());
+             customerReceipt.setDescription(request.getDescription());
              
-          
+           detentionTrackerBean.addLoginToReceipt(customerReceipt, customerLogin);
             
         } catch (ProcessingException | WebApplicationException | NullPointerException e)
         {

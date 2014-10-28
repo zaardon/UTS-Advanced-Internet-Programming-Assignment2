@@ -159,11 +159,78 @@ public class DetentionTrackerBean {
         
         return loginToReturn;
     }
+    
+    
     public void updateLogin(Login login)
     {
         // DON'T FORGET THE RECEIPT
-        List<Detention> managed = findAllDetetions(login.getUsername());
-        login.setDetentions(managed);
+        List<Detention> managedDet = findAllDetetions(login.getUsername());
+        List<Receipt> managedRec = findAllReceiptsForLogin(login.getUsername());
+        login.setDetentions(managedDet);
+        login.setReceipts(managedRec);
         em.merge(login);
+    }
+    
+    
+    // get all the logins
+        public List<Receipt> findAllReceiptsForLogin(String username)
+    {
+        Login managed = em.find(Login.class, username);
+        return managed.getReceipts();
+        
+    }
+        
+    public List<Receipt> findAllReceipts()
+    {
+         TypedQuery<Receipt> query;       
+        query = em.createQuery("SELECT r FROM Receipt r ", Receipt.class );
+        return query.getResultList();
+        
+    }
+        
+        
+    public void updateReceipt(Receipt currentReceipt)
+    {
+        em.merge(currentReceipt);
+        
+    }
+    
+
+    
+    
+    // this will probs be deleted.
+    public void createReceipt(Receipt receipt)
+    {
+        em.persist(receipt);
+    }
+    
+    public void addLoginToReceipt(Receipt receipt, Login login)
+    {
+        try{
+            
+        //detention has it's login set and created.
+        receipt.setLogin(login);
+        createReceipt(receipt);
+        
+        // next we gonna add it to our login.
+               
+        // set the list of detentions 
+        //also this is where we could restrict.
+        login.getReceipts().add(receipt);
+        
+
+ 
+        
+      
+        // NO FORGETTING THE CLOSE ALSO TRANSACTIONS
+        //em.close();
+        em.merge(login);
+        
+        }
+        catch(EJBException e)
+        {
+            System.out.println(e);
+            
+        }
     }
 }
