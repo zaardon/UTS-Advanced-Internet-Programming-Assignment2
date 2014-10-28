@@ -115,12 +115,13 @@ public class DetentionTrackerBean {
     // change that name
     public List<Login> allthelogins()
     {
-         TypedQuery<Login> query;
+         TypedQuery<Login> query;       
+        query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :free AND l.accountType <> :administrator  ", Login.class );
+         query.setParameter("free", AccountType.Free);
+         query.setParameter("administrator", AccountType.Administrator);
          
-         // fuck enums why can't you just string for me
-         
-        query = em.createQuery("SELECT l FROM Login l   ", Login.class );
-         return query.getResultList();
+        
+        return query.getResultList();
     }
     
     
