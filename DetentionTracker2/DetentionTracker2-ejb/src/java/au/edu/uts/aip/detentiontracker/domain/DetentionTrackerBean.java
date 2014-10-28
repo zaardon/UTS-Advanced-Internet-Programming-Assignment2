@@ -116,7 +116,7 @@ public class DetentionTrackerBean {
     public List<Login> allthelogins()
     {
          TypedQuery<Login> query;       
-        query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :free AND l.accountType <> :administrator  ", Login.class );
+        query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :free AND l.accountType <> :administrator AND l.token <> NULL ", Login.class );
          query.setParameter("free", AccountType.Free);
          query.setParameter("administrator", AccountType.Administrator);
          
