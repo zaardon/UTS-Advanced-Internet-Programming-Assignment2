@@ -80,6 +80,22 @@ public class ChargeController implements Serializable {
     }
     
     
+    public boolean hasSubscriptionEnded(String username)
+    {
+        Date currentDate = new Date();
+        List<Receipt> receipts = detentionTrackerBean.findAllReceiptsForLogin(username);
+        
+        
+        for(int i = 0; i<receipts.size(); i++)
+        {
+            if(receipts.get(i).getDateOfExpiry().compareTo(currentDate) > 0)
+            {
+            return false;
+            }
+        }
+        return true;
+
+    }
     
     private void chargeUser(int monthsToCharge)
     {
@@ -132,8 +148,8 @@ request.setCustomer_token(customerLogin.getToken());
              customerReceipt.setAmount(0);
              customerReceipt.setDateOfPurchase(new Date());
              customerReceipt.setDescription("ERROR: Charge failed");
-             Date date = null;
-             customerReceipt.setDateOfExpiryWithMonth(date,0);
+             Date failedExpiry = null;
+             customerReceipt.setDateOfExpiryWithMonth(failedExpiry,0);
              detentionTrackerBean.addLoginToReceipt(customerReceipt, customerLogin);
              
              FacesContext context = FacesContext.getCurrentInstance();

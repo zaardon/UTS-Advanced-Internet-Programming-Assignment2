@@ -205,8 +205,29 @@ public class DetentionTrackerBean {
         
     }
     
-
+//    public Date findExpiryDateOfSubscription(String username)
+//    {
+//     
+////        Receipt managed = em.find(Receipt.class, username);
+////        return managed.getDateOfExpiry();
+//        
+//        TypedQuery<Receipt> query;       
+//        query = em.createQuery("SELECT r.dateOfExpiry FROM Receipt r WHERE r.login.username =:name", Receipt.class );
+//        query.setParameter("name", username);
+//        if(query.getSingleResult().getDateOfExpiry() == null)
+//        {
+//            return null;
+//        }
+//        else
+//        {
+//        return query.getSingleResult().getDateOfExpiry();
+//        }
+//
+//        
+//        
+//    }
     
+
     
     // this will probs be deleted.
     public void createReceipt(Receipt receipt)
