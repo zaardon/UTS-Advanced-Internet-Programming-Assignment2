@@ -6,6 +6,8 @@
 package au.edu.uts.aip.detentiontracker.web;
 
 import java.io.Serializable;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -78,6 +80,9 @@ private String address_country;
         this.expiry_year = expiry_year;
     }
 
+    //not working?
+    @Pattern(regexp="[A-Za-z]+[A-Za-z -']*")
+    @Size(min = 1, max = 40)
     public String getName() {
         return name;
     }

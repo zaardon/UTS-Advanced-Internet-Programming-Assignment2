@@ -50,7 +50,15 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>
                         <tr>
                             <td><h:outputText value="State: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="state" value="#{cardController.state}" styleClass="createInput"/> </td>
+                            <td><h:selectOneMenu value="#{cardController.state}" styleClass="createInput">
+                                <f:selectItem itemValue="NSW" itemLabel="NSW"/>
+                                <f:selectItem itemValue="QLD" itemLabel="QLD"/>
+                                <f:selectItem itemValue="SA" itemLabel="SA"/>
+                                <f:selectItem itemValue="ACT" itemLabel="ACT"/>
+                                <f:selectItem itemValue="NT" itemLabel="NT"/>
+                                <f:selectItem itemValue="TAS" itemLabel="TAS"/>
+                                <f:selectItem itemValue="VIC" itemLabel="VIC"/>
+                            </h:selectOneMenu></td>
                         </tr>
                          <tr>
                             <td><h:outputText value="Post Code: " styleClass="createHeader" /></td>
@@ -66,9 +74,33 @@ xmlns:f="http://java.sun.com/jsf/core">
                         </tr>
                         <tr>
                             <td><h:outputText value="EXPIRY DATE    Month: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="month" value="#{cardController.expiry_month}" styleClass="createInput"/> </td>
+                            <td><h:selectOneMenu converter="javax.faces.Integer" value="#{cardController.expiry_month}" styleClass="createInput">
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                                <f:selectItem itemValue="6" itemLabel="6"/>
+                                <f:selectItem itemValue="7" itemLabel="7"/>
+                                <f:selectItem itemValue="8" itemLabel="8"/>
+                                <f:selectItem itemValue="9" itemLabel="9"/>
+                                <f:selectItem itemValue="10" itemLabel="10"/>
+                                <f:selectItem itemValue="11" itemLabel="11"/>
+                                <f:selectItem itemValue="12" itemLabel="12"/>
+                            </h:selectOneMenu></td>
+                            
+                            
                             <td><h:outputText value=" Year: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="year" value="#{cardController.expiry_year}" styleClass="createInput"/> </td>
+                            <td><h:selectOneMenu converter="javax.faces.Integer" value="#{cardController.expiry_year}" styleClass="createInput">
+                                <f:selectItem itemValue="2014" itemLabel="2014"/>
+                                <f:selectItem itemValue="2015" itemLabel="2015"/>
+                                <f:selectItem itemValue="2016" itemLabel="2016"/>
+                                <f:selectItem itemValue="2017" itemLabel="2017"/>
+                                <f:selectItem itemValue="2018" itemLabel="2018"/>
+                                <f:selectItem itemValue="2019" itemLabel="2019"/>
+                                <f:selectItem itemValue="2020" itemLabel="2020"/>
+                            </h:selectOneMenu></td>
+                            
                         </tr>
                         <tr>
                             <td><h:outputText value="CVC: " styleClass="createHeader" /></td>
