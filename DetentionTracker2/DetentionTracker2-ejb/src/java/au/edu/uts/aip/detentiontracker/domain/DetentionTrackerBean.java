@@ -227,10 +227,7 @@ public class DetentionTrackerBean {
         // set the list of detentions 
         //also this is where we could restrict.
         login.getReceipts().add(receipt);
-        
 
- 
-        
       
         // NO FORGETTING THE CLOSE ALSO TRANSACTIONS
         //em.close();

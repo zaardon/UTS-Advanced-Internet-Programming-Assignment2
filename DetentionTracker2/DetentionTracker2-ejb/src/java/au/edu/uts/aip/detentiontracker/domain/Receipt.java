@@ -21,7 +21,9 @@ public class Receipt implements Serializable{
     private int receiptID;
     private String description;
     private Date dateOfPurchase;
+    private Date dateOfExpiry;
     private int amount;
+
     
     
     @ManyToOne
@@ -69,9 +71,25 @@ public class Receipt implements Serializable{
     }
 
 
-    
+    @Temporal(TemporalType.DATE)
+    public Date getDateOfExpiry() {
+        return dateOfExpiry;
+    }
 
     
+    public void setDateOfExpiry(Date dateOfExpiry) {
+        this.dateOfExpiry = dateOfExpiry;
+    }
+
+       public void setDateOfExpiryWithMonth(Date dateOfExpiry, int monthsFromExpiry) {
+        
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateOfExpiry);
+        cal.add(Calendar.MONTH, monthsFromExpiry);
+
+        this.dateOfExpiry = cal.getTime();
+    }
+
     
     
     

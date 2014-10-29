@@ -17,7 +17,7 @@ xmlns:f="http://java.sun.com/jsf/core">
             <h:outputStylesheet  name="style.css" library="css" />
         </h:head>
         <h:body>
-            <h1 class="h1">Create a Detention</h1>               
+            <h1 class="h1">View Receipts</h1>               
             <h:form rendered="#{(receiptController.sizeOfReceiptList() != 0)}">
                 <h:dataTable styleClass="stdRowText" border="1" var="receipt"  value="#{receiptController.findAllReceipts()}">
                         <h:column>
@@ -43,7 +43,13 @@ xmlns:f="http://java.sun.com/jsf/core">
                                 <h:outputText value="Description" styleClass="stdRowHeader"/>
                             </f:facet>
                             <h:outputText value="#{receipt.description}"/>
-                        </h:column>                
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Expiry Date" styleClass="stdRowHeader"/>
+                            </f:facet>
+                            <h:outputText value="#{receipt.dateOfExpiry}"/>
+                        </h:column> 
       
                     </h:dataTable>
                 </h:form>

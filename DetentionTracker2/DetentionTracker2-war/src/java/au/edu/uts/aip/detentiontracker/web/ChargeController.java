@@ -123,6 +123,7 @@ request.setCustomer_token(customerLogin.getToken());
              customerReceipt.setAmount(request.getAmount());
              customerReceipt.setDateOfPurchase(new Date());
              customerReceipt.setDescription(request.getDescription());
+             customerReceipt.setDateOfExpiryWithMonth(new Date(),monthsToCharge);
              
            detentionTrackerBean.addLoginToReceipt(customerReceipt, customerLogin);
             
