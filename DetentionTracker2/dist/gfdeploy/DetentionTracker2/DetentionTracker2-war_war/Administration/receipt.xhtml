@@ -53,6 +53,12 @@ xmlns:f="http://java.sun.com/jsf/core">
       
                     </h:dataTable>
                 </h:form>
+                    <h:outputText rendered="#{receiptController.sizeOfReceiptList() == 0}" styleClass="stdRowHeader" value="No receipts to view!" />
+            <h:form >
+                <ui:insert name="footer">
+                    <ui:include src="/WEB-INF/templates/footer.xhtml" />
+                </ui:insert>
+            </h:form>
         </h:body>
     </ui:define>
 </ui:composition>

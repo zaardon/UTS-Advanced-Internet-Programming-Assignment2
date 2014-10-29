@@ -79,6 +79,10 @@ public class ChargeController implements Serializable {
        return  detentionTrackerBean.allLoginsByPayingAccountType();
     }
     
+    public int amountOfSubscriptionUsers()
+    {
+        return detentionTrackerBean.allLoginsByPayingAccountType().size();
+    }
     
     public boolean hasSubscriptionEnded(String username)
     {

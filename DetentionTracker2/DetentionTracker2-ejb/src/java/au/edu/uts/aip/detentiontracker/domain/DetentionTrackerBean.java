@@ -125,6 +125,7 @@ public class DetentionTrackerBean {
     }
     
     
+    //RENAME TO allLoginsThatAreNotAdmin
     public List<Login> allLogins()
     {
          TypedQuery<Login> query;       

@@ -21,7 +21,7 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
             <h1 class="h1">Billing Management</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                <h:form >
+                <h:form rendered="#{chargeController.amountOfSubscriptionUsers() != 0}">
                     <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLoginsByPayingAccountType()}">
                         <h:column>
                             <f:facet name="header">
@@ -52,7 +52,7 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts to charge!" />
+                <h:outputText rendered="#{chargeController.amountOfSubscriptionUsers() == 0}" styleClass="stdRowHeader" value="No accounts to charge!" />
             </div>
             
             

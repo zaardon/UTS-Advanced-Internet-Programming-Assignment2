@@ -52,6 +52,13 @@ public class LoginController implements Serializable {
         return null;
     }
     
+    public int amountOfNonAdminAccounts()
+    {
+        
+        
+        return detentionTrackerBean.allLogins().size();
+    }
+            
     
     public boolean doesHaveTokenAndValidAccount()
     {

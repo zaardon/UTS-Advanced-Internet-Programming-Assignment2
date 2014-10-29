@@ -20,7 +20,7 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
         <h:body>
             <h1 class="h1">Accounts Information</h1>        
             <div align="center">
-            <h:form >
+                <h:form rendered="#{loginController.amountOfNonAdminAccounts() != 0}">
                 <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLogins()}">
                         <h:column>
                             <f:facet name="header">
@@ -43,7 +43,7 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                <h:outputText rendered="" styleClass="stdRowHeader" value="No accounts in the system!" />
+                <h:outputText rendered="#{loginController.amountOfNonAdminAccounts() == 0}" styleClass="stdRowHeader" value="No accounts in the system!" />
             </div>
             
             
