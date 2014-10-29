@@ -42,9 +42,11 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                             <h:outputText value="#{login.email}"/>
                         </h:column>
                         <h:column >
+                            <h:outputText rendered="#{!chargeController.hasSubscriptionEnded(login.username)}" styleClass="stdRowHeader" value="Unavailable" />
                             <h:commandButton rendered="#{chargeController.hasSubscriptionEnded(login.username)}" value="Add 1 Month" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,1)}" />
                         </h:column>
                         <h:column >
+                            <h:outputText rendered="#{!chargeController.hasSubscriptionEnded(login.username)}" styleClass="stdRowHeader" value="Unavailable" />
                             <h:commandButton rendered="#{chargeController.hasSubscriptionEnded(login.username)}" value="Add 6 Months" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,6)}" />
                         </h:column>
                     </h:dataTable>
