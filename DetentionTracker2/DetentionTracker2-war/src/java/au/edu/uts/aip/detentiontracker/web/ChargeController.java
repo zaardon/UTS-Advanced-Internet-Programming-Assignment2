@@ -129,7 +129,13 @@ request.setCustomer_token(customerLogin.getToken());
             
         } catch (ProcessingException | WebApplicationException | NullPointerException e)
         {
-            
+             customerReceipt.setAmount(0);
+             customerReceipt.setDateOfPurchase(new Date());
+             customerReceipt.setDescription("ERROR: Charge failed");
+             Date date = null;
+             customerReceipt.setDateOfExpiryWithMonth(date,0);
+             detentionTrackerBean.addLoginToReceipt(customerReceipt, customerLogin);
+             
              FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()   ));
             
