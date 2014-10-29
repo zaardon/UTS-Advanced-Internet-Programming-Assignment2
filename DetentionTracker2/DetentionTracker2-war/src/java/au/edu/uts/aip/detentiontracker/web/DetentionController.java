@@ -111,4 +111,9 @@ public class DetentionController implements Serializable {
         // then add that detention to our login ? yes
         return detentionTrackerBean.findAllDetetions(username).size();
     } 
+    
+    public List<Object> findTotalCountOfStudentName()
+    {
+        return detentionTrackerBean.findTotalCountOfStudentName();
+    }
 }

@@ -198,6 +198,19 @@ public class DetentionTrackerBean {
         return query.getResultList();
         
     }
+    
+    public List<Object> findTotalCountOfStudentName()
+    {
+        Query query;       
+       // query = em.createQuery("SELECT d.FIRSTNAME, d.lastName, COUNT(*) as count FROM Detention d GROUP BY d.FIRSTNAME, d.LASTNAME ORDER BY count DESC", Detention.class );
+        query = em.createQuery("SELECT COUNT(d.detentionID) as total, d.firstName, d.lastName FROM Detention d GROUP BY d.lastName, d.firstName ORDER BY total DESC", Detention.class );
+        List result = query.getResultList();
+        System.out.println(result);
+        for (Object entry : result) {
+            System.out.println(Arrays.asList((Object[])entry));
+        }
+        return result;
+    }
         
         
     public void updateReceipt(Receipt currentReceipt)

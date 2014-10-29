@@ -22,18 +22,24 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
                  <h:form rendered="#{(detentionController.sizeOfDetentionList() != 0) and (loginController.isPremiumAccountWithToken())}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findAllDetentions()}">
+                     <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findTotalCountOfStudentName()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Student Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="Last Name" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value=""/>
-                        </h:column>               
+                            <h:outputText value="#{detention[2]}"/>
+                        </h:column>      
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Total" styleClass="stdRowHeader"/>
+                                <h:outputText value="First Name" styleClass="stdRowHeader"/>
                             </f:facet>
-                            <h:outputText value=""/>
+                            <h:outputText value="#{detention[1]}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Total Detentions" styleClass="stdRowHeader"/>
+                            </f:facet>
+                            <h:outputText value="#{detention[0]}"/>
                         </h:column>                   
                     </h:dataTable>
                 </h:form>
