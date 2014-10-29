@@ -81,6 +81,28 @@ public class LoginController implements Serializable {
         return false;
     }
     
+    public boolean isPremiumAccountWithToken()
+    {
+        loadLogin();
+        
+        if(currentLogin.getAccountType() == AccountType.Premium && currentLogin.getToken() != null)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+        public boolean isPremiumAccount()
+    {
+        loadLogin();
+        
+        if(currentLogin.getAccountType() == AccountType.Premium)
+        {
+            return true;
+        }
+        return false;
+    }
+    
     public String returnCurrentToken()
     {
         loadLogin();

@@ -52,7 +52,9 @@
             <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="information" value="/DetentionTracker2-war/faces/Administration/information.xhtml">  
             <h:outputText value="Accounts Information" styleClass="h2"/>
          </h:outputLink>   
-                    
+        <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="total" value="/DetentionTracker2-war/faces/Users/total.xhtml">  
+            <h:outputText value="Student Totals" styleClass="h2"/>
+         </h:outputLink>       
                 </td>
                 
                 
