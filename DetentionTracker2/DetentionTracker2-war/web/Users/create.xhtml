@@ -18,7 +18,7 @@ template="/WEB-INF/templates/header.xhtml"
         </h:head>
         <h:body>
             <h1 class="h1">Create a Detention</h1>               
-            <h:form rendered="#{loginController.doesHaveTokenAndValidAccount()}" >
+            <h:form rendered="#{loginController.doesHaveTokenAndValidAccount() and loginController.doesFreeAccountNotHaveMaxDetentions()}" >
                 <div align="center">
                     <table>
                         <tr>
@@ -76,10 +76,10 @@ template="/WEB-INF/templates/header.xhtml"
                     </table>
                 </div>
             </h:form>
-            
+            <h:outputText rendered="#{!loginController.doesFreeAccountNotHaveMaxDetentions()}" styleClass="stdRowHeader" value="You have exceeded your limit of 5 detentions! Please upgrade your account for more functionality" />
             <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
             <br/>
-               <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
+               <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount() or !loginController.doesFreeAccountNotHaveMaxDetentions()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
             <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
          </h:outputLink>
             

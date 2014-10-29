@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ChargeController.java</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/DetentionController.java</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/view.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/receipt.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ReceiptController.java</file>
+            <file>file:/C:/Users/asmith/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ChargeController.java</file>
+            <file>file:/C:/Users/asmith/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/information.xhtml</file>
+            <file>file:/C:/Users/asmith/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/receipt.xhtml</file>
+            <file>file:/C:/Users/asmith/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/view.xhtml</file>
+            <file>file:/C:/Users/asmith/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/admin.xhtml</file>
         </group>
     </open-files>
 </project-private>

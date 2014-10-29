@@ -54,8 +54,6 @@ public class LoginController implements Serializable {
     
     public int amountOfNonAdminAccounts()
     {
-        
-        
         return detentionTrackerBean.allLogins().size();
     }
             
@@ -67,6 +65,21 @@ public class LoginController implements Serializable {
         return !(currentLogin.getToken() == null && !"Free".equals(currentLogin.getAccountType().toString()));
     }
     
+    public boolean doesFreeAccountNotHaveMaxDetentions()
+    {
+        loadLogin();
+        
+        if(currentLogin.getAccountType() == AccountType.Free && currentLogin.getDetentions().size() < 5)
+        {
+            return true;
+        }
+        if(currentLogin.getAccountType() != AccountType.Free)
+        {
+            return true;
+        }
+        
+        return false;
+    }
     
     public String returnCurrentToken()
     {
