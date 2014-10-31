@@ -24,10 +24,8 @@ public class DetentionTrackerBean {
     @PersistenceContext
     private EntityManager em;
         
-    public void addSampleData(){
-        
-    }
-    
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<Login> findAllPeople()
     {
         
@@ -35,7 +33,7 @@ public class DetentionTrackerBean {
         CriteriaQuery<Login> query = builder.createQuery(Login.class);
         return em.createQuery(query).getResultList();
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<Detention> findAllDetetions(String username)
     {
         Login managed = em.find(Login.class, username);
@@ -45,18 +43,18 @@ public class DetentionTrackerBean {
 //        CriteriaQuery<Detention> query = builder.createQuery(Detention.class);
 //        return em.createQuery(query).getResultList();
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Detention findDetention(int detentionID)
     {
         return em.find(Detention.class, detentionID);
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void updateDetention(Detention currentDetention)
     {
         em.merge(currentDetention);
         
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void deleteDetention(int detentionID)
     {
         Detention detention = em.find(Detention.class, detentionID);
@@ -65,11 +63,12 @@ public class DetentionTrackerBean {
     
     
     // this will probs be deleted.
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void createDetention(Detention detention)
     {
         em.persist(detention);
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void addLogin(Detention detention, Login login)
     {
         try{
@@ -99,6 +98,7 @@ public class DetentionTrackerBean {
             
         }
     }
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void deleteDetentionFromLogin(int detentionID, String username)
     {
         Detention detManaged = em.find(Detention.class, detentionID );
@@ -113,6 +113,7 @@ public class DetentionTrackerBean {
     
     
     // change that name
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<Login> allLoginsByPayingAccountType()
     {
          TypedQuery<Login> query;       
@@ -126,6 +127,7 @@ public class DetentionTrackerBean {
     
     
     //RENAME TO allLoginsThatAreNotAdmin
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<Login> allLogins()
     {
          TypedQuery<Login> query;       
@@ -137,6 +139,7 @@ public class DetentionTrackerBean {
     }
     
     // LOGIN ONLY COMMANDS
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public boolean userExists(String username)
     {
         TypedQuery<Login> query = em.createQuery("SELECT l FROM Login l WHERE l.username =:name", Login.class );
@@ -149,6 +152,7 @@ public class DetentionTrackerBean {
         return false;
     }
     
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void createInitialLogin(Login login)  throws NoSuchAlgorithmException
     {
         try{
@@ -163,7 +167,7 @@ public class DetentionTrackerBean {
             System.out.println(e);
         }
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Login getLogin(String username)
     {
         Login loginToReturn = em.find(Login.class,username);
@@ -171,7 +175,7 @@ public class DetentionTrackerBean {
         return loginToReturn;
     }
     
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void updateLogin(Login login)
     {
         // DON'T FORGET THE RECEIPT
@@ -184,13 +188,14 @@ public class DetentionTrackerBean {
     
     
     // get all the logins
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
         public List<Receipt> findAllReceiptsForLogin(String username)
     {
         Login managed = em.find(Login.class, username);
         return managed.getReceipts();
         
     }
-        
+       @TransactionAttribute(TransactionAttributeType.REQUIRED) 
     public List<Receipt> findAllReceipts()
     {
          TypedQuery<Receipt> query;       
@@ -198,7 +203,7 @@ public class DetentionTrackerBean {
         return query.getResultList();
         
     }
-    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<Object> findTotalCountOfStudentName(String username)
     {
         Query query;       
@@ -214,7 +219,7 @@ public class DetentionTrackerBean {
         return result;
     }
         
-        
+        @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void updateReceipt(Receipt currentReceipt)
     {
         em.merge(currentReceipt);
@@ -246,6 +251,7 @@ public class DetentionTrackerBean {
 
     
     // this will probs be deleted.
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void createReceipt(Receipt receipt)
     {
         em.persist(receipt);
