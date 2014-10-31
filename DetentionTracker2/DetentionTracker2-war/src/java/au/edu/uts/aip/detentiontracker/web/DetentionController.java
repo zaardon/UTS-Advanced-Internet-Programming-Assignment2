@@ -114,6 +114,8 @@ public class DetentionController implements Serializable {
     
     public List<Object> findTotalCountOfStudentName()
     {
-        return detentionTrackerBean.findTotalCountOfStudentName();
+        FacesContext context = FacesContext.getCurrentInstance();
+        String username = context.getExternalContext().getUserPrincipal().getName();
+        return detentionTrackerBean.findTotalCountOfStudentName(username);
     }
 }
