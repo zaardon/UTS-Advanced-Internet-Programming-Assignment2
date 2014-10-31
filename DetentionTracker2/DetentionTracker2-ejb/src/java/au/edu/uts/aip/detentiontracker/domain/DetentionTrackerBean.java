@@ -25,7 +25,7 @@ public class DetentionTrackerBean {
     private EntityManager em;
         
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Login> findAllPeople()
     {
         
@@ -33,7 +33,7 @@ public class DetentionTrackerBean {
         CriteriaQuery<Login> query = builder.createQuery(Login.class);
         return em.createQuery(query).getResultList();
     }
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Detention> findAllDetetions(String username)
     {
         Login managed = em.find(Login.class, username);
@@ -113,7 +113,7 @@ public class DetentionTrackerBean {
     
     
     // change that name
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Login> allLoginsByPayingAccountType()
     {
          TypedQuery<Login> query;       
@@ -127,7 +127,7 @@ public class DetentionTrackerBean {
     
     
     //RENAME TO allLoginsThatAreNotAdmin
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Login> allLogins()
     {
          TypedQuery<Login> query;       
@@ -139,7 +139,7 @@ public class DetentionTrackerBean {
     }
     
     // LOGIN ONLY COMMANDS
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.NEVER)
     public boolean userExists(String username)
     {
         TypedQuery<Login> query = em.createQuery("SELECT l FROM Login l WHERE l.username =:name", Login.class );
@@ -167,7 +167,7 @@ public class DetentionTrackerBean {
             System.out.println(e);
         }
     }
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public Login getLogin(String username)
     {
         Login loginToReturn = em.find(Login.class,username);
@@ -188,14 +188,14 @@ public class DetentionTrackerBean {
     
     
     // get all the logins
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
         public List<Receipt> findAllReceiptsForLogin(String username)
     {
         Login managed = em.find(Login.class, username);
         return managed.getReceipts();
         
     }
-       @TransactionAttribute(TransactionAttributeType.REQUIRED) 
+       @TransactionAttribute(TransactionAttributeType.SUPPORTS) 
     public List<Receipt> findAllReceipts()
     {
          TypedQuery<Receipt> query;       
@@ -203,7 +203,7 @@ public class DetentionTrackerBean {
         return query.getResultList();
         
     }
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Object> findTotalCountOfStudentName(String username)
     {
         Query query;       
@@ -224,30 +224,7 @@ public class DetentionTrackerBean {
     {
         em.merge(currentReceipt);
         
-    }
-    
-//    public Date findExpiryDateOfSubscription(String username)
-//    {
-//     
-////        Receipt managed = em.find(Receipt.class, username);
-////        return managed.getDateOfExpiry();
-//        
-//        TypedQuery<Receipt> query;       
-//        query = em.createQuery("SELECT r.dateOfExpiry FROM Receipt r WHERE r.login.username =:name", Receipt.class );
-//        query.setParameter("name", username);
-//        if(query.getSingleResult().getDateOfExpiry() == null)
-//        {
-//            return null;
-//        }
-//        else
-//        {
-//        return query.getSingleResult().getDateOfExpiry();
-//        }
-//
-//        
-//        
-//    }
-    
+    } 
 
     
     // this will probs be deleted.

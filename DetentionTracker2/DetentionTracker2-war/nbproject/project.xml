@@ -9,6 +9,10 @@
                 <library dirs="100">
                     <file>${reference.DetentionTracker2-ejb.dist}</file>
                 </library>
+                <library dirs="200">
+                    <file>${file.reference.BootsFaces-0.3.7-dist.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
