@@ -62,6 +62,11 @@ public class Receipt implements Serializable{
         this.dateOfPurchase = dateOfPurchase;
     }
 
+    public double returnAmountInDollars()
+    {
+        return (double)amount/100.00;
+    }
+    
     public int getAmount() {
         return amount;
     }
