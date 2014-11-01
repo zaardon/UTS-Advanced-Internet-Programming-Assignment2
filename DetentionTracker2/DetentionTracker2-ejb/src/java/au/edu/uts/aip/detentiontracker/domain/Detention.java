@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package au.edu.uts.aip.detentiontracker.domain;
 
 import java.io.*;
-import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 /**
- *
- * @author james
+ * This is the JPA entity class that represents a detention within the system
  */
 @Entity
 public class Detention implements Serializable {
@@ -30,11 +25,15 @@ public class Detention implements Serializable {
     public int getDetentionID() {
         return detentionID;
     }
-
+    
     public void setDetentionID(int detentionID) {
         this.detentionID = detentionID;
     }
 
+    /**
+    * Only allows letters and single white spaces/apostrophes (in the case of double names) for a first name
+    * @return a first name
+    */
     @Pattern(regexp="[A-Za-z]+[A-Za-z ']*")
     @Size(min = 1)
     public String getFirstName() {
@@ -45,6 +44,10 @@ public class Detention implements Serializable {
         this.firstName = firstName;
     }
     
+    /**
+    * Only allows letters and single white spaces/apostrophes (in the case of double names) for a last name
+    * @return a last name
+    */
     @Pattern(regexp="[A-Za-z]+[A-Za-z ']*")
     @Size(min = 1)
     public String getLastName() {
@@ -54,6 +57,7 @@ public class Detention implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
     @Enumerated(EnumType.STRING)
     public YearType getYearType() {
         return yearType;
@@ -62,6 +66,7 @@ public class Detention implements Serializable {
     public void setYearType(YearType yearType) {
         this.yearType = yearType;
     }
+    
     @Enumerated(EnumType.STRING)
     public DetentionType getDetentionType() {
         return detentionType;
@@ -70,6 +75,7 @@ public class Detention implements Serializable {
     public void setDetentionType(DetentionType detentionType) {
         this.detentionType = detentionType;
     }
+    
     @Enumerated(EnumType.STRING)
     public DepartmentType getDepartmentType() {
         return departmentType;
@@ -79,6 +85,10 @@ public class Detention implements Serializable {
         this.departmentType = departmentType;
     }
 
+    /**
+    * Only allows numbers, letters, dashes, apostrophes, colons and single white spaces for a reason
+    * @return a reason
+    */
     @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-':()]*")
     @Size(min = 1, max = 40)
     public String getReason() {
@@ -89,6 +99,10 @@ public class Detention implements Serializable {
         this.reason = reason;
     }
     
+    /**
+    * A many to one relationship that allows this detention to belong to a Login object
+    * @return a login
+    */
    @ManyToOne
     public Login getLogin() {
         return login;

@@ -4,6 +4,9 @@ import java.io.*;
 import java.net.*;
 import javax.net.ssl.*;
 
+/**
+ * This is provided from the Discussion Board.
+ */
 public class Helper {
 
     private static byte[] search = "localhost:8081".getBytes();

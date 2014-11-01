@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package au.edu.uts.aip.detentiontracker.domain;
 
 /**
- *
- * @author james
+ * The enum value of the various years used by the detention object
  */
 public enum YearType {
-    
     YEAR07,
     YEAR08,
     YEAR09,

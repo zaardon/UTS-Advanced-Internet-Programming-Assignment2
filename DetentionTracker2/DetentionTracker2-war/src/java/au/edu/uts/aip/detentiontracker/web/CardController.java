@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package au.edu.uts.aip.detentiontracker.web;
 
 import au.edu.uts.aip.detentiontracker.domain.*;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.WebApplicationException;
@@ -20,91 +13,68 @@ import javax.ws.rs.client.Entity;
 import java.io.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.*;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-
-
 
 @Named
 @RequestScoped
 public class CardController implements Serializable {
-    
-    
-    @Resource(name = "pinPayments")
+
+    @Resource(name = "pinPayments") //Sets the resource value belonging to PIN Payments
     String pinPayments;
-    
-     @EJB
+
+    @EJB
     private DetentionTrackerBean detentionTrackerBean;
-    
     private Login currentLogin = new Login();
     private Response response = new Response();
     private PINCard reqCard = new PINCard();
     private CustomerToken customerToken = new CustomerToken();
-    
-    // for  the card 
     private String address_line1;
     private String address_line2;
-    private String  address_city;
-    private String  state;
-    private int  postCode;
-    private String  name;
-    private String  number;
-    private int  expiry_month;
-    private int  expiry_year;
-    private int  cvc;
-    
-    public boolean checkCard()
-    {
+    private String address_city;
+    private String state;
+    private int postCode;
+    private String name;
+    private String number;
+    private int expiry_month;
+    private int expiry_year;
+    private int cvc;
+
+    public boolean checkCard() {
         loadLogin();
         return currentLogin.getToken().isEmpty() != true;
     }
 
-
-    public void loadLogin()
-    {
-          FacesContext context = FacesContext.getCurrentInstance();
+    public void loadLogin() {
+        FacesContext context = FacesContext.getCurrentInstance();
         // find our contextual login
         String username = context.getExternalContext().getUserPrincipal().getName();
         currentLogin = detentionTrackerBean.getLogin(username);
     }
-    
-    public String updateAccount()
-    {
-        try{
-        makeToken();
-        detentionTrackerBean.updateLogin(currentLogin);
-        return "view?faces-redirect=true";
-        }
-        catch (NullPointerException e)
-        {
+
+    public String updateAccount() {
+        try {
+            makeToken();
+            detentionTrackerBean.updateLogin(currentLogin);
+            return "view?faces-redirect=true";
+        } catch (NullPointerException e) {
             System.out.println(e);
         }
         return null;
     }
-    
-    public String updateAccountWithCustomerToken()
-    {
-        try{
-        makeCustomerToken();
-        detentionTrackerBean.updateLogin(currentLogin);
-        return "view?faces-redirect=true";
-        }
-        catch (NullPointerException e)
-        {
+
+    public String updateAccountWithCustomerToken() {
+        try {
+            makeCustomerToken();
+            detentionTrackerBean.updateLogin(currentLogin);
+            return "view?faces-redirect=true";
+        } catch (NullPointerException e) {
             System.out.println(e);
         }
         return null;
     }
-    
-    
-    public void makeToken()
-    {
-       
+
+    public void makeToken() {
+
         //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
-        
         reqCard.setNumber(getNumber());
         reqCard.setExpiry_Month(getExpiry_month());
         reqCard.setExpiry_Year(getExpiry_year());
@@ -116,48 +86,40 @@ public class CardController implements Serializable {
         reqCard.setAddressPostcode(getPostCode());
         reqCard.setAddress_State(getState());
         reqCard.setAddress_Country("Australia");
-        
-        
+
         pinPayments += "cards";
         Client client = null;
-        
-        try{
+
+        try {
             System.out.println("my url is" + pinPayments);
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
                     .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-                    .post(Entity.json(reqCard), Response.class );
-                    
-                    
-            
-            
-             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
-            
-            currentLogin.setToken(response.getResponse().get(0).getToken());
-            
-        } catch (ProcessingException | WebApplicationException | NullPointerException e)
-        {
-             
+                    .post(Entity.json(reqCard), Response.class);
+
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()   ));
-            
-          
-    } finally {
-            if(client != null)
+            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
+
+            currentLogin.setToken(response.getResponse().get(0).getToken());
+
+        } catch (ProcessingException | WebApplicationException | NullPointerException e) {
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()));
+
+        } finally {
+            if (client != null) {
                 client.close();
+            }
         }
     }
-    
-    
-    
-        public void makeCustomerToken()
-    {
-       
+
+    public void makeCustomerToken() {
+
         //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
         PINCard card = new PINCard();
-        
+
         card.setNumber(getNumber());
         card.setExpiry_Month(getExpiry_month());
         card.setExpiry_Year(getExpiry_year());
@@ -169,64 +131,51 @@ public class CardController implements Serializable {
         card.setAddressPostcode(getPostCode());
         card.setAddress_State(getState());
         card.setAddress_Country("Australia");
-        
+
         customerToken.setEmail(currentLogin.getEmail());
         customerToken.setCard(card);
-        
+
         pinPayments += "customers";
         Client client = null;
-        
-        try{
+
+        try {
             System.out.println("my url is" + pinPayments);
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
                     .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-                    .post(Entity.json(customerToken), Response.class );
-                    
-                    
-            
-            
-             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
-            
-            currentLogin.setToken(response.getResponse().get(0).getToken());
-            
-        } catch (ProcessingException | WebApplicationException | NullPointerException e)
-        {
-             
+                    .post(Entity.json(customerToken), Response.class);
+
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()   ));
-            
-          
-    } finally {
-            if(client != null)
+            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
+
+            currentLogin.setToken(response.getResponse().get(0).getToken());
+
+        } catch (ProcessingException | WebApplicationException | NullPointerException e) {
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()));
+
+        } finally {
+            if (client != null) {
                 client.close();
+            }
         }
     }
-    
-    
-    
-    
-    
-    
+
     // gets and sets
-    
-    public Login getCurrentLogin() 
-    {
+    public Login getCurrentLogin() {
         return currentLogin;
     }
-    
-    public Response getResponse()
-    {
+
+    public Response getResponse() {
         return response;
     }
-    
-    public PINCard getReqCard()
-    {
+
+    public PINCard getReqCard() {
         return reqCard;
     }
-    
+
     public String getAddress_line1() {
         return address_line1;
     }
@@ -299,8 +248,6 @@ public class CardController implements Serializable {
         this.expiry_year = expiry_year;
     }
 
-  
-
     public int getCvc() {
         return cvc;
     }
@@ -308,5 +255,5 @@ public class CardController implements Serializable {
     public void setCvc(int cvc) {
         this.cvc = cvc;
     }
-    
+
 }

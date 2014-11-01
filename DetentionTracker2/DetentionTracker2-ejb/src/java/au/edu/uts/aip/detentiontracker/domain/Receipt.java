@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package au.edu.uts.aip.detentiontracker.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.*;
-import javax.validation.constraints.*;
+
 /**
- *
- * @author james
+ * This is the JPA entity class that represents a receipt within the system
  */
 @Entity
-public class Receipt implements Serializable{
-    
-    
+public class Receipt implements Serializable {
+
     private Login login;
     private int receiptID;
     private String description;
@@ -24,8 +17,10 @@ public class Receipt implements Serializable{
     private Date dateOfExpiry;
     private int amount;
 
-    
-    
+    /**
+     * A many to one relationship with an associated login.
+     * @return 
+     */
     @ManyToOne
     public Login getLogin() {
         return login;
@@ -35,6 +30,10 @@ public class Receipt implements Serializable{
         this.login = login;
     }
 
+    /**
+     * An auto generated ID that represents the receipt.
+     * @return an ID
+     */
     @Id
     @GeneratedValue
     public int getReceiptID() {
@@ -52,7 +51,7 @@ public class Receipt implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     @Temporal(TemporalType.DATE)
     public Date getDateOfPurchase() {
         return dateOfPurchase;
@@ -62,11 +61,15 @@ public class Receipt implements Serializable{
         this.dateOfPurchase = dateOfPurchase;
     }
 
-    public double returnAmountInDollars()
-    {
-        return (double)amount/100.00;
+    /**
+     * Function that returns the PIN Payment's charge value from CENTS to DOLLARS.
+     * Used by the receipt page
+     * @return a conversion from cents to dollars
+     */
+    public double returnAmountInDollars() {
+        return (double) amount / 100.00;
     }
-    
+
     public int getAmount() {
         return amount;
     }
@@ -75,27 +78,25 @@ public class Receipt implements Serializable{
         this.amount = amount;
     }
 
-
     @Temporal(TemporalType.DATE)
     public Date getDateOfExpiry() {
         return dateOfExpiry;
     }
 
-    
     public void setDateOfExpiry(Date dateOfExpiry) {
         this.dateOfExpiry = dateOfExpiry;
     }
 
-       public void setDateOfExpiryWithMonth(Date dateOfExpiry, int monthsFromExpiry) {
-        
+    /**
+     * This sets the Expiry Date of the receipt. This only generates the value when PIN Payment's provides
+     * a successful response, in which the current date's month value is increase by an int value
+     * @param dateOfPurchase Date of purchase provided by PIN Payments
+     * @param monthsFromExpiry Int value of the months to add
+     */
+    public void setDateOfExpiryWithMonth(Date dateOfPurchase, int monthsFromExpiry) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(dateOfExpiry);
+        cal.setTime(dateOfPurchase);
         cal.add(Calendar.MONTH, monthsFromExpiry);
-
         this.dateOfExpiry = cal.getTime();
     }
-
-    
-    
-    
 }

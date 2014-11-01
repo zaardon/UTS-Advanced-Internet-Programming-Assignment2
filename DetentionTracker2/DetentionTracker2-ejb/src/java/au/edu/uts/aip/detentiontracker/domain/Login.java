@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package au.edu.uts.aip.detentiontracker.domain;
 
 import java.io.*;
@@ -13,29 +8,27 @@ import javax.validation.constraints.Size;
 import javax.validation.constraints.*;
 
 /**
- *
- * @author james
+ * This is the JPA entity class that represents a user within the system A Login
+ * object has both a list of detentions and receipts associated with it
  */
 @Entity
-public class Login implements Serializable{
-    
+public class Login implements Serializable {
 
     private String username;
-
     private String password;
     private AccountType accountType;
     private String email;
     private String token;
-    private List<Detention> detentions = new ArrayList<>();
+    private List<Detention> detentions = new ArrayList<>(); //These are the relationship mappings for the object's detentions
+    private List<Receipt> receipts = new ArrayList<>(); //These are the relationship mappings for the object's receipts
 
-
-    private List<Receipt> receipts = new ArrayList<>();
-    
-  
-    
+    /**
+     * Only allows letters and numbers for a username
+     * @return a username
+     */
     @Id
     @NotNull
-    @Pattern(regexp="[a-zA-Z_0-9]*")
+    @Pattern(regexp = "[a-zA-Z_0-9]*")
     @Size(min = 1)
     public String getUsername() {
         return username;
@@ -44,9 +37,14 @@ public class Login implements Serializable{
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
+    /**
+     * Only allows letters and numbers for a password
+     *
+     * @return a password
+     */
     @NotNull
-    @Pattern(regexp="[a-zA-Z_0-9]*")
+    @Pattern(regexp = "[a-zA-Z_0-9]*")
     @Size(min = 1)
     public String getPassword() {
         return password;
@@ -55,17 +53,29 @@ public class Login implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    /**
+     * An enum value that is used for the account type
+     *
+     * @return an account type
+     */
     @Enumerated(EnumType.STRING)
-    @Column(name="ACCOUNTTYPE")
+    @Column(name = "ACCOUNTTYPE")
     public AccountType getAccountType() {
         return accountType;
     }
+
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
-    
+
+    /**
+     * The email of the user. 
+     * Must only contain a letter/number for the first character.
+     * @return an email
+     */
     @NotNull
+    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-.]*")
     @Size(min = 1)
     public String getEmail() {
         return email;
@@ -74,18 +84,25 @@ public class Login implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
+
+    /**
+     * A one to many relationship with the object's various detentions
+     * @return list of detentions
+     */
     @OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
     public List<Detention> getDetentions() {
         return detentions;
     }
 
     public void setDetentions(List<Detention> detentions) {
-       this.detentions = detentions;
+        this.detentions = detentions;
     }
-    
-   @OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
+
+    /**
+     * A one to many relationship with the object's various receipts
+     * @return list of receipts
+     */
+    @OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
     public List<Receipt> getReceipts() {
         return receipts;
     }
@@ -93,14 +110,18 @@ public class Login implements Serializable{
     public void setReceipts(List<Receipt> receipts) {
         this.receipts = receipts;
     }
-        public String getToken() {
+
+    /**
+     * Token of the user. Only generated when PIN Payments provides a valid 
+     * token when credit card details are provided
+     * @return a customer token
+     */
+    public String getToken() {
         return token;
     }
 
-    // this is where the variables for the receipt go when we finally know all of them.
-    // getters and setters
     public void setToken(String token) {
         this.token = token;
     }
-    
+
 }
