@@ -1,4 +1,3 @@
-
 package au.edu.uts.aip.detentiontracker.web;
 
 import java.io.Serializable;
@@ -6,8 +5,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * A 'Customer Token' object that is used to process payments with PIN Payments.
- * This allows a customer to be continuously charged with the one token, compared to a 
- * 'Card Token' which can only be used ONCE for ONE payment ONLY.
+ * This allows a customer to be continuously charged with the one token,
+ * compared to a 'Card Token' which can only be used ONCE for ONE payment ONLY.
  */
 @XmlRootElement(name = "card")
 public class CustomerToken implements Serializable {

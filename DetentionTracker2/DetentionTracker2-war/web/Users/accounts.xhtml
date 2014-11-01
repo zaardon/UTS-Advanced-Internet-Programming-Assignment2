@@ -38,23 +38,23 @@
                         </tr> 
                         <tr>
                             <td><h:outputText value="Name on Card: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="cardName" value="#{cardController.name}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="cardName" value="#{cardController.currentCard.name}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Address Line 1: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="addressLine1" value="#{cardController.address_line1}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="addressLine1" value="#{cardController.currentCard.address_Line1}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Address Line 2: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="addressLine2" value="#{cardController.address_line2}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="addressLine2" value="#{cardController.currentCard.address_Line2}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="City: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="city" value="#{cardController.address_city}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="city" value="#{cardController.currentCard.address_City}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="State: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu value="#{cardController.state}" styleClass="createInput">
+                            <td><h:selectOneMenu value="#{cardController.currentCard.address_State}" styleClass="createInput">
                                     <f:selectItem itemValue="NSW" itemLabel="NSW"/>
                                     <f:selectItem itemValue="QLD" itemLabel="QLD"/>
                                     <f:selectItem itemValue="SA" itemLabel="SA"/>
@@ -66,15 +66,15 @@
                         </tr>
                         <tr>
                             <td><h:outputText value="Post Code: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="postCode" value="#{cardController.postCode}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="postCode" value="#{cardController.currentCard.addressPostcode}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="Card Number: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="cardNumber" value="#{cardController.number}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="cardNumber" value="#{cardController.currentCard.number}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td><h:outputText value="EXPIRY DATE    Month: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu converter="javax.faces.Integer" value="#{cardController.expiry_month}" styleClass="createInput">
+                            <td><h:selectOneMenu converter="javax.faces.Integer" value="#{cardController.currentCard.expiry_Month}" styleClass="createInput">
                                     <f:selectItem itemValue="1" itemLabel="1"/>
                                     <f:selectItem itemValue="2" itemLabel="2"/>
                                     <f:selectItem itemValue="3" itemLabel="3"/>
@@ -91,7 +91,7 @@
 
 
                             <td><h:outputText value=" Year: " styleClass="createHeader" /></td>
-                            <td><h:selectOneMenu converter="javax.faces.Integer" value="#{cardController.expiry_year}" styleClass="createInput">
+                            <td><h:selectOneMenu converter="javax.faces.Integer" value="#{cardController.currentCard.expiry_Year}" styleClass="createInput">
                                     <f:selectItem itemValue="2014" itemLabel="2014"/>
                                     <f:selectItem itemValue="2015" itemLabel="2015"/>
                                     <f:selectItem itemValue="2016" itemLabel="2016"/>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td><h:outputText value="CVC: " styleClass="createHeader" /></td>
-                            <td><h:inputText id="cvc" value="#{cardController.cvc}" styleClass="createInput"/> </td>
+                            <td><h:inputText id="cvc" value="#{cardController.currentCard.CVC}" styleClass="createInput"/> </td>
                         </tr>
                         <tr>
                             <td> <h:inputHidden value="#{cardController.currentLogin.password}"/>

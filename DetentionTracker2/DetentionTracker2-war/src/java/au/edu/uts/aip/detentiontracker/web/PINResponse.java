@@ -10,8 +10,8 @@ import java.util.*;
 import javax.xml.bind.annotation.*;
 
 /**
- *
- * @author james
+ * This  is the PIN Response JSON object used by the PIN Payments processing system.
+ * This is boiler plate code, with the exact specifications set by the PIN Payments API
  */
 @XmlRootElement(name ="response")
 public class PINResponse implements Serializable {
@@ -27,7 +27,7 @@ private String createdAt;
 private String statusMessage;
 private String errorMessage;
 private PINCard card;
-private List<String> transfer = new ArrayList<String>();
+private List<String> transfer = new ArrayList<>();
 private int amountRefunded;
 private int totalFees;
 private int merchantEntitlement;

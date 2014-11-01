@@ -1,28 +1,28 @@
-
 package au.edu.uts.aip.detentiontracker.web;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * This is the PIN Card object used by PIN Payments. It is used to create a Customer Token so 
- * that a user may be charged for the service.
+ * This is the PIN Card object used by PIN Payments.This is boiler plate code 
+ * to match the requirements of PIN Payments
  */
 @XmlRootElement(name = "card")
-public class PINCard  implements Serializable{
-private String token;
-private String scheme;
-private String number;
-private int CVC;
-private int expiry_month;
-private int expiry_year;
-private String name;
-private String address_line1;
-private String address_line2;
-private String address_city;
-private int addressPostcode;
-private String address_state;
-private String address_country;
+public class PINCard implements Serializable {
+
+    private String token;
+    private String scheme;
+    private String number;
+    private int CVC;
+    private int expiry_month;
+    private int expiry_year;
+    private String name;
+    private String address_line1;
+    private String address_line2;
+    private String address_city;
+    private int addressPostcode;
+    private String address_state;
+    private String address_country;
 
     public int getCVC() {
         return CVC;
@@ -31,7 +31,6 @@ private String address_country;
     public void setCVC(int CVC) {
         this.CVC = CVC;
     }
-
 
     public String getToken() {
         return token;
@@ -134,7 +133,4 @@ private String address_country;
         return "PINCard{" + "token=" + token + ", scheme=" + scheme + ", displayNumber=" + number + ", expiryMonth=" + expiry_month + ", expiryYear=" + expiry_year + ", name=" + name + ", addressLine1=" + address_line1 + ", addressLine2=" + address_line2 + ", addressCity=" + address_city + ", addressPostcode=" + addressPostcode + ", addressState=" + address_state + ", addressCountry=" + address_country + '}';
     }
 
-    
-    
-    
 }

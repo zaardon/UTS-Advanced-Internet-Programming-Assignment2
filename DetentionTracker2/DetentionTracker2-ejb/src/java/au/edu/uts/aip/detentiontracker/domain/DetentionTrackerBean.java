@@ -73,7 +73,7 @@ public class DetentionTrackerBean {
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Login> allLoginsByPayingAccountType() {
         TypedQuery<Login> query;
-        query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :free AND l.accountType <> :administrator AND l.token <> NULL ", Login.class);
+        query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :free AND l.accountType <> :administrator AND l.token is not NULL ", Login.class);
         query.setParameter("free", AccountType.Free);
         query.setParameter("administrator", AccountType.Administrator);
         return query.getResultList();
@@ -136,7 +136,7 @@ public class DetentionTrackerBean {
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Object> findCountOfStudentsExistingDetentionsOnUsername(String username) {
         Query query;
-        query = em.createQuery("SELECT COUNT(d.detentionID) as total, d.firstName, d.lastName FROM Detention d WHERE d.login.username = :user GROUP BY d.lastName, d.firstName ORDER BY total DESC", Detention.class);
+        query = em.createQuery("SELECT COUNT(d.detentionID) as total, d.firstName, d.lastName, d.yearType FROM Detention d WHERE d.login.username = :user GROUP BY d.lastName, d.firstName, d.yearType ORDER BY total DESC", Detention.class);
         query.setParameter("user", username);
         List result = query.getResultList();
         return result;

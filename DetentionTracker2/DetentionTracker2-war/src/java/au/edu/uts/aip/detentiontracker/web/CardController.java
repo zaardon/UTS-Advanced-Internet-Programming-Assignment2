@@ -14,6 +14,10 @@ import java.io.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+/**
+ * This is the controller that controls all card processing functionalities
+ * within the system
+ */
 @Named
 @RequestScoped
 public class CardController implements Serializable {
@@ -27,92 +31,60 @@ public class CardController implements Serializable {
     private Response response = new Response();
     private PINCard reqCard = new PINCard();
     private CustomerToken customerToken = new CustomerToken();
-    private String address_line1;
-    private String address_line2;
-    private String address_city;
-    private String state;
-    private int postCode;
-    private String name;
-    private String number;
-    private int expiry_month;
-    private int expiry_year;
-    private int cvc;
+    private PINCard currentCard = new PINCard();
 
     public boolean checkCard() {
         loadLogin();
         return currentLogin.getToken().isEmpty() != true;
     }
 
+    /**
+     * This method uses a FacesContext to find the current person who is logged
+     * in. It then loads the current login object from the EJB
+     */
     public void loadLogin() {
         FacesContext context = FacesContext.getCurrentInstance();
-        // find our contextual login
         String username = context.getExternalContext().getUserPrincipal().getName();
         currentLogin = detentionTrackerBean.getLogin(username);
     }
 
-    public String updateAccount() {
-        try {
-            makeToken();
-            detentionTrackerBean.updateLogin(currentLogin);
-            return "view?faces-redirect=true";
-        } catch (NullPointerException e) {
-            System.out.println(e);
-        }
-        return null;
-    }
-
+    /**
+     * This updates the current logged in user with a customer token in the event they attempt to
+     * submit their credit card information
+     * @return null 
+     */
     public String updateAccountWithCustomerToken() {
-        try {
-            makeCustomerToken();
-            detentionTrackerBean.updateLogin(currentLogin);
-            return null;
-        } catch (NullPointerException e) {
-            System.out.println(e);
-        }
+        makeCustomerToken();
+        detentionTrackerBean.updateLogin(currentLogin);
         return null;
     }
 
+    /**
+     * This method creates the customer token with the provided credit card information from the XHTML page
+     */
     public void makeCustomerToken() {
-
-        //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
-        PINCard card = new PINCard();
-
-        card.setNumber(getNumber());
-        card.setExpiry_Month(getExpiry_month());
-        card.setExpiry_Year(getExpiry_year());
-        card.setCVC(getCvc());
-        card.setName(getName());
-        card.setAddress_Line1(getAddress_line1());
-        card.setAddress_Line2(getAddress_line2());
-        card.setAddress_City(getAddress_city());
-        card.setAddressPostcode(getPostCode());
-        card.setAddress_State(getState());
-        card.setAddress_Country("Australia");
-
+        currentCard.setAddress_Country("Australia");
         customerToken.setEmail(currentLogin.getEmail());
-        customerToken.setCard(card);
-
+        customerToken.setCard(currentCard);
         pinPayments += "customers";
         Client client = null;
-
         try {
-            System.out.println("my url is" + pinPayments);
+            //Attempts to create a customer token and adds it to the user if it succeeds
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
                     .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
                     .post(Entity.json(customerToken), Response.class);
-
             FacesContext context = FacesContext.getCurrentInstance();
+            //A success message is shown on the page
             context.addMessage(null, new FacesMessage("Congratulations! Your Credit Card information has been stored!"));
-
             currentLogin.setToken(response.getResponse().get(0).getToken());
-
+            
         } catch (ProcessingException | WebApplicationException | NullPointerException e) {
-
             FacesContext context = FacesContext.getCurrentInstance();
+            //If it fails, an error message is displayed on the page
             context.addMessage(null, new FacesMessage("Credit Card information was not acceptable. Please Retry!"));
-
+            
         } finally {
             if (client != null) {
                 client.close();
@@ -120,7 +92,6 @@ public class CardController implements Serializable {
         }
     }
 
-    // gets and sets
     public Login getCurrentLogin() {
         return currentLogin;
     }
@@ -133,84 +104,7 @@ public class CardController implements Serializable {
         return reqCard;
     }
 
-    public String getAddress_line1() {
-        return address_line1;
+    public PINCard getCurrentCard() {
+        return currentCard;
     }
-
-    public void setAddress_line1(String address_line1) {
-        this.address_line1 = address_line1;
-    }
-
-    public String getAddress_line2() {
-        return address_line2;
-    }
-
-    public void setAddress_line2(String address_line2) {
-        this.address_line2 = address_line2;
-    }
-
-    public String getAddress_city() {
-        return address_city;
-    }
-
-    public void setAddress_city(String address_city) {
-        this.address_city = address_city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(int postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public int getExpiry_month() {
-        return expiry_month;
-    }
-
-    public void setExpiry_month(int expiry_month) {
-        this.expiry_month = expiry_month;
-    }
-
-    public int getExpiry_year() {
-        return expiry_year;
-    }
-
-    public void setExpiry_year(int expiry_year) {
-        this.expiry_year = expiry_year;
-    }
-
-    public int getCvc() {
-        return cvc;
-    }
-
-    public void setCvc(int cvc) {
-        this.cvc = cvc;
-    }
-
 }
