@@ -6,8 +6,6 @@ package au.edu.uts.aip.detentiontracker.domain;
 import java.util.*;
 import javax.ejb.*;
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import java.security.NoSuchAlgorithmException;
 
 @Stateless
@@ -17,20 +15,13 @@ public class DetentionTrackerBean {
     private EntityManager em;
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public List<Login> findAllPeople() {
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Login> query = builder.createQuery(Login.class);
-        return em.createQuery(query).getResultList();
-    }
-
-    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public List<Detention> findAllDetetions(String username) {
+    public List<Detention> findAllDetetionsOnUsername(String username) {
         Login managed = em.find(Login.class, username);
         return managed.getDetentions();
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public Detention findDetention(int detentionID) {
+    public Detention findDetentionOnID(int detentionID) {
         return em.find(Detention.class, detentionID);
     }
 
@@ -90,7 +81,7 @@ public class DetentionTrackerBean {
 
     //RENAME TO allLoginsThatAreNotAdmin
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public List<Login> allLogins() {
+    public List<Login> allLoginsThatAreNotAdmin() {
         TypedQuery<Login> query;
         query = em.createQuery("SELECT l FROM Login l WHERE l.accountType <> :administrator", Login.class);
         query.setParameter("administrator", AccountType.Administrator);
@@ -107,9 +98,7 @@ public class DetentionTrackerBean {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void createInitialLogin(Login login) throws NoSuchAlgorithmException {
         try {
-            // BIGGEST PLAYS AU
             login.setPassword(EncryptionUtility.hash256(login.getPassword()));
-
             em.persist(login);
         } catch (NoSuchAlgorithmException e) {
             System.out.println(e);
@@ -119,26 +108,22 @@ public class DetentionTrackerBean {
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public Login getLogin(String username) {
         Login loginToReturn = em.find(Login.class, username);
-
         return loginToReturn;
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void updateLogin(Login login) {
-        // DON'T FORGET THE RECEIPT
-        List<Detention> managedDet = findAllDetetions(login.getUsername());
+        List<Detention> managedDet = findAllDetetionsOnUsername(login.getUsername());
         List<Receipt> managedRec = findAllReceiptsForLogin(login.getUsername());
         login.setDetentions(managedDet);
         login.setReceipts(managedRec);
         em.merge(login);
     }
 
-    // get all the logins
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Receipt> findAllReceiptsForLogin(String username) {
         Login managed = em.find(Login.class, username);
         return managed.getReceipts();
-
     }
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
@@ -149,7 +134,7 @@ public class DetentionTrackerBean {
     }
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public List<Object> findTotalCountOfStudentName(String username) {
+    public List<Object> findCountOfStudentsExistingDetentionsOnUsername(String username) {
         Query query;
         query = em.createQuery("SELECT COUNT(d.detentionID) as total, d.firstName, d.lastName FROM Detention d WHERE d.login.username = :user GROUP BY d.lastName, d.firstName ORDER BY total DESC", Detention.class);
         query.setParameter("user", username);
@@ -168,7 +153,7 @@ public class DetentionTrackerBean {
         em.persist(receipt);
     }
 
-    public void addLoginToReceipt(Receipt receipt, Login login) {
+    public void addReceiptToLogin(Receipt receipt, Login login) {
         try {
             //detention has it's login set and created.
             receipt.setLogin(login);

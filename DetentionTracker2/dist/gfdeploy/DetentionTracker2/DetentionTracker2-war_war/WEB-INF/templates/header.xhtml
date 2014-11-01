@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <!-- This is the header template for the website. It displays the options of the website to the user throughout their navigation -->
+ 
+    <h:head>
+        <h:outputStylesheet  name="style.css" library="css" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+    </h:head>
+    <h:body>
+    <table border="3" bordercolor="000000" style="width:100%;" cellpadding="0" cellspacing="0">
+        <thead class="templatePageTableHeader">
+            <tr>
+                <th class="templatePageTableHeaderText" colspan="3">
+                    <h1 class="h1"> Detention Tracker 2.0</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td class="templatePageTableRow" >
+                    
+                    
+                    <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator'}" id="create" value="/DetentionTracker2-war/faces/Users/create.xhtml">  
+            <h:outputText value="Create Detention" styleClass="h2"/>
+         </h:outputLink>
+                    
+                    <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="admin" value="/DetentionTracker2-war/faces/Administration/admin.xhtml">  
+            <h:outputText value="Billing Management" styleClass="h2"/>
+         </h:outputLink>            
+                </td>
+                
+
+                <td class="templatePageTableRow">
+                    
+                    
+         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="view" value="/DetentionTracker2-war/faces/Users/view.xhtml">  
+            <h:outputText value="View Detentions" styleClass="h2"/>
+         </h:outputLink>
+         <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="receipt" value="/DetentionTracker2-war/faces/Administration/receipt.xhtml">  
+            <h:outputText value="View Receipts" styleClass="h2"/>
+         </h:outputLink>          
+                    
+                    
+                </td>
+                
+                <td class="templatePageTableRow" >
+            <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="information" value="/DetentionTracker2-war/faces/Administration/information.xhtml">  
+            <h:outputText value="Accounts Information" styleClass="h2"/>
+         </h:outputLink>   
+        <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="total" value="/DetentionTracker2-war/faces/Users/total.xhtml">  
+            <h:outputText value="Student Totals" styleClass="h2"/>
+         </h:outputLink>       
+                </td>
+                
+                
+                
+            </tr>            
+        </tbody>
+    </table>       
+        <ui:insert name="content"> Default Content </ui:insert>
+    </h:body>      
+</html>
+

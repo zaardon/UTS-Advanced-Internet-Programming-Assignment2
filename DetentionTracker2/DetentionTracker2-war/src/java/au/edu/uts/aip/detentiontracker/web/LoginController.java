@@ -54,7 +54,7 @@ public class LoginController implements Serializable {
     
     public int amountOfNonAdminAccounts()
     {
-        return detentionTrackerBean.allLogins().size();
+        return detentionTrackerBean.allLoginsThatAreNotAdmin().size();
     }
             
     

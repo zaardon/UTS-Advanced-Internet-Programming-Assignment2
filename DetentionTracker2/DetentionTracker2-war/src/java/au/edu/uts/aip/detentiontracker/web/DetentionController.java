@@ -1,8 +1,9 @@
+
+package au.edu.uts.aip.detentiontracker.web;
+
 /*
  * The controller for the Detentions aspect of the web site
  */
-
-package au.edu.uts.aip.detentiontracker.web;
 
 import au.edu.uts.aip.detentiontracker.domain.*;
 import java.io.*;
@@ -10,9 +11,7 @@ import java.util.*;
 import javax.ejb.*;
 import javax.enterprise.context.*;
 import javax.faces.context.FacesContext;
-import javax.faces.view.*;
 import javax.inject.*;
-import javax.servlet.http.HttpServletRequest;
 
 @Named
 @RequestScoped
@@ -35,7 +34,7 @@ public class DetentionController implements Serializable {
      */
     public void loadDetention(int detentionID) {
         //change later after beans
-        currentDetention = detentionTrackerBean.findDetention(detentionID);
+        currentDetention = detentionTrackerBean.findDetentionOnID(detentionID);
     }
      
     /**
@@ -77,7 +76,7 @@ public class DetentionController implements Serializable {
      */
     public List<Detention> findAllDetentions() {
 
-            return  detentionTrackerBean.findAllDetetions(getUser());
+            return  detentionTrackerBean.findAllDetetionsOnUsername(getUser());
     }
     
     /**
@@ -89,12 +88,12 @@ public class DetentionController implements Serializable {
         // find the login in the db
         // add that to our current detention
         // then add that detention to our login ? yes
-        return detentionTrackerBean.findAllDetetions(getUser()).size();
+        return detentionTrackerBean.findAllDetetionsOnUsername(getUser()).size();
     } 
     
     public List<Object> findTotalCountOfStudentName()
     {  
-        return detentionTrackerBean.findTotalCountOfStudentName(getUser());
+        return detentionTrackerBean.findCountOfStudentsExistingDetentionsOnUsername(getUser());
     }
     private String getUser()
     {

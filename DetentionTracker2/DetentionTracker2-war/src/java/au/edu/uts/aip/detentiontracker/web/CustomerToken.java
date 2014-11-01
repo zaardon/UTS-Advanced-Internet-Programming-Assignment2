@@ -1,20 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package au.edu.uts.aip.detentiontracker.web;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author Alex
+ * A 'Customer Token' object that is used to process payments with PIN Payments.
+ * This allows a customer to be continuously charged with the one token, compared to a 
+ * 'Card Token' which can only be used ONCE for ONE payment ONLY.
  */
 @XmlRootElement(name = "card")
-public class CustomerToken  implements Serializable{
-    
+public class CustomerToken implements Serializable {
+
     private String email;
     private PINCard card;
 
@@ -33,7 +30,4 @@ public class CustomerToken  implements Serializable{
     public void setCard(PINCard card) {
         this.card = card;
     }
-    
-    
-    
 }

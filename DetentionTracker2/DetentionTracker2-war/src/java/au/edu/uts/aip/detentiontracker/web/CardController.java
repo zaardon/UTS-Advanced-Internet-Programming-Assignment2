@@ -65,54 +65,11 @@ public class CardController implements Serializable {
         try {
             makeCustomerToken();
             detentionTrackerBean.updateLogin(currentLogin);
-            return "view?faces-redirect=true";
+            return null;
         } catch (NullPointerException e) {
             System.out.println(e);
         }
         return null;
-    }
-
-    public void makeToken() {
-
-        //lolcard.setToken("ch_aM8lCZsusic-ehncUVjFFw");
-        reqCard.setNumber(getNumber());
-        reqCard.setExpiry_Month(getExpiry_month());
-        reqCard.setExpiry_Year(getExpiry_year());
-        reqCard.setCVC(getCvc());
-        reqCard.setName(getName());
-        reqCard.setAddress_Line1(getAddress_line1());
-        reqCard.setAddress_Line2(getAddress_line2());
-        reqCard.setAddress_City(getAddress_city());
-        reqCard.setAddressPostcode(getPostCode());
-        reqCard.setAddress_State(getState());
-        reqCard.setAddress_Country("Australia");
-
-        pinPayments += "cards";
-        Client client = null;
-
-        try {
-            System.out.println("my url is" + pinPayments);
-            client = ClientBuilder.newClient();
-            response = client.target(pinPayments)
-                    .request()
-                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
-                    .post(Entity.json(reqCard), Response.class);
-
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
-
-            currentLogin.setToken(response.getResponse().get(0).getToken());
-
-        } catch (ProcessingException | WebApplicationException | NullPointerException e) {
-
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()));
-
-        } finally {
-            if (client != null) {
-                client.close();
-            }
-        }
     }
 
     public void makeCustomerToken() {
@@ -147,14 +104,14 @@ public class CardController implements Serializable {
                     .post(Entity.json(customerToken), Response.class);
 
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("token is this mate : " + response.getResponse().get(0).getToken()));
+            context.addMessage(null, new FacesMessage("Congratulations! Your Credit Card information has been stored!"));
 
             currentLogin.setToken(response.getResponse().get(0).getToken());
 
         } catch (ProcessingException | WebApplicationException | NullPointerException e) {
 
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("OH SHIT SON YOU BROKE IT " + e.getLocalizedMessage().toString() + e.getMessage().toString()));
+            context.addMessage(null, new FacesMessage("Credit Card information was not acceptable. Please Retry!"));
 
         } finally {
             if (client != null) {

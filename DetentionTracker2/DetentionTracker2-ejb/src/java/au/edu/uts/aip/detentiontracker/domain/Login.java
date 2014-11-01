@@ -75,7 +75,7 @@ public class Login implements Serializable {
      * @return an email
      */
     @NotNull
-    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-.]*")
+    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-.@]*")
     @Size(min = 1)
     public String getEmail() {
         return email;

@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package au.edu.uts.aip.detentiontracker.web;
 
 import java.io.Serializable;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author james
+ * This is the PIN Card object used by PIN Payments. It is used to create a Customer Token so 
+ * that a user may be charged for the service.
  */
 @XmlRootElement(name = "card")
 public class PINCard  implements Serializable{
-    
 private String token;
 private String scheme;
 private String number;
@@ -80,9 +73,6 @@ private String address_country;
         this.expiry_year = expiry_year;
     }
 
-    //not working?
-    @Pattern(regexp="[A-Za-z]+[A-Za-z -']*")
-    @Size(min = 1, max = 40)
     public String getName() {
         return name;
     }
