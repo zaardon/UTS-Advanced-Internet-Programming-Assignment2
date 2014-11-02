@@ -1,5 +1,8 @@
 package au.edu.uts.aip.detentiontracker.web;
 
+import au.edu.uts.aip.detentiontracker.domain.CustomerToken;
+import au.edu.uts.aip.detentiontracker.domain.PINCard;
+import au.edu.uts.aip.detentiontracker.domain.Response;
 import au.edu.uts.aip.detentiontracker.domain.*;
 import javax.annotation.Resource;
 import javax.ejb.EJB;

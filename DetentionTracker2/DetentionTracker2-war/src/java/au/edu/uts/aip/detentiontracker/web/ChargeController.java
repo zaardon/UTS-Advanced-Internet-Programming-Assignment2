@@ -3,6 +3,8 @@ package au.edu.uts.aip.detentiontracker.web;
 /**
  * This is the Charge Controller class. This handles the charging functions of the system
  */
+import au.edu.uts.aip.detentiontracker.domain.PINTokenResponse;
+import au.edu.uts.aip.detentiontracker.domain.Response;
 import au.edu.uts.aip.detentiontracker.domain.*;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
