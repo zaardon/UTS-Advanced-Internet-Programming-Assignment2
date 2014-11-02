@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-template="/WEB-INF/templates/header.xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/header.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
 
     <!-- This allows a user to create a detention in the website. Fields are not able to use accent characters. First and Last name 
-    input fields, in particular, can only use letters, apostrophes, dashes and single spaces. -->
-    
+    input fields, in particular, can only use letters, apostrophes, dashes and single spaces. FREE users can only submit 5 detentions before error messages are shown-->
+
     <ui:define name="title">
-    Create a Detention
+        Create a Detention
     </ui:define>
     <ui:define name="content">
         <h:head>
@@ -76,13 +76,15 @@ template="/WEB-INF/templates/header.xhtml"
                     </table>
                 </div>
             </h:form>
+            <!-- Output text is rendered only if the user is a free account has has over 5 detentions already submitted -->
             <h:outputText rendered="#{!loginController.doesFreeAccountNotHaveMaxDetentions()}" styleClass="stdRowHeader" value="You have exceeded your limit of 5 detentions! Please upgrade your account for more functionality" />
+            <!-- Output text is rendered only if the user has a valid customer token for their paying account -->
             <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
             <br/>
-               <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount() or !loginController.doesFreeAccountNotHaveMaxDetentions()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-            <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
-         </h:outputLink>
-            
+            <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount() or !loginController.doesFreeAccountNotHaveMaxDetentions()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
+                <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
+            </h:outputLink>
+
         </h:body>
     </ui:define>
 </ui:composition>

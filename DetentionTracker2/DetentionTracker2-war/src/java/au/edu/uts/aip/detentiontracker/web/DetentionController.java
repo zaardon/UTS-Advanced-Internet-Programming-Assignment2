@@ -84,10 +84,21 @@ public class DetentionController implements Serializable {
         return detentionTrackerBean.findAllDetetionsOnUsername(getUser()).size();
     }
 
+    /**
+     * Used to provide a list of generic objects that represent students and the
+     * amount of detentions they currently have within the system.
+     *
+     * @return a list of students and their detention COUNT
+     */
     public List<Object> findTotalCountOfStudentName() {
         return detentionTrackerBean.findCountOfStudentsExistingDetentionsOnUsername(getUser());
     }
 
+    /**
+     * Returns the FacesContext of the current username
+     *
+     * @return A FacesContext
+     */
     private String getUser() {
         FacesContext context = FacesContext.getCurrentInstance();
         return context.getExternalContext().getUserPrincipal().getName();

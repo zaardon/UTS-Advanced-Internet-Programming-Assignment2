@@ -6,8 +6,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core">
 
-    <!-- This allows a user to create a detention in the website. Fields are not able to use accent characters. First and Last name 
-    input fields, in particular, can only use letters, apostrophes, dashes and single spaces. -->
+    <!-- This allows a user to submit their credit card information to generate a customer token with PIN Payments. 
+    Fields are not able to use accent characters.  -->
 
     <ui:define name="title">
         Account Management
@@ -68,6 +68,7 @@
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>
+                            <!-- Error is displayed if the postcode does not have only 4 digits -->
                             <td><h:outputText value="Post Code: " styleClass="createHeader" /></td>
                             <td><h:inputText id="postCode" value="#{cardController.currentCard.addressPostcode}" styleClass="createInput" 
                                              converterMessage="Please enter digits only." validatorMessage="Please enter 4 digits only."> 
@@ -109,6 +110,7 @@
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>
+                            <!-- Error is displayed if the CVC does not only have 3 digits -->
                             <td><h:outputText value="CVC: " styleClass="createHeader" /></td>
                             <td><h:inputText id="cvc" value="#{cardController.currentCard.CVC}" styleClass="createInput" 
                                              converterMessage="Please enter digits only." validatorMessage="Please enter 3 digits only."> 

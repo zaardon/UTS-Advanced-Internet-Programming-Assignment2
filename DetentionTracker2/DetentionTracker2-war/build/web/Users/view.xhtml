@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-template="/WEB-INF/templates/header.xhtml"
-xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:f="http://xmlns.jcp.org/jsf/core"
-xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/header.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- This page displays the current detentions to the user. If there are no detentions, then a message
     informing the user that there are none is displayed -->
-    
+
     <ui:define name="title">
-    View Detentions
+        View Detentions
     </ui:define>
-        <ui:define name="content">
-            <h:head>
-                <h:outputStylesheet  name="style.css" library="css" />
-            </h:head>
+    <ui:define name="content">
+        <h:head>
+            <h:outputStylesheet  name="style.css" library="css" />
+        </h:head>
         <h:body>
             <h1 class="h1">Current Detentions</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
-                 <h:form rendered="#{(detentionController.sizeOfDetentionList() != 0) and (loginController.doesHaveTokenAndValidAccount())}">
+                <h:form rendered="#{(detentionController.sizeOfDetentionList() != 0) and (loginController.doesHaveTokenAndValidAccount())}">
                     <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findAllDetentions()}">
                         <h:column>
                             <f:facet name="header">
@@ -70,22 +70,23 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
                     </h:dataTable>
                 </h:form>
                 <!-- Output text is rendered only if the size of the detention list is 0 -->
-                 <h:outputText rendered="#{detentionController.sizeOfDetentionList()== 0 and loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="No detentions to view!" />
-            
-                             <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
-            <br/>
-               <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-            <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
-         </h:outputLink>
+                <h:outputText rendered="#{detentionController.sizeOfDetentionList()== 0 and loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="No detentions to view!" />
+
+                <!-- Output text is rendered if the user has a paying account and does not have a valid customer token -->
+                <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
+                <br/>
+                <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
+                    <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
+                </h:outputLink>
             </div>
             <h:form >
                 <ui:insert name="footer">
                     <ui:include src="/WEB-INF/templates/footer.xhtml" />
                 </ui:insert>
             </h:form>
-            
 
-            
+
+
         </h:body>
     </ui:define>
 </ui:composition>
