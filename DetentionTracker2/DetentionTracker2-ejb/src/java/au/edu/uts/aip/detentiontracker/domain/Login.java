@@ -24,6 +24,7 @@ public class Login implements Serializable {
 
     /**
      * Only allows letters and numbers for a username
+     *
      * @return a username
      */
     @Id
@@ -70,12 +71,13 @@ public class Login implements Serializable {
     }
 
     /**
-     * The email of the user. 
-     * Must only contain a letter/number for the first character.
+     * The email of the user. Must only contain a letter/numbers, and must
+     * consist of an '@' and '.com' part.
+     *
      * @return an email
      */
     @NotNull
-    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-.@]*")
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     @Size(min = 1)
     public String getEmail() {
         return email;
@@ -87,6 +89,7 @@ public class Login implements Serializable {
 
     /**
      * A one to many relationship with the object's various detentions
+     *
      * @return list of detentions
      */
     @OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
@@ -100,6 +103,7 @@ public class Login implements Serializable {
 
     /**
      * A one to many relationship with the object's various receipts
+     *
      * @return list of receipts
      */
     @OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
@@ -112,8 +116,9 @@ public class Login implements Serializable {
     }
 
     /**
-     * Token of the user. Only generated when PIN Payments provides a valid 
+     * Token of the user. Only generated when PIN Payments provides a valid
      * token when credit card details are provided
+     *
      * @return a customer token
      */
     public String getToken() {
