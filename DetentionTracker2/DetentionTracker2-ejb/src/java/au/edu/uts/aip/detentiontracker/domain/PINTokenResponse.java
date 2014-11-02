@@ -179,5 +179,4 @@ public class PINTokenResponse implements Serializable {
     public String toString() {
         return "PINTokenResponse{" + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ipAddress=" + ipAddress + ", createdAt=" + createdAt + ", statusMessage=" + statusMessage + ", errorMessage=" + errorMessage + ", cardToken=" + customer_token + ", transfer=" + transfer + ", amountRefunded=" + amountRefunded + ", totalFees=" + totalFees + ", merchantEntitlement=" + merchantEntitlement + ", refundPending=" + refundPending + ", authorisationExpired=" + authorisationExpired + ", captured=" + captured + ", settlementCurrency=" + settlementCurrency + '}';
     }
-
 }

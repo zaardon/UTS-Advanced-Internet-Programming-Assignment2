@@ -1,4 +1,3 @@
-
 package au.edu.uts.aip.detentiontracker.domain;
 
 import java.io.Serializable;

@@ -6,8 +6,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * This is the PIN Card object used by PIN Payments.This is boiler plate code 
- * to match the requirements of PIN Payments
+ * This is the PIN Card object used by PIN Payments.This is boiler plate code to
+ * match the requirements of PIN Payments
  */
 @XmlRootElement(name = "card")
 public class PINCard implements Serializable {
@@ -50,7 +50,12 @@ public class PINCard implements Serializable {
         this.scheme = scheme;
     }
 
-    @Pattern(regexp="[0-9]+[0-9]*", message = "Please enter a valid card number")
+    /**
+     * The card number can only contain numbers
+     *
+     * @return a card number
+     */
+    @Pattern(regexp = "[0-9]+[0-9]*", message = "Please enter a valid card number")
     @Size(min = 1, message = "Card number cannot be blank")
     public String getNumber() {
         return number;
@@ -76,7 +81,12 @@ public class PINCard implements Serializable {
         this.expiry_year = expiry_year;
     }
 
-    @Pattern(regexp="[A-Za-z]+[A-Za-z ']*", message = "Please enter a valid name")
+    /**
+     * The customers name must only contain letters, spaces or apostrophes
+     *
+     * @return a name
+     */
+    @Pattern(regexp = "[A-Za-z]+[A-Za-z ']*", message = "Please enter a valid name")
     @Size(min = 1, message = "Name cannot be blank")
     public String getName() {
         return name;
@@ -86,7 +96,13 @@ public class PINCard implements Serializable {
         this.name = name;
     }
 
-    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-'/]*", message = "Please enter a valid address")
+    /**
+     * The address must only contain letters, numbers, apostrophes, dashes,
+     * spaces or slashes
+     *
+     * @return an address
+     */
+    @Pattern(regexp = "[A-Za-z0-9]+[A-Za-z 0-9-'/]*", message = "Please enter a valid address")
     @Size(min = 1, max = 40, message = "Address cannot be blank")
     public String getAddress_Line1() {
         return address_line1;
@@ -104,7 +120,12 @@ public class PINCard implements Serializable {
         this.address_line2 = address_line2;
     }
 
-    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-'/]*", message = "Please enter a valid city")
+    /**
+     * City must only contain letters or spaces
+     *
+     * @return a city
+     */
+    @Pattern(regexp = "[A-Za-z0-9]+[A-Za-z ]*", message = "Please enter a valid city")
     @Size(max = 20, message = "City cannot be blank")
     public String getAddress_City() {
         return address_city;
@@ -142,5 +163,4 @@ public class PINCard implements Serializable {
     public String toString() {
         return "PINCard{" + "token=" + token + ", scheme=" + scheme + ", displayNumber=" + number + ", expiryMonth=" + expiry_month + ", expiryYear=" + expiry_year + ", name=" + name + ", addressLine1=" + address_line1 + ", addressLine2=" + address_line2 + ", addressCity=" + address_city + ", addressPostcode=" + addressPostcode + ", addressState=" + address_state + ", addressCountry=" + address_country + '}';
     }
-
 }

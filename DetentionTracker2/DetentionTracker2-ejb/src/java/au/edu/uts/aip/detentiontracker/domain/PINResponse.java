@@ -10,31 +10,32 @@ import java.util.*;
 import javax.xml.bind.annotation.*;
 
 /**
- * This  is the PIN Response JSON object used by the PIN Payments processing system.
- * This is boiler plate code, with the exact specifications set by the PIN Payments API
+ * This is the PIN Response JSON object used by the PIN Payments processing
+ * system. This is boiler plate code, with the exact specifications set by the
+ * PIN Payments API
  */
-@XmlRootElement(name ="response")
+@XmlRootElement(name = "response")
 public class PINResponse implements Serializable {
-    
-private String token;
-private boolean success;
-private int amount;
-private String currency;
-private String description;
-private String email;
-private String ipAddress;
-private String createdAt;
-private String statusMessage;
-private String errorMessage;
-private PINCard card;
-private List<String> transfer = new ArrayList<>();
-private int amountRefunded;
-private int totalFees;
-private int merchantEntitlement;
-private boolean refundPending;
-private boolean authorisationExpired;
-private boolean captured;
-private String settlementCurrency;
+
+    private String token;
+    private boolean success;
+    private int amount;
+    private String currency;
+    private String description;
+    private String email;
+    private String ipAddress;
+    private String createdAt;
+    private String statusMessage;
+    private String errorMessage;
+    private PINCard card;
+    private List<String> transfer = new ArrayList<>();
+    private int amountRefunded;
+    private int totalFees;
+    private int merchantEntitlement;
+    private boolean refundPending;
+    private boolean authorisationExpired;
+    private boolean captured;
+    private String settlementCurrency;
 
     public String getToken() {
         return token;
@@ -187,18 +188,9 @@ private String settlementCurrency;
     public void setSettlementCurrency(String settlementCurrency) {
         this.settlementCurrency = settlementCurrency;
     }
- 
-
 
     @Override
     public String toString() {
         return "PINResponse{" + "token=" + token + ", success=" + success + ", amount=" + amount + ", currency=" + currency + ", description=" + description + ", email=" + email + ", ipAddress=" + ipAddress + ", createdAt=" + createdAt + ", statusMessage=" + statusMessage + ", errorMessage=" + errorMessage + ", card=" + card + ", transfer=" + transfer + ", amountRefunded=" + amountRefunded + ", totalFees=" + totalFees + ", merchantEntitlement=" + merchantEntitlement + ", refundPending=" + refundPending + ", authorisationExpired=" + authorisationExpired + ", captured=" + captured + ", settlementCurrency=" + settlementCurrency + '}';
     }
-
-
-
-    
-    
-    
-    
 }

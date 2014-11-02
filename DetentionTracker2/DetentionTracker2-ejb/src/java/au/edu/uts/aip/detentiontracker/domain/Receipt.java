@@ -19,7 +19,8 @@ public class Receipt implements Serializable {
 
     /**
      * A many to one relationship with an associated login.
-     * @return 
+     *
+     * @return a login
      */
     @ManyToOne
     public Login getLogin() {
@@ -32,6 +33,7 @@ public class Receipt implements Serializable {
 
     /**
      * An auto generated ID that represents the receipt.
+     *
      * @return an ID
      */
     @Id
@@ -62,8 +64,9 @@ public class Receipt implements Serializable {
     }
 
     /**
-     * Function that returns the PIN Payment's charge value from CENTS to DOLLARS.
-     * Used by the receipt page
+     * Function that returns the PIN Payment's charge value from CENTS to
+     * DOLLARS. Used by the receipt page
+     *
      * @return a conversion from cents to dollars
      */
     public double returnAmountInDollars() {
@@ -88,8 +91,10 @@ public class Receipt implements Serializable {
     }
 
     /**
-     * This sets the Expiry Date of the receipt. This only generates the value when PIN Payment's provides
-     * a successful response, in which the current date's month value is increase by an int value
+     * This sets the Expiry Date of the receipt. This only generates the value
+     * when PIN Payment's provides a successful response, in which the current
+     * date's month value is increase by an int value
+     *
      * @param dateOfPurchase Date of purchase provided by PIN Payments
      * @param monthsFromExpiry Int value of the months to add
      */

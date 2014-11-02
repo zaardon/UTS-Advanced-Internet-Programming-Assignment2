@@ -1,4 +1,3 @@
-
 package au.edu.uts.aip.detentiontracker.domain;
 
 import java.io.*;
@@ -10,7 +9,7 @@ import javax.validation.constraints.*;
  */
 @Entity
 public class Detention implements Serializable {
-    
+
     private Login login;
     private int detentionID;
     private String firstName;
@@ -19,36 +18,40 @@ public class Detention implements Serializable {
     private DetentionType detentionType;
     private DepartmentType departmentType;
     private String reason;
-    
+
     @Id
     @GeneratedValue
     public int getDetentionID() {
         return detentionID;
     }
-    
+
     public void setDetentionID(int detentionID) {
         this.detentionID = detentionID;
     }
 
     /**
-    * Only allows letters and single white spaces/apostrophes (in the case of double names) for a first name
-    * @return a first name
-    */
-    @Pattern(regexp="[A-Za-z]+[A-Za-z ']*")
+     * Only allows letters and single white spaces/apostrophes (in the case of
+     * double names) for a first name
+     *
+     * @return a first name
+     */
+    @Pattern(regexp = "[A-Za-z]+[A-Za-z ']*")
     @Size(min = 1)
     public String getFirstName() {
         return firstName;
     }
-    
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
+
     /**
-    * Only allows letters and single white spaces/apostrophes (in the case of double names) for a last name
-    * @return a last name
-    */
-    @Pattern(regexp="[A-Za-z]+[A-Za-z ']*")
+     * Only allows letters and single white spaces/apostrophes (in the case of
+     * double names) for a last name
+     *
+     * @return a last name
+     */
+    @Pattern(regexp = "[A-Za-z]+[A-Za-z ']*")
     @Size(min = 1)
     public String getLastName() {
         return lastName;
@@ -57,7 +60,7 @@ public class Detention implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
     @Enumerated(EnumType.STRING)
     public YearType getYearType() {
         return yearType;
@@ -66,7 +69,7 @@ public class Detention implements Serializable {
     public void setYearType(YearType yearType) {
         this.yearType = yearType;
     }
-    
+
     @Enumerated(EnumType.STRING)
     public DetentionType getDetentionType() {
         return detentionType;
@@ -75,7 +78,7 @@ public class Detention implements Serializable {
     public void setDetentionType(DetentionType detentionType) {
         this.detentionType = detentionType;
     }
-    
+
     @Enumerated(EnumType.STRING)
     public DepartmentType getDepartmentType() {
         return departmentType;
@@ -86,10 +89,12 @@ public class Detention implements Serializable {
     }
 
     /**
-    * Only allows numbers, letters, dashes, apostrophes, colons and single white spaces for a reason
-    * @return a reason
-    */
-    @Pattern(regexp="[A-Za-z0-9]+[A-Za-z 0-9-':()]*")
+     * Only allows numbers, letters, dashes, apostrophes, colons and single
+     * white spaces for a reason
+     *
+     * @return a reason
+     */
+    @Pattern(regexp = "[A-Za-z0-9]+[A-Za-z 0-9-':()]*")
     @Size(min = 1, max = 40)
     public String getReason() {
         return reason;
@@ -98,12 +103,14 @@ public class Detention implements Serializable {
     public void setReason(String reason) {
         this.reason = reason;
     }
-    
+
     /**
-    * A many to one relationship that allows this detention to belong to a Login object
-    * @return a login
-    */
-   @ManyToOne
+     * A many to one relationship that allows this detention to belong to a
+     * Login object
+     *
+     * @return a login
+     */
+    @ManyToOne
     public Login getLogin() {
         return login;
     }
@@ -111,6 +118,4 @@ public class Detention implements Serializable {
     public void setLogin(Login login) {
         this.login = login;
     }
-    
-    
 }
