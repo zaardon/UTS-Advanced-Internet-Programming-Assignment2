@@ -38,10 +38,8 @@ public class DetentionController implements Serializable {
      * @return a redirect that takes the user back to the view detentions page
      */
     public String createDetention() {
-
         Login managedLogin = detentionTrackerBean.getLogin(getUser());
-
-        detentionTrackerBean.addLogin(currentDetention, managedLogin);
+        detentionTrackerBean.addDetentionToLogin(currentDetention, managedLogin);
         return "view?faces-redirect=true";
     }
 
@@ -73,7 +71,6 @@ public class DetentionController implements Serializable {
      * @return an array list of detentions that is displayed on the web page
      */
     public List<Detention> findAllDetentions() {
-
         return detentionTrackerBean.findAllDetetionsOnUsername(getUser());
     }
 
@@ -84,10 +81,6 @@ public class DetentionController implements Serializable {
      * @return returns the amount of current detentions
      */
     public int sizeOfDetentionList() {
-
-        // find the login in the db
-        // add that to our current detention
-        // then add that detention to our login ? yes
         return detentionTrackerBean.findAllDetetionsOnUsername(getUser()).size();
     }
 
@@ -97,7 +90,6 @@ public class DetentionController implements Serializable {
 
     private String getUser() {
         FacesContext context = FacesContext.getCurrentInstance();
-        // find our contextual login
         return context.getExternalContext().getUserPrincipal().getName();
     }
 }

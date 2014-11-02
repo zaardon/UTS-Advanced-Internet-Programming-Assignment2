@@ -69,22 +69,17 @@ public class DetentionTrackerBean {
     }
 
     /**
-     * This adds a login object with a detention object.
+     * This maps a detention object to a login object.
      *
      * @param detention the user's detention
      * @param login the user's login object
      */
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void addLogin(Detention detention, Login login) {
-        try {
+    public void addDetentionToLogin(Detention detention, Login login) {
             detention.setLogin(login);
             createDetention(detention);
             login.getDetentions().add(detention);
             em.merge(login);
-        } catch (EJBException e) {
-            System.out.println(e);
-
-        }
     }
 
     /**
@@ -249,7 +244,7 @@ public class DetentionTrackerBean {
     }
 
     /**
-     * Add a receipt object to a given login object
+     * Maps a receipt object to a given login object
      *
      * @param receipt belonging to the login object
      * @param login that requires a receipt
