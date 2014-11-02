@@ -63,6 +63,7 @@ public class CardController implements Serializable {
      * This method creates the customer token with the provided credit card information from the XHTML page
      */
     public void makeCustomerToken() {
+        //The initial card and customer token set-up
         currentCard.setAddress_Country("Australia");
         customerToken.setEmail(currentLogin.getEmail());
         customerToken.setCard(currentCard);
