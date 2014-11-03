@@ -5,21 +5,18 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <!-- This is the footer template of the website. It provides a logout function to the user -->
-    
+
     <h:head>
         <h:outputStylesheet  name="style.css" library="css" />
     </h:head>
     <h:body >
         <br/>
         <hr></hr>
-        
-        
-       <p align="Center"> 
-           <h:outputLink  rendered="#{loginController.currentLogin.accountType ne 'Administrator' }" id="link1" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-            <h:outputText value="Account Management" styleClass="stdRowHeader"/>
-         </h:outputLink>
-       </p>
-       
+        <p align="Center"> 
+            <h:outputLink  rendered="#{loginController.currentLogin.accountType ne 'Administrator' }" id="link1" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
+                <h:outputText value="Account Management" styleClass="stdRowHeader"/>
+            </h:outputLink>
+        </p>
         <p align="Center"> <h:commandButton value="Log Out" styleClass="stdButton" action="#{loginController.logout}" /></p>
     </h:body>      
 </html>

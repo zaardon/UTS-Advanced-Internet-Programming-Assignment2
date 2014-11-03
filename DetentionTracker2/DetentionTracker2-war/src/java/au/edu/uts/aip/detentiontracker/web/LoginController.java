@@ -3,6 +3,7 @@
  */
 package au.edu.uts.aip.detentiontracker.web;
 
+import au.edu.uts.aip.detentiontracker.domain.enums.AccountType;
 import au.edu.uts.aip.detentiontracker.domain.*;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;

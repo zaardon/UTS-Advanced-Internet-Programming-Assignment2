@@ -1,14 +1,14 @@
 package au.edu.uts.aip.detentiontracker.domain;
 
-import au.edu.uts.aip.detentiontracker.domain.AccountType;
 import au.edu.uts.aip.detentiontracker.domain.Detention;
 import au.edu.uts.aip.detentiontracker.domain.Receipt;
+import au.edu.uts.aip.detentiontracker.domain.enums.AccountType;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-11-03T10:32:41")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-11-03T10:39:18")
 @StaticMetamodel(Login.class)
 public class Login_ { 
 

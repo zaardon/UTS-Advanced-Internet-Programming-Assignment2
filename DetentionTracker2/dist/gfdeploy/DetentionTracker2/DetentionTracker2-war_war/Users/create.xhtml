@@ -76,16 +76,17 @@
                     </table>
                 </div>
             </h:form>
-            <!-- Output text is rendered only if the user is a free account has has over 5 detentions already submitted -->
-            <h:outputText rendered="#{!loginController.doesFreeAccountNotHaveMaxDetentions()}" styleClass="stdRowHeader" value="You have exceeded your limit of 5 detentions! Please upgrade your account for more functionality" />
-            <!-- Output text is rendered only if the user has a valid customer token for their paying account -->
-            <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
-            <br/>
-            <!-- Output link is rendered only if the user does not have a valid customer token for their paying account -->
-            <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount() or !loginController.doesFreeAccountNotHaveMaxDetentions()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-                <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
-            </h:outputLink>
-
+            <p align="Center"> 
+                <!-- Output text is rendered only if the user is a free account has has over 5 detentions already submitted -->
+                <h:outputText rendered="#{!loginController.doesFreeAccountNotHaveMaxDetentions()}" styleClass="stdRowHeader" value="You have exceeded your limit of 5 detentions! Please upgrade your account for more functionality" />
+                <!-- Output text is rendered only if the user has a valid customer token for their paying account -->
+                <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
+                <br/>
+                <!-- Output link is rendered only if the user does not have a valid customer token for their paying account -->
+                <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount() or !loginController.doesFreeAccountNotHaveMaxDetentions()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
+                    <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
+                </h:outputLink>
+            </p>
         </h:body>
     </ui:define>
 </ui:composition>
