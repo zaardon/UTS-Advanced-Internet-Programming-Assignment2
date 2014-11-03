@@ -3,19 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/create.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/register.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/login.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/view.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/WEB-INF/templates/header.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/receipt.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/billing.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/CardController.java</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/information.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/accounts.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/total.xhtml</file>
-            <file>file:/C:/Users/james/Documents/NetBeansProjects/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/edit.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/create.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/total.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/view.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/index.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/welcome.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ChargeController.java</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/CardController.java</file>
         </group>
     </open-files>
 </project-private>
