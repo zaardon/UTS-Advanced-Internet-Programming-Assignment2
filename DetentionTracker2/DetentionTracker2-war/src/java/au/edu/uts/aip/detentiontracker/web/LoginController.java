@@ -3,15 +3,19 @@
  */
 package au.edu.uts.aip.detentiontracker.web;
 
-import au.edu.uts.aip.detentiontracker.domain.enums.AccountType;
 import au.edu.uts.aip.detentiontracker.domain.*;
+import au.edu.uts.aip.detentiontracker.domain.enums.AccountType;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.*;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -197,5 +201,27 @@ public class LoginController implements Serializable {
 
     public void setCurrentReceipt(Receipt currentReceipt) {
         this.currentReceipt = currentReceipt;
+    }
+
+    /**
+     * This method returns the most current expiry date for a user.
+     *
+     * @param receipts the list of receipts to iterate through
+     * @return a string of either a date or a message
+     */
+    @Temporal(TemporalType.DATE)
+    public String getCurrentExpiryDate(List<Receipt> receipts) {
+        Date dawnOfTime = new Date(0, 0, 0);
+        Date expiryDate = dawnOfTime;
+        for (Receipt receipt : receipts) {
+            Date currentDate = receipt.getDateOfExpiry();
+            if (currentDate.compareTo(expiryDate) > 0) {
+                expiryDate = receipt.getDateOfExpiry();
+            }
+        }
+        if (expiryDate.compareTo(dawnOfTime) == 0) {
+            return "No current expiry date";
+        }
+        return expiryDate.toString();
     }
 }
