@@ -91,7 +91,7 @@ public class LoginController implements Serializable {
     /**
      * Checks if the current logged in account is a Premium account
      *
-     * @return
+     * @return true or false
      */
     public boolean isPremiumAccount() {
         loadLogin();
@@ -127,7 +127,6 @@ public class LoginController implements Serializable {
      * @throws NoSuchAlgorithmException This error is thrown if the password
      * encryption fails
      */
-    //first creation.
     public String createUser() throws NoSuchAlgorithmException {
         if (!detentionTrackerBean.userExists(currentLogin.getUsername())) {
             // If new username does not already exists...
@@ -187,22 +186,6 @@ public class LoginController implements Serializable {
         return "/login?faces-redirect=true";
     }
 
-    public DetentionTrackerBean getDetentionTrackerBean() {
-        return detentionTrackerBean;
-    }
-
-    public void setDetentionTrackerBean(DetentionTrackerBean detentionTrackerBean) {
-        this.detentionTrackerBean = detentionTrackerBean;
-    }
-
-    public Receipt getCurrentReceipt() {
-        return currentReceipt;
-    }
-
-    public void setCurrentReceipt(Receipt currentReceipt) {
-        this.currentReceipt = currentReceipt;
-    }
-
     /**
      * This method returns the most current expiry date for a user.
      *
@@ -223,5 +206,21 @@ public class LoginController implements Serializable {
             return "No current expiry date";
         }
         return expiryDate.toString();
+    }
+
+    public DetentionTrackerBean getDetentionTrackerBean() {
+        return detentionTrackerBean;
+    }
+
+    public void setDetentionTrackerBean(DetentionTrackerBean detentionTrackerBean) {
+        this.detentionTrackerBean = detentionTrackerBean;
+    }
+
+    public Receipt getCurrentReceipt() {
+        return currentReceipt;
+    }
+
+    public void setCurrentReceipt(Receipt currentReceipt) {
+        this.currentReceipt = currentReceipt;
     }
 }
