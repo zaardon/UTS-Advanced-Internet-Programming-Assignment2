@@ -8,16 +8,19 @@
 
     <h:head>
         <h:outputStylesheet  name="style.css" library="css" />
+        <h:outputStylesheet  name="css/bootstrap.css" />
+        <h:outputStylesheet  name="css/bootstrap-theme.css" />
     </h:head>
     <h:body >
         <br/>
-        <hr></hr>
-        <p align="Center"> 
+       <div class="well well-lg">
+        <p align="Center" > 
             <h:outputLink  rendered="#{loginController.currentLogin.accountType ne 'Administrator' }" id="link1" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-                <h:outputText value="Account Management" styleClass="stdRowHeader"/>
+                <h:outputText value="Account Management" styleClass="btn btn-lg btn-success"/>
             </h:outputLink>
         </p>
-        <p align="Center"> <h:commandButton value="Log Out" styleClass="stdButton" action="#{loginController.logout}" /></p>
+        <p align="Center"> <h:commandButton value="Log Out" styleClass="btn btn-lg btn-info" action="#{loginController.logout}" /></p>
+       </div>
     </h:body>      
 </html>
 

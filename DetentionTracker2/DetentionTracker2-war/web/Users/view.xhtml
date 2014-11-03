@@ -16,56 +16,58 @@
     <ui:define name="content">
         <h:head>
             <h:outputStylesheet  name="style.css" library="css" />
+            <h:outputStylesheet  name="css/bootstrap.css" />
+            <h:outputStylesheet  name="css/bootstrap-theme.css" />
         </h:head>
         <h:body>
             <h1 class="h1">Current Detentions</h1>        
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
                 <h:form rendered="#{(detentionController.sizeOfDetentionList() != 0) and (loginController.doesHaveTokenAndValidAccount())}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findAllDetentions()}">
+                    <h:dataTable styleClass="table table-striped" border="1" var="detention"  value="#{detentionController.findAllDetentions()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="First Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="First Name" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention.firstName}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Last Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="Last Name" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention.lastName}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Year" styleClass="stdRowHeader"/>
+                                <h:outputText value="Year" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention.yearType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Type" styleClass="stdRowHeader"/>
+                                <h:outputText value="Type" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention.detentionType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Department" styleClass="stdRowHeader"/>
+                                <h:outputText value="Department" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention.departmentType}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header" >
-                                <h:outputText value="Reason" styleClass="stdRowHeader"/>
+                                <h:outputText value="Reason" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention.reason}"/>
                         </h:column>               
                         <h:column>
-                            <h:button value="Edit" styleClass="stdButton" outcome="edit">
+                            <h:button value="Edit" styleClass="btn btn-lg btn-default" outcome="edit">
                                 <f:param name="index" value="#{detention.detentionID}"/>
                             </h:button>
                         </h:column>               
                         <h:column >
-                            <h:commandButton value="Remove" styleClass="stdButton" action="#{detentionController.removeDetention(detention.detentionID)}" />
+                            <h:commandButton value="Remove" styleClass="btn btn-lg btn-danger" action="#{detentionController.removeDetention(detention.detentionID)}" />
                         </h:column>        
                     </h:dataTable>
                 </h:form>

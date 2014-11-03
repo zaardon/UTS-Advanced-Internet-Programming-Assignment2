@@ -9,6 +9,8 @@
 
     <h:head>
         <h:outputStylesheet  name="style.css" library="css" />
+        <h:outputStylesheet  name="css/bootstrap.css" />
+        <h:outputStylesheet  name="css/bootstrap-theme.css" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
     </h:head>
     <h:body>
@@ -24,27 +26,27 @@
                 <tr >
                     <td class="templatePageTableRow" >
                         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator'}" id="create" value="/DetentionTracker2-war/faces/Users/create.xhtml">  
-                            <h:outputText value="Create Detention" styleClass="h2"/>
+                            <h:outputText value="Create Detention" styleClass="btn btn-lg btn-primary"/>
                         </h:outputLink>
 
-                        <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="admin" value="/DetentionTracker2-war/faces/Administration/admin.xhtml">  
-                            <h:outputText value="Billing Management" styleClass="h2"/>
+                        <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="admin" value="/DetentionTracker2-war/faces/Administration/billing.xhtml">  
+                            <h:outputText value="Billing Management" styleClass="btn btn-lg btn-primary"/>
                         </h:outputLink>            
                     </td>
                     <td class="templatePageTableRow">
                         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="view" value="/DetentionTracker2-war/faces/Users/view.xhtml">  
-                            <h:outputText value="View Detentions" styleClass="h2"/>
+                            <h:outputText value="View Detentions" styleClass="btn btn-lg btn-primary"/>
                         </h:outputLink>
                         <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="receipt" value="/DetentionTracker2-war/faces/Administration/receipt.xhtml">  
-                            <h:outputText value="View Receipts" styleClass="h2"/>
+                            <h:outputText value="View Receipts" styleClass="btn btn-lg btn-primary"/>
                         </h:outputLink>          
                     </td>
                     <td class="templatePageTableRow" >
                         <h:outputLink rendered="#{loginController.returnCurrentAccount() eq 'Administrator' }" id="information" value="/DetentionTracker2-war/faces/Administration/information.xhtml">  
-                            <h:outputText value="Accounts Information" styleClass="h2"/>
+                            <h:outputText value="Account Information" styleClass="btn btn-lg btn-primary"/>
                         </h:outputLink>   
                         <h:outputLink rendered="#{loginController.returnCurrentAccount() ne 'Administrator' }" id="total" value="/DetentionTracker2-war/faces/Users/total.xhtml">  
-                            <h:outputText value="Student Totals" styleClass="h2"/>
+                            <h:outputText value="Student Totals" styleClass="btn btn-lg btn-primary"/>
                         </h:outputLink>       
                     </td>
                 </tr>            

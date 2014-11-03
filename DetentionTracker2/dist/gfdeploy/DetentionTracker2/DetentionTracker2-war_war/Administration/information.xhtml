@@ -21,28 +21,28 @@
             <h1 class="h1">Accounts Information</h1>        
             <div align="center">
                 <h:form rendered="#{loginController.amountOfNonAdminAccounts() != 0}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLoginsThatAreNotAdmin()}">
+                    <h:dataTable styleClass="table table-striped" border="1" var="login"  value="#{chargeController.allLoginsThatAreNotAdmin()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Username" styleClass="stdRowHeader"/>
+                                <h:outputText value="Username" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{login.username}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Account Type" styleClass="stdRowHeader"/>
+                                <h:outputText value="Account Type" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{login.accountType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Email" styleClass="stdRowHeader"/>
+                                <h:outputText value="Email" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{login.email}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Expiry Date" styleClass="stdRowHeader"/>
+                                <h:outputText value="Expiry Date" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{loginController.getCurrentExpiryDate(login.receipts)}"/>
                         </h:column>

@@ -11,7 +11,7 @@
     If there are no users to process payments for, then a message informing the administrator is displayed -->
 
     <ui:define name="title">
-        Account Information
+        Billing Management
     </ui:define>
     <ui:define name="content">
         <h:head>
@@ -22,34 +22,35 @@
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the subscription list is greater than 0 -->
                 <h:form rendered="#{chargeController.amountOfSubscriptionUsers() != 0}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="login"  value="#{chargeController.allLoginsByPayingAccountType()}">
+                    <h:dataTable styleClass="table table-striped" border="1" var="login"  value="#{chargeController.allLoginsByPayingAccountType()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Username" styleClass="stdRowHeader"/>
+                                <h:outputText value="Username" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{login.username}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Account Type" styleClass="stdRowHeader"/>
+                                <h:outputText value="Account Type" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{login.accountType}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Email" styleClass="stdRowHeader"/>
+                                <h:outputText value="Email" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{login.email}"/>
                         </h:column>
                         <h:column >
                             <!-- Button is rendered only if the users subscription has ended -->
-                            <h:outputText rendered="#{!chargeController.hasSubscriptionEnded(login.username)}" styleClass="stdRowHeader" value="Unavailable" />
-                            <h:commandButton rendered="#{chargeController.hasSubscriptionEnded(login.username)}" value="Add 1 Month" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,1)}" />
+                            <h3>
+                                <h:outputText rendered="#{!chargeController.hasSubscriptionEnded(login.username)}" styleClass="label label-danger" value="Unavailable" /> </h3>
+                            <h:commandButton rendered="#{chargeController.hasSubscriptionEnded(login.username)}" value="Add 1 Month" styleClass="btn btn-lg btn-success" action="#{chargeController.chargeLogin(login.username,1)}" />
                         </h:column>
                         <h:column >
                             <!-- Button is rendered only if the users subscription has ended -->
-                            <h:outputText rendered="#{!chargeController.hasSubscriptionEnded(login.username)}" styleClass="stdRowHeader" value="Unavailable" />
-                            <h:commandButton rendered="#{chargeController.hasSubscriptionEnded(login.username)}" value="Add 6 Months" styleClass="stdButton" action="#{chargeController.chargeLogin(login.username,6)}" />
+                            <h3><h:outputText rendered="#{!chargeController.hasSubscriptionEnded(login.username)}" styleClass="label label-danger" value="Unavailable" /></h3>
+                            <h:commandButton rendered="#{chargeController.hasSubscriptionEnded(login.username)}" value="Add 6 Months" styleClass=" btn btn-lg btn-success " action="#{chargeController.chargeLogin(login.username,6)}" />
                         </h:column>
                     </h:dataTable>
                 </h:form>

@@ -11,7 +11,7 @@
     informing the user that there are none is displayed. This is a PREMIUM only page -->
 
     <ui:define name="title">
-        View Detentions
+        View Totals
     </ui:define>
     <ui:define name="content">
         <h:head>
@@ -22,28 +22,28 @@
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the detention list is greater than 0 -->
                 <h:form rendered="#{(detentionController.sizeOfDetentionList() != 0) and (loginController.isPremiumAccountWithToken())}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="detention"  value="#{detentionController.findTotalCountOfStudentName()}">
+                    <h:dataTable styleClass="table table-striped" border="1" var="detention"  value="#{detentionController.findTotalCountOfStudentName()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Last Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="Last Name" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention[2]}"/>
                         </h:column>      
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="First Name" styleClass="stdRowHeader"/>
+                                <h:outputText value="First Name" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention[1]}"/>
                         </h:column> 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Year Group" styleClass="stdRowHeader"/>
+                                <h:outputText value="Year Group" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention[3]}"/>
                         </h:column>      
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Total Detentions" styleClass="stdRowHeader"/>
+                                <h:outputText value="Total Detentions" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{detention[0]}"/>
                         </h:column>  

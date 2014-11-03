@@ -13,37 +13,43 @@
         Register
     </ui:define>
 
-    <h:head>
-        <h:outputStylesheet  name="style.css" library="css" />
-    </h:head>
+        <h:head>
+            <h:outputStylesheet  name="css/bootstrap.css" />
+        <h:outputStylesheet  name="css/bootstrap-theme.css" />
+        <title>Register</title>
+        </h:head>
     <h:body>
-        <h1 class="h1">Create an Account</h1>               
+             
         <h:form>
             <div align="center">
-                <h:messages errorClass="info" styleClass="createInputError"/>
+                <h1 class="h1">Create an Account</h1>
+                
                 <table>
                     <tr>
-                        <td><h:outputText value="Username: " styleClass="createHeader" /></td>
-                        <td><h:inputText id="username" styleClass="createInput" value="#{loginController.currentLogin.username}" validatorMessage="You must enter a valid username (letters and numbers only!)"/> </td>
+                        <td><h:outputText value="Username: " styleClass="h4" /></td>
+                        <td><h:inputText id="username" styleClass="form-control" value="#{loginController.currentLogin.username}" validatorMessage="You must enter a valid username (letters and numbers only!)"/> </td>
+                        <td><h:message for="username" styleClass="alert-danger"/></td>
                     </tr>
                     <tr>
-                        <td><h:outputText value="Password: " styleClass="createHeader"/></td>
-                        <td><h:inputSecret id="password" styleClass="createInput" value="#{loginController.currentLogin.password}" validatorMessage="You must enter a valid password (letters and numbers only!)"/></td>
+                        <td><h:outputText value="Password: " styleClass="h4"/></td>
+                        <td><h:inputSecret id="password" styleClass="form-control" value="#{loginController.currentLogin.password}" validatorMessage="You must enter a valid password (letters and numbers only!)"/></td>
+                        <td><h:message for="password" styleClass="alert-danger"/></td>
                     </tr>
                     <tr>
-                        <td><h:outputText value="Email : " styleClass="createHeader"/></td>
-                        <td><h:inputText id="email" styleClass="createInput" value="#{loginController.currentLogin.email}" validatorMessage="You must enter a valid email"/></td>
+                        <td><h:outputText value="Email : " styleClass="h4"/></td>
+                        <td><h:inputText id="email" styleClass="form-control" value="#{loginController.currentLogin.email}" validatorMessage="You must enter a valid email"/></td>
+                        <td><h:message for="email" styleClass="alert-danger"/></td>
                     </tr>
                     <tr>
-                        <td><h:outputText value="Account Type: " styleClass="createHeader" /></td>
-                        <td><h:selectOneMenu value="#{loginController.currentLogin.accountType}" styleClass="createInput">
-                                <f:selectItem itemValue="Free" itemLabel="Free"/>
+                        <td><h:outputText value="Account Type: " styleClass="h4" /></td>
+                        <td><h:selectOneMenu value="#{loginController.currentLogin.accountType}" styleClass="form-control">
+                                <f:selectItem itemValue="Free" itemLabel="Free" />
                                 <f:selectItem itemValue="Standard" itemLabel="Standard"/>
                                 <f:selectItem itemValue="Premium" itemLabel="Premium"/>
                             </h:selectOneMenu></td>
                     </tr> 
                     <td></td>
-                    <td><h:commandButton value="Create Account" styleClass="stdButton" action="#{loginController.createUser()}"/></td>
+                    <td><h:commandButton value="Create Account" styleClass="btn btn-lg btn-primary" action="#{loginController.createUser()}"/></td>
                 </table>
             </div>
         </h:form>

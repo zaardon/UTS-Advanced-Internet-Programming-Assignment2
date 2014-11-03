@@ -9,7 +9,7 @@
     <!-- This allows an administrator to view the systems payment receipts. If there are none to view, a message is displayed. -->
 
     <ui:define name="title">
-        Create a Detention
+        View Receipts
     </ui:define>
     <ui:define name="content">
         <h:head>
@@ -20,34 +20,34 @@
             <div align="center">          
                 <!-- Only displays the dataTable if the size of the receipt list is greater than 0 -->
                 <h:form rendered="#{(receiptController.sizeOfReceiptList() != 0)}">
-                    <h:dataTable styleClass="stdRowText" border="1" var="receipt"  value="#{receiptController.findAllReceipts()}">
+                    <h:dataTable styleClass="table table-striped" border="1" var="receipt"  value="#{receiptController.findAllReceipts()}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="User name" styleClass="stdRowHeader"/>
+                                <h:outputText value="User name" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{receipt.login.username}"/>
                         </h:column>               
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Amount in AUD" styleClass="stdRowHeader"/>
+                                <h:outputText value="Amount in AUD" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{receipt.returnAmountInDollars()}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Date " styleClass="stdRowHeader"/>
+                                <h:outputText value="Date " styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{receipt.dateOfPurchase}"/>
                         </h:column>                
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Description" styleClass="stdRowHeader"/>
+                                <h:outputText value="Description" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{receipt.description}"/>
                         </h:column> 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Expiry Date" styleClass="stdRowHeader"/>
+                                <h:outputText value="Expiry Date" styleClass="h3"/>
                             </f:facet>
                             <h:outputText value="#{receipt.dateOfExpiry}"/>
                         </h:column> 
