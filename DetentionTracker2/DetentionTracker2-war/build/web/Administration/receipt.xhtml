@@ -1,24 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-template="/WEB-INF/templates/header.xhtml"
-xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/header.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <!-- This allows an administrator to view the systems payment receipts. If there are none to view, a message is displayed. -->
-    
+
     <ui:define name="title">
-    Create a Detention
+        Create a Detention
     </ui:define>
     <ui:define name="content">
         <h:head>
             <h:outputStylesheet  name="style.css" library="css" />
         </h:head>
         <h:body>
-            <h1 class="h1">View Receipts</h1>               
-            <h:form rendered="#{(receiptController.sizeOfReceiptList() != 0)}">
-                <h:dataTable styleClass="stdRowText" border="1" var="receipt"  value="#{receiptController.findAllReceipts()}">
+            <h1 class="h1">View Receipts</h1>   
+            <div align="center">          
+                <!-- Only displays the dataTable if the size of the receipt list is greater than 0 -->
+                <h:form rendered="#{(receiptController.sizeOfReceiptList() != 0)}">
+                    <h:dataTable styleClass="stdRowText" border="1" var="receipt"  value="#{receiptController.findAllReceipts()}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="User name" styleClass="stdRowHeader"/>
@@ -49,11 +51,12 @@ xmlns:f="http://java.sun.com/jsf/core">
                             </f:facet>
                             <h:outputText value="#{receipt.dateOfExpiry}"/>
                         </h:column> 
-      
+
                     </h:dataTable>
                 </h:form>
-                    <!-- Output text is rendered only if the receipt list is == 0 -->
-                    <h:outputText rendered="#{receiptController.sizeOfReceiptList() == 0}" styleClass="stdRowHeader" value="No receipts to view!" />
+                <!-- Output text is rendered only if the receipt list is == 0 -->
+                <h:outputText rendered="#{receiptController.sizeOfReceiptList() == 0}" styleClass="stdRowHeader" value="No receipts to view!" />
+            </div>
             <h:form >
                 <ui:insert name="footer">
                     <ui:include src="/WEB-INF/templates/footer.xhtml" />
