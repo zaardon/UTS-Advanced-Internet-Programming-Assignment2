@@ -4,12 +4,10 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
-    
     <context-param>
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
-
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -25,9 +23,8 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>faces/login.xhtml</welcome-file>
     </welcome-file-list>
-    
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>detentiontrackerRealm</realm-name>
@@ -36,7 +33,6 @@
             <form-error-page>/faces/login.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-
     <security-constraint>
         <display-name>Logged in pages</display-name>
         <web-resource-collection>
@@ -49,17 +45,15 @@
             <role-name>Users</role-name>
         </auth-constraint>
     </security-constraint>
-
     <security-role>
         <description>Logged in Users</description>
         <role-name>Users</role-name>
     </security-role>
-        <!-- Configuration of the RESTful API URL, so that it is not hard-coded -->
+    <!-- Configuration of the RESTful API URL, so that it is not hard-coded -->
     <env-entry>
         <description>The URL of the "PIN Payments" RESTful web service</description>
         <env-entry-name>pinPayments</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>http://localhost:8081/1/</env-entry-value>
     </env-entry>
-    
 </web-app>
