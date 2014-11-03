@@ -29,8 +29,8 @@ public class Login implements Serializable {
      */
     @Id
     @NotNull
-    @Pattern(regexp = "[a-zA-Z_0-9]*")
-    @Size(min = 1)
+    @Pattern(regexp = "[a-zA-Z_0-9]*", message = "Username uses incorrect characters")
+    @Size(min = 1, message = "This field cannot be blank")
     public String getUsername() {
         return username;
     }
@@ -45,8 +45,8 @@ public class Login implements Serializable {
      * @return a password
      */
     @NotNull
-    @Pattern(regexp = "[a-zA-Z_0-9]*")
-    @Size(min = 1)
+    @Pattern(regexp = "[a-zA-Z_0-9]*", message = "Password uses incorrect character")
+    @Size(min = 1, message = "This field cannot be blank")
     public String getPassword() {
         return password;
     }

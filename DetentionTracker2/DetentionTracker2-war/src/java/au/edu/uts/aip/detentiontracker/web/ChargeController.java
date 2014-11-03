@@ -52,7 +52,7 @@ public class ChargeController implements Serializable {
         // in the list you click on the button it passes the user as a value.        
         customerLogin = detentionTrackerBean.getLogin(username);
         chargeUser(monthsToCharge);
-        return "admin?faces-redirect=true";
+        return null;
     }
 
     /**
@@ -138,7 +138,7 @@ public class ChargeController implements Serializable {
             customerReceipt.setAmount(0);
             customerReceipt.setDateOfPurchase(new Date());
             customerReceipt.setDescription("ERROR: Charge failed");
-            Date failedExpiry = null;
+            Date failedExpiry = new Date(0, 0, 0);
             customerReceipt.setDateOfExpiryWithMonth(failedExpiry, 0);
             detentionTrackerBean.addReceiptToLogin(customerReceipt, customerLogin);
 

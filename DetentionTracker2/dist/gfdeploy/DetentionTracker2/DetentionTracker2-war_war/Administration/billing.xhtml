@@ -57,8 +57,7 @@
                 <!-- Output text is rendered only if the size of the subscription list is 0 -->
                 <h:outputText rendered="#{chargeController.amountOfSubscriptionUsers() == 0}" styleClass="stdRowHeader" value="No accounts to charge!" />
             </div>
-
-
+            <h:messages infoClass="alert alert-warning" ></h:messages>
             <h:form>
                 <ui:insert name="footer">
                     <ui:include src="/WEB-INF/templates/footer.xhtml" />
