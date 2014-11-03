@@ -25,21 +25,19 @@
                         <h:outputText value="Username: " styleClass="h3"></h:outputText>
                         <h:inputText id="username" value="#{loginController.currentLogin.username}" styleClass="form-control"/> 
                         <h:message  for="username" styleClass="alert-danger"/>
-
                         <br />
+                        
                         <h:outputText value="Password: " styleClass="h3" />
                         <h:inputSecret id="password" value="#{loginController.currentLogin.password}" styleClass="form-control"/>
-
                         <h:message  for="password" styleClass="alert-danger"/>
-
-
+                        <br/>
                         <h:commandButton value="Login" action="#{loginController.login()}" styleClass="btn-primary btn-lg btn-block"/>
-
-                        <hr></hr>
+                        
+                        <div class="well well-lg">
                         <h:outputLink id="register" value="/DetentionTracker2-war/faces/register.xhtml">  
                             <h:outputText value="Register Account" styleClass="h2"/>
                         </h:outputLink>   
-
+                        </div>
                     </div>
                 </h:form>
             </p>
