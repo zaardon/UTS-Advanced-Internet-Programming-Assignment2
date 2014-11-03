@@ -78,7 +78,7 @@
                 <h:outputText rendered="#{!loginController.doesHaveTokenAndValidAccount()}" styleClass="stdRowHeader" value="This is not accessable until you set up your credit card information" />
                 <br/>
                 <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-                    <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
+                    <h2><h:outputText value="Click here for Account Management" styleClass="label label-danger"/> </h2>
                 </h:outputLink>
             </div>
             <h:form >

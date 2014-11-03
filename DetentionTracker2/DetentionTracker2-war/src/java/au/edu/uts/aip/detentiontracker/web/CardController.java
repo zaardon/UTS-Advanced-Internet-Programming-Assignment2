@@ -77,7 +77,7 @@ public class CardController implements Serializable {
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
-                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
+                    .header("Authorization", "Basic U3BYS3h3OWd6MlJueFpMemt0YUN5dzpxd2VydHkxMjM=")
                     .post(Entity.json(customerToken), Response.class);
             FacesContext context = FacesContext.getCurrentInstance();
             //A success message is shown on the page

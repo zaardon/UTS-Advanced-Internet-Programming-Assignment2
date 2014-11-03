@@ -123,7 +123,7 @@ public class ChargeController implements Serializable {
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
-                    .header("Authorization", "Basic MDVXVzFlMzVtRGJka1lONlhsQVhkdzpxd2VydHkxMjM=")
+                    .header("Authorization", "Basic U3BYS3h3OWd6MlJueFpMemt0YUN5dzpxd2VydHkxMjM=")
                     .post(Entity.json(request), Response.class);
 
             //Creates a receipt to attach to the user's account
@@ -138,13 +138,12 @@ public class ChargeController implements Serializable {
             customerReceipt.setAmount(0);
             customerReceipt.setDateOfPurchase(new Date());
             customerReceipt.setDescription("ERROR: Charge failed");
-            Date failedExpiry = new Date(0, 0, 0);
+            Date failedExpiry = new Date();
             customerReceipt.setDateOfExpiryWithMonth(failedExpiry, 0);
             detentionTrackerBean.addReceiptToLogin(customerReceipt, customerLogin);
 
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Charge could not be created by PIN Payments: " + e.getMessage()));
-
         } 
         finally {
             if (client != null) {

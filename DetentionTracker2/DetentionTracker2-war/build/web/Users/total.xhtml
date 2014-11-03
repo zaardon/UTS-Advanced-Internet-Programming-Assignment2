@@ -58,7 +58,7 @@
                 <br/>
                 <!-- Output link is rendered only if the user does not have a valid customer token for their (non-premium) paying account -->
                 <h:outputLink rendered="#{!loginController.doesHaveTokenAndValidAccount() or !loginController.isPremiumAccountWithToken()}" id="accounts" value="/DetentionTracker2-war/faces/Users/accounts.xhtml">  
-                    <h:outputText value="Click here for Account Management" styleClass="stdRowHeader"/>
+                    <h2><h:outputText value="Click here for Account Management" styleClass="label label-danger"/> </h2>
                 </h:outputLink>
             </div>
             <h:form >

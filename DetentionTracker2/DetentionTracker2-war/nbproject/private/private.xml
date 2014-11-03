@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/login.xhtml</file>
-            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/CardController.java</file>
-            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Users/accounts.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/web/Administration/billing.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/GitHub/AIPAssign2/DetentionTracker2/DetentionTracker2-war/src/java/au/edu/uts/aip/detentiontracker/web/ChargeController.java</file>
         </group>
     </open-files>
 </project-private>
