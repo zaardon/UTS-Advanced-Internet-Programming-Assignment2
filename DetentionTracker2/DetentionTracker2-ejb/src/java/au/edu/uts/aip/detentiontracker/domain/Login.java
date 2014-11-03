@@ -1,6 +1,5 @@
 package au.edu.uts.aip.detentiontracker.domain;
 
-import au.edu.uts.aip.detentiontracker.domain.enums.AccountType;
 import java.io.*;
 import java.util.*;
 import javax.persistence.*;

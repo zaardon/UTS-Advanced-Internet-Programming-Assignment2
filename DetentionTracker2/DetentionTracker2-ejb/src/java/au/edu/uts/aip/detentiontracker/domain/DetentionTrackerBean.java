@@ -3,7 +3,6 @@ package au.edu.uts.aip.detentiontracker.domain;
 /**
  * This is the Detention Tracker Bean that is used throughout the project.
  */
-import au.edu.uts.aip.detentiontracker.domain.enums.AccountType;
 import java.util.*;
 import javax.ejb.*;
 import javax.persistence.*;

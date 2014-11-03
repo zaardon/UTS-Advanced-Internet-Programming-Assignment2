@@ -1,8 +1,5 @@
 package au.edu.uts.aip.detentiontracker.domain;
 
-import au.edu.uts.aip.detentiontracker.domain.enums.DetentionType;
-import au.edu.uts.aip.detentiontracker.domain.enums.DepartmentType;
-import au.edu.uts.aip.detentiontracker.domain.enums.YearType;
 import java.io.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
