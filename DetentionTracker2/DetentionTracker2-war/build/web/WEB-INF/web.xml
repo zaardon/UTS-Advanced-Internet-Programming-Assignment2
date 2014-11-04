@@ -49,11 +49,17 @@
         <description>Logged in Users</description>
         <role-name>Users</role-name>
     </security-role>
-    <!-- Configuration of the RESTful API URL, so that it is not hard-coded -->
+    <!-- Configuration of the RESTful API URL & Pin Payments Auth Key, so that it is not hard-coded -->
     <env-entry>
         <description>The URL of the "PIN Payments" RESTful web service</description>
         <env-entry-name>pinPayments</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>http://localhost:8081/1/</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <description>the pin payments auth key</description>
+        <env-entry-name>authKey</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>Basic U3BYS3h3OWd6MlJueFpMemt0YUN5dzpxd2VydHkxMjM=</env-entry-value>
     </env-entry>
 </web-app>

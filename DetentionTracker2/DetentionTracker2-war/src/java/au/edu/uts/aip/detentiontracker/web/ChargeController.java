@@ -26,6 +26,10 @@ public class ChargeController implements Serializable {
     //Sets the resource value belonging to PIN Payments
     @Resource(name = "pinPayments")
     String pinPayments;
+    
+    //Sets the resource value for the Auth Key
+    @Resource(name = "authKey")
+    String auth;
 
     @EJB
     private DetentionTrackerBean detentionTrackerBean;
@@ -123,7 +127,7 @@ public class ChargeController implements Serializable {
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
-                    .header("Authorization", "Basic U3BYS3h3OWd6MlJueFpMemt0YUN5dzpxd2VydHkxMjM=")
+                    .header("Authorization", auth)
                     .post(Entity.json(request), Response.class);
 
             //Creates a receipt to attach to the user's account
