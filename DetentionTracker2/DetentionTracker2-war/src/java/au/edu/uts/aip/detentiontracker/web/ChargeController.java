@@ -138,7 +138,7 @@ public class ChargeController implements Serializable {
             customerReceipt.setAmount(0);
             customerReceipt.setDateOfPurchase(new Date());
             customerReceipt.setDescription("ERROR: Charge failed");
-            Date failedExpiry = new Date();
+            Date failedExpiry = new Date(0,0,0);
             customerReceipt.setDateOfExpiryWithMonth(failedExpiry, 0);
             detentionTrackerBean.addReceiptToLogin(customerReceipt, customerLogin);
 
