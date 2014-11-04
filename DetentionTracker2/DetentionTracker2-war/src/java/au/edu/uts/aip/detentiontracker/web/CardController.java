@@ -24,12 +24,9 @@ import javax.faces.context.FacesContext;
 @Named
 @RequestScoped
 public class CardController implements Serializable {
-    //Sets the resource value belonging to PIN Payments
-    @Resource(name = "pinPayments") 
+
+    @Resource(name = "pinPayments") //Sets the resource value belonging to PIN Payments
     String pinPayments;
-    //Sets the resource value belonging to the .header PIN Payments authentication
-    @Resource(name = "authKey")
-    String auth;
 
     @EJB
     private DetentionTrackerBean detentionTrackerBean;
@@ -80,7 +77,7 @@ public class CardController implements Serializable {
             client = ClientBuilder.newClient();
             response = client.target(pinPayments)
                     .request()
-                    .header("Authorization", auth)
+                    .header("Authorization", "Basic U3BYS3h3OWd6MlJueFpMemt0YUN5dzpxd2VydHkxMjM=")
                     .post(Entity.json(customerToken), Response.class);
             FacesContext context = FacesContext.getCurrentInstance();
             //A success message is shown on the page
