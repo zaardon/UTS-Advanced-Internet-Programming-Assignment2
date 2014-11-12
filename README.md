@@ -1,5 +1,4 @@
-AIPAssign2
+Advanced Internet Programming Assignment 2
 ==========
 
-
-#mlg 420 #getrekt
+Detention Tracker Web Service
